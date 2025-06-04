@@ -403,10 +403,69 @@
             align-items: center;
             text-align: center;
         }
-        
-        .fab-btn {
+          .fab-btn {
             margin: 0 auto;
             position: relative;
+        }
+          /* Mobile Login Button Style - For hamburger menu */
+        .btn-mobile-menu-login {
+            background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--mfp-blue) !important;
+        }
+        
+        .btn-mobile-menu-login:hover, .btn-mobile-menu-login:focus {
+            background: linear-gradient(145deg, #e9ecef, #dee2e6);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+          .btn-mobile-menu-login i {
+            color: var(--mfp-red);
+            transform: scale(1.2);
+        }
+        
+        /* Animasi untuk btn-mobile-menu-login */
+        @keyframes pulse-button {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        
+        .navbar-collapse.show .btn-mobile-menu-login {
+            animation: pulse-button 1.5s infinite ease-in-out;
+            margin-top: 0.5rem;
+        }
+          /* Mobile navigation styling */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            transition: all 0.2s;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        
+        .navbar-toggler:hover {
+            transform: scale(1.1);
+        }
+        
+        @media (max-width: 576px) {
+            .navbar-brand.ms-3 {
+                max-width: 80px;
+                font-size: 1.2rem;
+                margin-left: 0.5rem !important;
+            }
+            
+            .btn-mobile-login {
+                padding: 0.25rem 0.75rem !important;
+                margin-right: 0.5rem !important;
+            }
+            
+            .navbar-toggler {
+                margin-right: 0.5rem !important;
+            }
         }
     </style>
     <!-- End Floating Daftar Button -->
@@ -499,18 +558,15 @@
             </div>
         </div>
     </div>
-    <!-- Brand & Contact End -->
-
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn navbar-custom-gradient"
+    <!-- Brand & Contact End -->    <!-- Navbar Start -->    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn navbar-custom-gradient"
         data-wow-delay="0.1s">
-        <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
+        <!-- Logo untuk mobile -->        <a href="/" class="navbar-brand ms-3 me-auto d-lg-none">MENU</a>
+        
+        <!-- Tombol toggle menu di sebelah kanan -->
         <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav me-auto p-3 p-lg-0">
+        <div class="collapse navbar-collapse" id="navbarCollapse">            <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
                 <div class="nav-item dropdown">
                     <a href="#"
@@ -533,13 +589,30 @@
                 <a href="#program"
                     class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Program</a>
                 <a href="{{ route('galeri.index') }}"
-                    class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>
-                <a href="/contact"
-                    class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>
+                    class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>                <a href="/contact"
+                    class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>                <!-- Tombol Login Mobile - Dalam menu hamburger -->
+                <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
+                    <div class="text-light text-center mb-3 small">
+                        <span>Sudah punya akun? Login di sini</span>
+                    </div>
+                    <a href="{{ route('login') }}" class="btn btn-light rounded-pill py-3 px-4 w-100 btn-mobile-menu-login">
+                        <span class="d-flex align-items-center justify-content-center">
+                            <i class="fa fa-user me-2"></i>
+                            <span>Masuk / Login</span>
+                        </span>
+                    </a>
+                </div>
             </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
-                target="_blank" class="btn btn-sm btn-primary rounded-pill py-2 px-4 d-none d-lg-block">Daftar
-                Sekarang</a>
+            
+            <!-- Tombol Login untuk Desktop -->
+            <div class="d-lg-flex align-items-center gap-2 d-none">
+                {{-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
+                    target="_blank" class="btn btn-sm btn-primary rounded-pill py-2 px-4">Daftar
+                    Sekarang</a> --}}
+                <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4">
+                    <i class="fa fa-user me-1"></i>Login
+                </a>
+            </div>
         </div>
     </nav>
     <!-- Navbar End -->

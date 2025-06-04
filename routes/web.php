@@ -32,9 +32,9 @@ Route::post('/contact', function (\Illuminate\Http\Request $request) {
     return back()->with('success', 'Pesan Anda berhasil dikirim!');
 });
 
-Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
-Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 Route::get('/jadwal-latihan', [JadwalLatihanController::class, 'index'])->name('jadwal.latihan');
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
