@@ -34,9 +34,9 @@
                         <h1 class="display-1 text-white mb-0 animated zoomIn">Fasilitas & Pelatih Berpengalaman</h1>
                     </div>
                 </div>
-            </div>
+            </div>            
             <div class="carousel-item">
-                <img class="w-100" src="{{ asset('template/img/mfp/slide3.jpg') }}" alt="MFP Academy">
+                <img class="w-100" src="{{ asset('template/img/mfp/slide33.jpeg') }}" alt="MFP Academy Training">
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">Bergabunglah Sekarang</h4>

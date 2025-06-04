@@ -560,7 +560,8 @@
     </div>
     <!-- Brand & Contact End -->    <!-- Navbar Start -->    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn navbar-custom-gradient"
         data-wow-delay="0.1s">
-        <!-- Logo untuk mobile -->        <a href="/" class="navbar-brand ms-3 me-auto d-lg-none">MENU</a>
+        <!-- Logo untuk mobile -->
+        <a href="/" class="navbar-brand ms-4 me-auto d-lg-none">MENU</a>
         
         <!-- Tombol toggle menu di sebelah kanan -->
         <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
