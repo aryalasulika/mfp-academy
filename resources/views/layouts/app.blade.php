@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MFP ACADEMY</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Akademi Sepak Bola, MFP Academy, Sepak Bola Anak, Pelatihan Bola" name="keywords">
+    <meta content="MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda." name="description">
+
+    <!-- Favicon -->
+    <link href="{{ asset('favicon.ico') }}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Font Awesome 6.x for WhatsApp Icon -->
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-1ycn6IcaQQ40/MKB4Imkb9hFQ9W4l5l9O+6X1p1p6V0Q5K5jT3ECszO2vCuxR2Yk4LLp7qMMEZe2zZ+s3kZwZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('template/lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --mfp-blue: #0033a0;
+            --mfp-red: #d90429;
+            --mfp-white: #ffffff;
+        }
+
+        body {
+            background-color: var(--mfp-white);
+        }
+
+        .bg-primary,
+        .navbar,
+        .btn-primary,
+        .section-title.bg-white.text-primary,
+        .carousel-indicators .active {
+            background-color: var(--mfp-blue) !important;
+            color: var(--mfp-white) !important;
+        }
+
+        .text-primary {
+            color: var(--mfp-blue) !important;
+        }
+
+        .btn-danger,
+        .bg-danger {
+            background-color: var(--mfp-red) !important;
+            color: var(--mfp-white) !important;
+        }
+
+        .mfp-accent {
+            color: var(--mfp-red) !important;
+        }
+
+        .navbar-brand h1 {
+            color: var(--mfp-blue) !important;
+        }
+
+        .footer,
+        .footer a {
+            background-color: var(--mfp-blue) !important;
+            color: var(--mfp-white) !important;
+        }
+
+        .section-title {
+            background: var(--mfp-white);
+            color: var(--mfp-blue);
+            border-left: 5px solid var(--mfp-red);
+            padding-left: 10px;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .dropdown-item.active {
+            color: #111 !important;
+            font-weight: bold;
+            background: none !important;
+            border-radius: 0.5rem;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .dropdown-item:hover {
+            color: #111 !important;
+            background: none !important;
+        }
+
+        .navbar-custom-gradient {
+            background: linear-gradient(90deg, #0d6efd 0%, #0d6efd 20%, #dc3545 100%) !important;
+            color: #fff !important;
+            border-radius: 0 !important;
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-custom-gradient .nav-link,
+        .navbar-custom-gradient .navbar-brand,
+        .navbar-custom-gradient .navbar-toggler {
+            color: #fff !important;
+        }
+
+        .footer .btn-link {
+            background: none !important;
+            color: #fff !important;
+            border-radius: 0.5rem;
+            box-shadow: none !important;
+            padding-left: 1.2em;
+            text-align: left;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer .btn-link:hover,
+        .footer .btn-link:focus {
+            color: #ffd700 !important;
+            text-decoration: underline;
+            background: none !important;
+        }
+
+        .footer a[href^="https://wa.me/"] {
+            background: none !important;
+            color: #fff !important;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none !important;
+            text-decoration: underline dotted 1.5px rgba(255, 255, 255, 0.25);
+            transition: color 0.2s;
+        }
+
+        .footer a[href^="https://wa.me/"]:hover,
+        .footer a[href^="https://wa.me/"]:focus {
+            color: #ffd700 !important;
+            background: none !important;
+            text-decoration: underline solid 2px #ffd700;
+        }
+
+        /* Floating WhatsApp Button */        /* Modern Floating Action Button */
+        .fab-wrapper {
+            position: fixed;
+            right: 24px;
+            bottom: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .fab-toggle {
+            position: absolute;
+            appearance: none;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .fab-btn {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(145deg, #0d6efd, #0b5ed7);
+            border-radius: 50%;
+            box-shadow: 0 6px 24px rgba(13, 110, 253, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .fab-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(13, 110, 253, 0.3);
+        }        /* Hide the X icon by default */
+        .fab-btn .fa-times {
+            position: absolute;
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 2;
+        }
+        
+        /* Show the comments icon by default */
+        .fab-btn .fa-comments {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1;
+        }
+        
+        /* When toggled, show X and hide comments icon */
+        .fab-toggle:checked + .fab-btn .fa-times {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+        
+        .fab-toggle:checked + .fab-btn .fa-comments {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+        
+        /* Pulse animation for toggle feedback */
+        @keyframes fab-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fab-btn-pulse {
+            animation: fab-pulse 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+          /* Add subtle background color transition when active */
+        .fab-btn {
+            transition: 
+                transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure icons don't overflow during animation */
+        }
+          .fab-toggle:checked + .fab-btn {
+            background: linear-gradient(145deg, #0b5ed7, #0953be);
+            box-shadow: 0 8px 32px rgba(13, 110, 253, 0.35);
+        }
+        
+        /* Improve icon visibility */
+        .fab-btn i {
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            font-size: 26px;
+        }/* Options container */
+        .fab-options {
+            position: absolute;
+            bottom: 80px;
+            /* Perfectly centered above the main button */
+            width: 50px; /* Match the width of the options for perfect centering */
+            display: flex;
+            flex-direction: column;
+            /* Center align all items in the vertical stack */
+            align-items: center;
+            gap: 16px;
+            opacity: 0;
+            pointer-events: none;
+            transform-origin: bottom center;
+            transform: translateY(10px) scale(0.85);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin: 0 auto; /* Center horizontally within the wrapper */
+            left: 0;
+            right: 0;
+        }
+          /* Show options when toggled */
+        .fab-toggle:checked ~ .fab-options {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }          /* Ensure icons are centered properly in the button */
+        .fab-btn i {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease, transform 0.4s ease;
+        }
+          /* Individual option buttons */
+        .fab-option {
+            display: flex;
+            align-items: center;
+            /* Center labels to the right of icons */
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.2s;
+            /* Ensure uniform width for proper centering */
+            width: 50px;
+            /* Right position the label */
+            position: relative;
+        }
+        
+        .fab-option i {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+          /* Option labels */
+        .fab-label {
+            background: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            /* Position absolutely to not affect centering of buttons */
+            position: absolute;
+            right: 62px; /* Position to the left of the button */
+            transform: translateX(10px);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        
+        .fab-option:hover .fab-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* WhatsApp option */
+        .fab-option-whatsapp i {
+            background: linear-gradient(145deg, #25d366, #20b755);
+        }
+        
+        .fab-option-whatsapp:hover i {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        /* Email option */
+        .fab-option-email i {
+            background: linear-gradient(145deg, #ff9800, #e68900);
+        }
+        
+        .fab-option-email:hover i {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.3);
+        }
+        
+        /* Contact option */
+        .fab-option-contact i {
+            background: linear-gradient(145deg, #6f42c1, #5e38a4);
+        }
+        
+        .fab-option-contact:hover i {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(111, 66, 193, 0.3);
+        }
+        
+        /* Schedule option */
+        .fab-option-schedule i {
+            background: linear-gradient(145deg, #dc3545, #bb2d3b);
+        }
+        
+        .fab-option-schedule:hover i {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+        }
+          /* Animation for options appearing */
+        .fab-option {
+            transform: scale(0.5) translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+        }
+        
+        .fab-toggle:checked ~ .fab-options .fab-option {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+          /* Sequential bloom effect with consistent spacing */
+        .fab-toggle:checked ~ .fab-options .fab-option:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+        
+        .fab-toggle:checked ~ .fab-options .fab-option:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+        
+        .fab-toggle:checked ~ .fab-options .fab-option:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+        
+        .fab-toggle:checked ~ .fab-options .fab-option:nth-child(4) {
+            transition-delay: 0.2s;
+        }
+          /* Precise positioning for perfect centering */
+        .fab-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .fab-btn {
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+    <!-- End Floating Daftar Button -->
+</head>
+
+<body>
+    <!-- Spinner Start -->
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border position-relative text-primary" style="width: 6rem; height: 6rem;" role="status">
+        </div>
+        <i class="fa fa-futbol fa-2x text-primary position-absolute top-50 start-50 translate-middle"></i>
+    </div>
+    <!-- Spinner End -->
+
+
+    <!-- Topbar Start -->
+    {{-- <div class="container-fluid bg-light px-0 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row gx-0 align-items-center d-none d-lg-flex">
+            <div class="col-lg-6 px-5 text-start">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Beranda</a></li>
+                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Tentang</a></li>
+                    <li class="breadcrumb-item"><a class="small text-secondary" href="#">Program</a></li>
+                    <li class="breadcrumb-item"><a class="small text-secondary" href="/contact">Kontak</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-6 px-5 text-end">
+                <small>Ikuti kami:</small>
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn-square text-primary border-end rounded-0" target="_blank" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn-square text-primary border-end rounded-0" target="_blank" href="https://www.youtube.com/channel/UCTFOYGV-nEZHfbIYAAGU-fw"><i class="fab fa-youtube"></i></a>
+                    <a class="btn-square text-primary border-end rounded-0" target="_blank" href="https://www.instagram.com/maguwoharjofootball_park/"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <!-- Topbar End -->
+
+
+    <!-- Brand & Contact Start -->
+    <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="row align-items-center top-bar">
+            <div class="col-lg-4 col-md-12 text-center text-lg-start">
+                <a href="/" class="navbar-brand m-0 p-0">
+                    <img src="{{ asset('template/img/mfp/logo.png') }}" alt="MFP Academy Logo"
+                        style="height:60px; vertical-align:middle;">
+                    <span
+                        style="font-weight:900; font-size:2rem; letter-spacing:2px; vertical-align:middle; color:var(--mfp-blue)">MFP
+                        <span class="mfp-accent">ACADEMY</span></span>
+                </a>
+            </div>
+            <div class="col-lg-8 col-md-7 d-none d-lg-block">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                                <i class="far fa-clock text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <p class="mb-2">Jam Latihan</p>
+                                <h6 class="mb-0">Senin - Jumat, 08:00 - 18:00</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                                <i class="fa fa-phone text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <p class="mb-2">Hubungi Kami</p>
+                                <h6 class="mb-0"><a href="https://wa.me/6289518788383" target="_blank"
+                                        style="color:inherit;text-decoration:none;">+62 895 1878 8383</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                                <i class="far fa-envelope text-primary"></i>
+                            </div>
+                            <div class="ps-3">
+                                <p class="mb-2">Email</p>
+                                <h6 class="mb-0">mfpsoccerschool@gmail.com</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Brand & Contact End -->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn navbar-custom-gradient"
+        data-wow-delay="0.1s">
+        <a href="#" class="navbar-brand ms-3 d-lg-none">MENU</a>
+        <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav me-auto p-3 p-lg-0">
+                <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
+                <div class="nav-item dropdown">
+                    <a href="#"
+                        class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') || request()->is('event') ? ' active' : '' }}"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Informasi
+                    </a>
+                    <div class="dropdown-menu bg-white rounded-3 shadow border-0 mt-2 px-2 py-2 animate__animated animate__fadeIn"
+                        style="min-width:220px;">
+                        <a href="{{ route('jadwal.latihan') }}"
+                            class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('jadwal-latihan') ? ' active' : '' }}">
+                            <i class="fa fa-calendar-alt text-primary"></i> <span>Jadwal Latihan</span>
+                        </a>
+                        <a href="{{ route('event.index') }}"
+                            class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('event') ? ' active' : '' }}">
+                            <i class="fa fa-bullhorn text-danger"></i> <span>Acara</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="#program"
+                    class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Program</a>
+                <a href="{{ route('galeri.index') }}"
+                    class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>
+                <a href="/contact"
+                    class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>
+            </div>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
+                target="_blank" class="btn btn-sm btn-primary rounded-pill py-2 px-4 d-none d-lg-block">Daftar
+                Sekarang</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    @yield('content')
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-body footer mt-5 pt-5 wow fadeIn navbar-custom-gradient"
+        data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Alamat</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Maguwoharjo, Depok, Sleman, DI
+                        Yogyakarta</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="https://wa.me/6289518788383"
+                            target="_blank" style="color:inherit;text-decoration:none;">+62 895 1878 8383</a></p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>mfpsoccerschool@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-1" target="_blank"
+                            href="https://www.youtube.com/channel/UCTFOYGV-nEZHfbIYAAGU-fw"><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-square btn-outline-secondary rounded-circle me-0" target="_blank"
+                            href="https://www.instagram.com/maguwoharjofootball_park/"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Tautan Cepat</h5>
+                    <a class="btn btn-link" href="/">Beranda</a>
+                    <a class="btn btn-link" href="{{ route('jadwal.latihan') }}">Jadwal Latihan</a>
+                    <a class="btn btn-link" href="{{ route('event.index') }}">Acara</a>
+                    <a class="btn btn-link" href="#program">Program</a>
+                    <a class="btn btn-link" href="{{ route('galeri.index') }}">Galeri</a>
+                    <a class="btn btn-link" href="/contact">Kontak</a>
+                    <a class="btn btn-link"
+                        href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
+                        target="_blank">Daftar</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-light mb-4">Partner & Sponsor</h5>
+                    <div class="row g-2">
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2"
+                                src="{{ asset('template/img/mfp/pssi.jpg') }}" alt="Partner 1"
+                                style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2" src="{{ asset('template/img/mfp/ti.png') }}"
+                                alt="Partner 2" style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                        <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2"
+                                src="{{ asset('template/img/mfp/logo.png') }}" alt="Partner 3"
+                                style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; {{ date('Y') }} MFP Academy, All Right Reserved.
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        Designed By Teknologi Informasi Unisa
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    {{-- <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+            class="bi bi-arrow-up"></i></a> --}}    <!-- Floating Action Button Modern -->
+    <div class="fab-wrapper">        <input type="checkbox" id="fab-toggle" class="fab-toggle">
+        <label for="fab-toggle" class="fab-btn">
+            <i class="fas fa-comments"></i>
+            <i class="fas fa-times"></i>
+        </label>
+        <div class="fab-options">
+            <a href="https://wa.me/6289518788383" target="_blank" class="fab-option fab-option-whatsapp" title="Chat WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+                <span class="fab-label">WhatsApp</span>
+            </a>
+            <a href="mailto:mfpsoccerschool@gmail.com" class="fab-option fab-option-email" title="Email Kami">
+                <i class="far fa-envelope"></i>
+                <span class="fab-label">Email</span>
+            </a>
+            <a href="/contact" class="fab-option fab-option-contact" title="Hubungi Kami">
+                <i class="fas fa-phone"></i>
+                <span class="fab-label">Kontak</span>
+            </a>
+            <a href="{{ route('jadwal.latihan') }}" class="fab-option fab-option-schedule" title="Jadwal Latihan">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="fab-label">Jadwal</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('template/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('template/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('template/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('template/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('template/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('template/lib/lightbox/js/lightbox.min.js') }}"></script>    <!-- Template Javascript -->
+    <script src="{{ asset('template/js/main.js') }}"></script>
+      <!-- Floating Action Button Script -->
+    <script>        document.addEventListener('DOMContentLoaded', function() {            // Deklarasi elemen-elemen FAB yang akan digunakan di beberapa fungsi
+            const fabWrapper = document.querySelector('.fab-wrapper');
+            const fabToggle = document.querySelector('#fab-toggle');
+            const fabBtn = document.querySelector('.fab-btn');
+            const fabOptions = document.querySelector('.fab-options');
+            
+            // Auto close FAB when clicking outside
+            document.addEventListener('click', function(event) {
+                // If click is outside the fab wrapper and fab is open, close it
+                if (!fabWrapper.contains(event.target) && fabToggle.checked) {
+                    fabToggle.checked = false;
+                }
+            });
+            
+            // Disable scroll when FAB is open on mobile
+            fabToggle.addEventListener('change', function() {
+                if (window.innerWidth < 768) {
+                    if (this.checked) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                }            });            // Add subtle entrance animation to FAB on page load
+            setTimeout(() => {
+                fabBtn.style.opacity = '0';
+                fabBtn.style.transform = 'scale(0.8) translateY(20px)';
+                fabBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                
+                setTimeout(() => {
+                    fabBtn.style.opacity = '1';
+                    fabBtn.style.transform = 'scale(1) translateY(0)';
+                }, 300);
+            }, 800);            // Add pulse effect when toggling the FAB
+            fabToggle.addEventListener('change', function() {
+                // Add a quick pulse animation when toggling
+                if (this.checked) {
+                    fabBtn.classList.add('fab-btn-pulse');
+                    setTimeout(() => {
+                        fabBtn.classList.remove('fab-btn-pulse');
+                    }, 400);
+                }
+            });              // Adjust fab-options positioning to ensure perfect alignment            
+            const adjustFabOptionsPosition = () => {
+                if (fabBtn && fabOptions) {
+                    // Reset any previously set positioning to ensure clean calculations
+                    fabOptions.style.removeProperty('left');
+                    fabOptions.style.removeProperty('right');
+                    fabOptions.style.removeProperty('transform');
+                    
+                    // Get the button's width and position
+                    const btnRect = fabBtn.getBoundingClientRect();
+                    const fabWrapperRect = fabWrapper.getBoundingClientRect();
+                    
+                    // Position the options container to be centered above the button
+                    // Since the button is already centered in the wrapper, we can center the options in the wrapper too
+                    fabOptions.style.right = '0';
+                    fabOptions.style.left = '0';
+                    fabOptions.style.margin = '0 auto'; // This centers the options horizontally
+                }
+            };
+            
+            // Call once on load and then on window resize
+            adjustFabOptionsPosition();
+            window.addEventListener('resize', adjustFabOptionsPosition);
+        });
+    </script>
+</body>
+
+</html>
