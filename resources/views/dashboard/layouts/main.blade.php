@@ -30,38 +30,46 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
-    <style>
-        :root {
+    <style>        :root {
             --mfp-blue: #0033a0;
             --mfp-red: #d90429;
             --mfp-white: #ffffff;
+            --mfp-dark-gray: #272829; /* New color for section titles */
+            --mfp-medium-gray: #61677A; /* New accent color for section borders */
+            --primary: #61677A; /* Override template primary color for carousel controls */
         }
 
         body {
             background-color: #f8f9fa;
-        }
-
-        .bg-primary,
+        }        .bg-primary,
         .navbar,
         .btn-primary,
-        .section-title.bg-white.text-primary,
         .carousel-indicators .active {
             background-color: var(--mfp-blue) !important;
             color: var(--mfp-white) !important;
         }
+          .section-title.bg-white.text-primary {
+            background-color: var(--mfp-white) !important;
+            color: var(--mfp-dark-gray) !important;
+            border-left: 5px solid var(--mfp-medium-gray);
+        }
 
         .text-primary {
-            color: var(--mfp-blue) !important;
+            color: var(--mfp-medium-gray) !important;
         }
 
         .btn-danger,
         .bg-danger {
             background-color: var(--mfp-red) !important;
             color: var(--mfp-white) !important;
+        }        .mfp-accent {
+            color: white !important;
         }
-
-        .mfp-accent {
-            color: var(--mfp-red) !important;
+          .section-title {
+            background: var(--mfp-white);
+            color: var(--mfp-dark-gray);
+            border-left: 5px solid var(--mfp-medium-gray);
+            padding-left: 10px;
         }
 
         .navbar-brand h1 {
@@ -242,9 +250,8 @@
 
     <!-- Sidebar Start -->
     <div class="dashboard-sidebar" id="dashboardSidebar">
-        <div class="sidebar-header">
-            <img src="{{ asset('template/img/mfp/logo.png') }}" alt="MFP Academy Logo" class="sidebar-logo">
-            <h4 class="mb-0">MFP <span class="mfp-accent">ACADEMY</span></h4>
+        <div class="sidebar-header">            <img src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="MFP Academy Logo" class="sidebar-logo">
+            <h4 class="mb-0">MFP <span style="color:white !important;">ACADEMY</span></h4>
         </div>
         
         <div class="px-3">

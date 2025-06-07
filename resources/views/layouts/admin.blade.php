@@ -50,9 +50,7 @@
 
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
         <div class="app-brand demo">
-            <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
-                <span class="app-brand-logo demo">
-                    <img src="{{ asset('template/img/mfp/logo.png') }}" alt="Logo"
+            <a href="{{ route('admin.dashboard') }}" class="app-brand-link">                <span class="app-brand-logo demo">                    <img src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="Logo"
                         style="height:70px;max-width:120px;object-fit:contain;" class="mx-auto">
                 </span>
                 <span class="app-brand-text demo menu-text fw-bolder ms-2 text-uppercase">MFP</span>

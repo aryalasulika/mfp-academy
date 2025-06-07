@@ -34,29 +34,158 @@
     <link href="{{ asset('template/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
-    <style>
-        :root {
+    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">    <style>        :root {
             --mfp-blue: #0033a0;
             --mfp-red: #d90429;
             --mfp-white: #ffffff;
+            --mfp-logo-bg: #3e4243; /* New darker gray color to match the logo */
+            --mfp-dark-gray: #272829; /* New color for section titles */
+            --mfp-medium-gray: #61677A; /* New accent color for section borders */
+            --primary: #61677A; /* Override template primary color for carousel controls */
         }
 
         body {
             background-color: var(--mfp-white);
+        }        .bg-logo-color {
+            background: linear-gradient(to right, var(--mfp-logo-bg) 0%, #303738 100%) !important;
+            color: var(--mfp-white);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
         }
-
-        .bg-primary,
+          .bg-logo-color::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="20" height="20" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M0 0h20v20H0z" fill="%23ffffff" fill-opacity="0.03"/%3E%3C/svg%3E');
+            pointer-events: none;
+        }          .logo-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+          /* Enhanced responsive layout for logo and brand */        @media (max-width: 1199px) and (min-width: 992px) {
+            .top-bar {
+                padding: 15px 0;
+            }
+            
+            .logo-text-main {
+                font-size: 2.2rem !important;
+                letter-spacing: 2px !important;
+            }
+            
+            .logo-image {
+                max-height: 85px;
+            }
+            
+            /* Center the logo and text on 1024px screens */
+            .col-lg-12.col-md-12 {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .navbar-brand {
+                justify-content: center !important;
+                margin: 0 auto;
+            }
+            
+            /* Add some additional space to make the header more prominent */
+            .bg-logo-color {
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .top-bar {
+                padding: 5px 0;
+            }
+            
+            .navbar-brand {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+            
+            .logo-container, .logo-text {
+                display: flex;
+                align-items: center;
+            }
+        }.logo-image {
+            filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
+            transition: all 0.3s ease;
+            max-height: 80px;
+            width: auto;
+            object-fit: contain;
+            margin-right: 5px;
+        }
+        
+        @media (min-width: 992px) {
+            .logo-image:hover {
+                transform: scale(1.05);
+                filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+            }
+        }
+          @media (max-width: 480px) {
+            .logo-image {
+                max-height: 45px;
+                margin-right: 2px;
+            }
+        }
+        
+        /* Additional media queries for smaller screens */
+        @media (max-width: 375px) {
+            .logo-image {
+                max-height: 40px;
+                margin-right: 1px;
+            }
+            
+            .logo-text span {
+                font-size: 1.6rem !important;
+                letter-spacing: 1px !important;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .logo-image {
+                max-height: 35px;
+                margin-right: 0;
+            }
+            
+            .logo-text span {
+                font-size: 1.4rem !important;
+                letter-spacing: 0.5px !important;
+            }
+            
+            .logo-text {
+                margin-left: 0 !important;
+            }
+        }.bg-primary,
         .navbar,
         .btn-primary,
-        .section-title.bg-white.text-primary,
         .carousel-indicators .active {
             background-color: var(--mfp-blue) !important;
             color: var(--mfp-white) !important;
         }
+          .section-title.bg-white.text-primary {
+            background-color: var(--mfp-white) !important;
+            color: var(--mfp-dark-gray) !important;
+            border-left: 5px solid var(--mfp-medium-gray);
+        }
 
         .text-primary {
-            color: var(--mfp-blue) !important;
+            color: var(--mfp-medium-gray) !important;
         }
 
         .btn-danger,
@@ -66,7 +195,7 @@
         }
 
         .mfp-accent {
-            color: var(--mfp-red) !important;
+            color: white !important;
         }
 
         .navbar-brand h1 {
@@ -77,18 +206,14 @@
         .footer a {
             background-color: var(--mfp-blue) !important;
             color: var(--mfp-white) !important;
-        }
-
-        .section-title {
+        }        .section-title {
             background: var(--mfp-white);
-            color: var(--mfp-blue);
-            border-left: 5px solid var(--mfp-red);
+            color: var(--mfp-dark-gray);
+            border-left: 5px solid var(--mfp-medium-gray);
             padding-left: 10px;
-        }
-
-        .navbar-nav .nav-link.active,
+        }        .navbar-nav .nav-link.active,
         .navbar-nav .dropdown-item.active {
-            color: #111 !important;
+            color: #E55050 !important;
             font-weight: bold;
             background: none !important;
             border-radius: 0.5rem;
@@ -96,12 +221,12 @@
 
         .navbar-nav .nav-link:hover,
         .navbar-nav .dropdown-item:hover {
-            color: #111 !important;
+            color: #E55050 !important;
             background: none !important;
         }
 
         .navbar-custom-gradient {
-            background: linear-gradient(90deg, #0d6efd 0%, #0d6efd 20%, #dc3545 100%) !important;
+            background: linear-gradient(90deg, #272829 0%, #272829 40%, #61677A 100%) !important;
             color: #fff !important;
             border-radius: 0 !important;
             box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.08);
@@ -438,35 +563,157 @@
             animation: pulse-button 1.5s infinite ease-in-out;
             margin-top: 0.5rem;
         }
-          /* Mobile navigation styling */
-        .navbar-toggler {
+          /* Mobile navigation styling */        .navbar-toggler {
             border: none;
             padding: 0.5rem;
             transition: all 0.2s;
             outline: none !important;
             box-shadow: none !important;
+            margin: 0;
         }
         
         .navbar-toggler:hover {
             transform: scale(1.1);
+        }        /* Specific styling for iPad/tablet screens (1024px) */
+        @media (min-width: 1200px) {
+            /* XL screens show the top bar information */
+            .col-xl-4 {
+                width: 33.33333%;
+            }
+            .col-xl-8 {
+                width: 66.66667%;
+            }
         }
         
-        @media (max-width: 576px) {
-            .navbar-brand.ms-3 {
-                max-width: 80px;
-                font-size: 1.2rem;
-                margin-left: 0.5rem !important;
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .navbar {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                margin-top: 0;
+                display: flex;
+                justify-content: center;
             }
             
-            .btn-mobile-login {
-                padding: 0.25rem 0.75rem !important;
-                margin-right: 0.5rem !important;
+            .navbar-nav {
+                margin: 0 auto;
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+            
+            .navbar-nav .nav-link {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+            
+            .navbar .btn {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+                font-size: 0.9rem;
+            }
+            
+            /* Reduce spacing between items for better fit */
+            .navbar-collapse {
+                justify-content: center;
+            }
+            
+            /* Better positioned login button */
+            .navbar .d-lg-flex {
+                position: absolute;
+                right: 20px;
+            }
+        }
+        
+        /* Perbaikan layout navbar mobile */
+        @media (max-width: 991px) {
+            .navbar .navbar-brand {
+                margin: 0;
+                padding: 0;
+                font-weight: 500;
+            }
+            
+            /* Pastikan tombol hamburger dan MENU sejajar */
+            .navbar > .d-flex {
+                min-height: 46px;
+                padding: 8px 0;
             }
             
             .navbar-toggler {
-                margin-right: 0.5rem !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 4px 8px;
+            }
+            
+            .navbar-toggler-icon {
+                width: 1.4em;
+                height: 1.4em;
             }
         }
+        
+        /* Enhanced mobile layout for smaller screens */
+        @media (max-width: 375px) {
+            .navbar > .d-flex {
+                min-height: 42px;
+                padding: 6px 0;
+            }
+            
+            .navbar > .d-flex .navbar-brand {
+                font-size: 1rem;
+            }
+            
+            .navbar-toggler {
+                padding: 2px 6px;
+            }
+            
+            .navbar-toggler-icon {
+                width: 1.2em;
+                height: 1.2em;
+            }
+              /* Improve spacing in collapsed menu items */
+            .navbar-nav .nav-link {
+                padding: 10px 15px;
+                font-size: 0.95rem;
+            }
+            
+            /* Ensure dropdown menu displays properly on small screens */
+            .navbar-nav .dropdown-menu {
+                padding: 0.5rem;
+                margin: 0.125rem auto;
+                max-width: 95%;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .navbar > .d-flex {
+                min-height: 38px;
+                padding: 5px 0;
+            }
+            
+            .navbar > .d-flex .navbar-brand {
+                font-size: 0.9rem;
+                letter-spacing: 0.3px;
+            }
+            
+            .navbar-toggler {
+                padding: 2px 5px;
+            }
+            
+            .navbar-toggler-icon {
+                width: 1.1em;
+                height: 1.1em;
+            }
+        }
+        
+        /* Gaya untuk teks MENU pada navbar mobile */
+          .navbar > .d-flex .navbar-brand {
+              color: white;
+              font-weight: 600;
+              letter-spacing: 0.5px;
+              font-size: 1.1rem;
+          }
     </style>
     <!-- End Floating Daftar Button -->
 </head>
@@ -504,53 +751,50 @@
         </div>
     </div> --}}
     <!-- Topbar End -->
-
-
     <!-- Brand & Contact Start -->
-    <div class="container-fluid py-4 px-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="row align-items-center top-bar">
-            <div class="col-lg-4 col-md-12 text-center text-lg-start">
-                <a href="/" class="navbar-brand m-0 p-0">
-                    <img src="{{ asset('template/img/mfp/logo.png') }}" alt="MFP Academy Logo"
-                        style="height:60px; vertical-align:middle;">
-                    <span
-                        style="font-weight:900; font-size:2rem; letter-spacing:2px; vertical-align:middle; color:var(--mfp-blue)">MFP
-                        <span class="mfp-accent">ACADEMY</span></span>
+    <div class="container-fluid py-4 px-xl-5 px-lg-4 px-md-3 px-3 px-sm-2 wow fadeIn bg-logo-color" data-wow-delay="0.1s">
+        <div class="row align-items-center top-bar"><div class="col-xl-4 col-lg-12 col-md-12 text-center text-xl-start">
+                <a href="/" class="navbar-brand m-0 p-0 d-flex align-items-center justify-content-center justify-content-xl-start">
+                    <div class="logo-container position-relative">
+                        <img src="{{ asset('template/img/mfp/Logonew.png') }}" alt="MFP Academy Logo" class="logo-image"
+                            style="height:80px; vertical-align:middle;">
+                    </div>                    <div class="logo-text ms-2">
+                        <span class="logo-text-main" style="font-weight:900; font-size:2rem; letter-spacing:2px; color:white; text-shadow: 0 1px 3px rgba(0,0,0,0.3); white-space:nowrap;">MFP
+                            <span style="color:white !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">ACADEMY</span>
+                        </span>
+                    </div>
                 </a>
-            </div>
-            <div class="col-lg-8 col-md-7 d-none d-lg-block">
-                <div class="row">
-                    <div class="col-4">
+            </div>            <div class="col-xl-8 col-lg-7 col-md-7 d-none d-xl-block">
+                <div class="row g-0 g-xl-4">
+                     <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
-                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="far fa-clock text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <p class="mb-2">Jam Latihan</p>
-                                <h6 class="mb-0">Senin - Jumat, 08:00 - 18:00</h6>
+                                <p class="mb-2 text-white">Jam Latihan</p>
+                                <h6 class="mb-0 text-white">Senin - Jumat, 08:00 - 18:00</h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-4">
+                    </div>                    <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
-                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="fa fa-phone text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <p class="mb-2">Hubungi Kami</p>
+                                <p class="mb-2 text-white">Hubungi Kami</p>
                                 <h6 class="mb-0"><a href="https://wa.me/6289518788383" target="_blank"
-                                        style="color:inherit;text-decoration:none;">+62 895 1878 8383</a></h6>
+                                        style="color:white;text-decoration:none;">+62 895 1878 8383</a></h6>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-4">
+                    </div>                    <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
-                            <div class="flex-shrink-0 btn-lg-square border rounded-circle">
+                            <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="far fa-envelope text-primary"></i>
                             </div>
                             <div class="ps-3">
-                                <p class="mb-2">Email</p>
-                                <h6 class="mb-0">mfpsoccerschool@gmail.com</h6>
+                                <p class="mb-2 text-white">Email</p>
+                                <h6 class="mb-0 text-white">mfpsoccerschool@gmail.com</h6>
                             </div>
                         </div>
                     </div>
@@ -558,15 +802,20 @@
             </div>
         </div>
     </div>
-    <!-- Brand & Contact End -->    <!-- Navbar Start -->    <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-lg-5 wow fadeIn navbar-custom-gradient"
-        data-wow-delay="0.1s">
-        <!-- Logo untuk mobile -->
-        <a href="/" class="navbar-brand ms-4 me-auto d-lg-none">MENU</a>
-        
-        <!-- Tombol toggle menu di sebelah kanan -->
-        <button type="button" class="navbar-toggler me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Brand & Contact End -->      <!-- Navbar Start -->   
+     <nav class="navbar navbar-expand-lg bg-primary navbar-dark sticky-top py-lg-0 px-xl-5 px-lg-4 wow fadeIn navbar-custom-gradient"
+        data-wow-delay="0.1s"><!-- Container untuk logo dan tombol toggle pada mobile -->
+        <div class="d-flex align-items-center justify-content-between w-100 d-lg-none px-3 px-sm-2">
+            <!-- Logo untuk mobile dengan gaya yang lebih baik -->
+            <a href="/" class="navbar-brand d-flex align-items-center">
+                <span>MENU</span>
+            </a>
+            
+            <!-- Tombol toggle menu sejajar dengan MENU -->
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         <div class="collapse navbar-collapse" id="navbarCollapse">            <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
                 <div class="nav-item dropdown">
@@ -664,10 +913,9 @@
                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <img class="img-fluid rounded bg-white p-2" src="{{ asset('template/img/mfp/ti.png') }}"
                                 alt="Partner 2" style="max-height:60px; max-width:100px; object-fit:contain;">
-                        </div>
-                        <div class="col-4 d-flex align-items-center justify-content-center">
+                        </div>                        <div class="col-4 d-flex align-items-center justify-content-center">
                             <img class="img-fluid rounded bg-white p-2"
-                                src="{{ asset('template/img/mfp/logo.png') }}" alt="Partner 3"
+                                src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="Partner 3"
                                 style="max-height:60px; max-width:100px; object-fit:contain;">
                         </div>
                     </div>
@@ -726,7 +974,25 @@
     <script src="{{ asset('template/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('template/lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('template/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('template/lib/lightbox/js/lightbox.min.js') }}"></script>    <!-- Template Javascript -->
+    <script src="{{ asset('template/lib/lightbox/js/lightbox.min.js') }}"></script>
+    
+    <!-- Custom styles to override carousel navigation colors -->
+    <style>
+        /* Override carousel navigation colors site-wide */
+        .testimonial-carousel .owl-nav .owl-prev:hover,
+        .testimonial-carousel .owl-nav .owl-next:hover,
+        .project-carousel .owl-dot:hover,
+        .project-carousel .owl-dot.active,
+        .owl-carousel .owl-nav button:hover,
+        .owl-carousel button.owl-dot:hover,
+        .owl-carousel button.owl-dot.active {
+            color: #FFFFFF !important;
+            border-color: #61677A !important;
+            background: #61677A !important;
+        }
+    </style>
+    
+    <!-- Template Javascript -->
     <script src="{{ asset('template/js/main.js') }}"></script>
       <!-- Floating Action Button Script -->
     <script>        document.addEventListener('DOMContentLoaded', function() {            // Deklarasi elemen-elemen FAB yang akan digunakan di beberapa fungsi

@@ -12,7 +12,7 @@
                 <img class="img-fluid" src="{{ asset('template/img/mfp/slide2.jpg') }}" alt="MFP Academy">
             </button>
             <button type="button" data-bs-target="#header-carousel" data-bs-slide-to="2" aria-label="Slide 3">
-                <img class="img-fluid" src="{{ asset('template/img/mfp/slide3.jpg') }}" alt="MFP Academy">
+                <img class="img-fluid" src="{{ asset('template/img/mfp/slide33.jpeg') }}" alt="MFP Academy">
             </button>
         </div>
         <div class="carousel-inner">
@@ -165,59 +165,12 @@
                     </div>
                 </div>
                 <div class="text-center mt-5">
-                    <a href="{{ route('jadwal.latihan') }}" class="btn btn-primary rounded-pill px-4 py-2 wow fadeInUp" data-wow-delay="0.3s">Lihat Jadwal Lengkap</a>
+                    <a href="{{ route('jadwal.latihan') }}" class="btn rounded-pill px-4 py-2 wow fadeInUp" data-wow-delay="0.3s" style="background-color: #61677A; color: #fff; border: none;">Lihat Jadwal Lengkap</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<style>
-.jadwal-card-container {
-    padding: 1rem;
-}
-.jadwal-card {
-    background: #fff;
-    border-radius: 1.25rem;
-    box-shadow: 0 8px 30px rgba(13, 110, 253, 0.08);
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    height: 100%;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(13, 110, 253, 0.05);
-}
-.jadwal-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.15);
-    border-color: rgba(13, 110, 253, 0.2);
-}
-.jadwal-card:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: #0d6efd;
-}
-.jadwal-card-day {
-    color: #0d6efd;
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin-bottom: 0.75rem;
-}
-.jadwal-card-time {
-    background: #f8f9fa;
-    color: #212529;
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 1.1rem;
-    display: inline-block;
-    border: 1px dashed #0d6efd;
-}
-</style>
 <!-- Jadwal Latihan End -->
 
 <!-- Program Start -->
@@ -370,4 +323,70 @@
     </div>
 </div>
 <!-- Testimoni End -->
+
+<style>
+.jadwal-card-container {
+    padding: 1rem;
+}
+.jadwal-card {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 30px rgba(13, 110, 253, 0.08);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(13, 110, 253, 0.05);
+}
+.jadwal-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(13, 110, 253, 0.15);
+    border-color: rgba(13, 110, 253, 0.2);
+}
+.jadwal-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: #61677A;
+}
+.jadwal-card-day {
+    color: #61677A;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+.jadwal-card-time {
+    background: #f8f9fa;
+    color: #212529;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-block;
+    border: 1px dashed #61677A;
+}
+
+/* Custom carousel navigation styles */
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover,
+.project-carousel .owl-dot:hover,
+.project-carousel .owl-dot.active {
+    color: #FFFFFF !important;
+    border-color: #61677A !important;
+    background: #61677A !important;
+}
+
+/* Force override any other carousel styles */
+.owl-carousel .owl-nav button:hover,
+.owl-carousel button.owl-dot:hover,
+.owl-carousel button.owl-dot.active {
+    background: #61677A !important;
+    border-color: #61677A !important;
+}
+</style>
 @endsection
