@@ -63,7 +63,7 @@
 .event-card .card-header {
     border-top-left-radius: 1.25rem !important;
     border-top-right-radius: 1.25rem !important;
-    background: #0d6efd !important;
+    background: #61677A !important;
 }
 .event-card .card-footer {
     background: none;

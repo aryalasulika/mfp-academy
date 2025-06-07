@@ -46,7 +46,7 @@
                     box-shadow: 0 4px 24px 0 rgba(13,110,253,0.08);
                 }
                 .jadwal-table-2 th {
-                    background: #0d6efd !important;
+                    background: #61677A !important;
                     color: #fff !important;
                     font-size: 1.1rem;
                     letter-spacing: 0.5px;
