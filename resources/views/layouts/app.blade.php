@@ -913,9 +913,25 @@
                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <img class="img-fluid rounded bg-white p-2" src="{{ asset('template/img/mfp/ti.png') }}"
                                 alt="Partner 2" style="max-height:60px; max-width:100px; object-fit:contain;">
-                        </div>                        <div class="col-4 d-flex align-items-center justify-content-center">
+                        </div>                       
+                         <div class="col-4 d-flex align-items-center justify-content-center">
                             <img class="img-fluid rounded bg-white p-2"
                                 src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="Partner 3"
+                                style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                         <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2"
+                                src="{{ asset('template/img/mfp/ilkom.jpg') }}" alt="Partner 3"
+                                style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                         <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2"
+                                src="{{ asset('template/img/mfp/fisio.jpeg') }}" alt="Partner 3"
+                                style="max-height:60px; max-width:100px; object-fit:contain;">
+                        </div>
+                         <div class="col-4 d-flex align-items-center justify-content-center">
+                            <img class="img-fluid rounded bg-white p-2"
+                                src="{{ asset('template/img/mfp/psikolog.png') }}" alt="Partner 3"
                                 style="max-height:60px; max-width:100px; object-fit:contain;">
                         </div>
                     </div>
