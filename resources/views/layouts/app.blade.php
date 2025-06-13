@@ -841,7 +841,7 @@
                 <a href="{{ route('galeri.index') }}"
                     class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>                <a href="/contact"
                     class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>                <!-- Tombol Login Mobile - Dalam menu hamburger -->
-                <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
+                {{-- <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
                     <div class="text-light text-center mb-3 small">
                         <span>Sudah punya akun? Login di sini</span>
                     </div>
@@ -851,7 +851,7 @@
                             <span>Masuk / Login</span>
                         </span>
                     </a>
-                </div>
+                </div> --}}
             </div>
             
             <!-- Tombol Login untuk Desktop -->
@@ -859,9 +859,9 @@
                 {{-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
                     target="_blank" class="btn btn-sm btn-primary rounded-pill py-2 px-4">Daftar
                     Sekarang</a> --}}
-                <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4">
+                {{-- <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4">
                     <i class="fa fa-user me-1"></i>Login
-                </a>
+                </a> --}}
             </div>
         </div>
     </nav>
