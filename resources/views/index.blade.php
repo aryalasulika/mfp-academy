@@ -198,7 +198,7 @@
                             <div class="btn-sm-square bg-primary rounded-circle me-3">
                                 <i class="fa fa-check text-white"></i>
                             </div>
-                            <span>Membangun jembatan antara pemain muda dan jalur pembinaan elite, termasuk seleksi Piala Soeratin, akademi profesional, dan program nasional.Membangun jembatan antara pemain muda dan jalur pembinaan elite, termasuk seleksi Piala Soeratin, akademi profesional, dan program nasional.</span>
+                            <span>Membangun jembatan antara pemain muda dan jalur pembinaan elite, termasuk seleksi Piala Soeratin, akademi profesional, dan program nasional.</span>
                         </div>
                     </div>
                 </div>
