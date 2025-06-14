@@ -219,7 +219,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="bg-light rounded p-4 h-100 text-center shadow-sm">
                     <img src="{{ asset('template/img/team-1.jpg') }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #0d6efd;" alt="CEO">
-                    <h5 class="mb-1">Bapak Fajar Pratama</h5>
+                    <h5 class="mb-1">Bowo Widyatmono, S.Pd.Or</h5>
                     <span class="text-primary">CEO</span>
                     <p class="mt-3 fst-italic">“Kami percaya setiap anak memiliki potensi besar. Di MFP Academy, kami berkomitmen membimbing mereka menjadi pemain sepak bola yang berkarakter dan berprestasi.”</p>
                 </div>
@@ -227,16 +227,16 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="bg-light rounded p-4 h-100 text-center shadow-sm">
                     <img src="{{ asset('template/img/team-2.jpg') }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #0d6efd;" alt="Direktur Teknik">
-                    <h5 class="mb-1">Coach Andi</h5>
-                    <span class="text-primary">Direktur Teknik</span>
+                    <h5 class="mb-1">Geofany Akbar, M.Or</h5>
+                    <span class="text-primary">Director Of Academy</span>
                     <p class="mt-3 fst-italic">“Metode latihan kami selalu mengikuti perkembangan sepak bola modern, agar setiap siswa siap bersaing di level nasional maupun internasional.”</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="bg-light rounded p-4 h-100 text-center shadow-sm">
                     <img src="{{ asset('template/img/team-3.jpg') }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #0d6efd; background: #0d6efd;" alt="Manager">
-                    <h5 class="mb-1">Ibu Cici</h5>
-                    <span class="text-primary">Manager</span>
+                    <h5 class="mb-1">Dhono Anggoro, S.Pd</h5>
+                    <span class="text-primary">Director Of Sport Science</span>
                     <p class="mt-3 fst-italic">“Kami ingin menciptakan lingkungan yang positif, aman, dan menyenangkan agar anak-anak dapat berkembang secara maksimal.”</p>
                 </div>
             </div>

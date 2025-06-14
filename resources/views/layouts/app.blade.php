@@ -896,8 +896,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarCollapse">            <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
-                <div class="nav-item dropdown">
+                <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>                <div class="nav-item dropdown">
                     <a href="#"
                         class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') || request()->is('event') ? ' active' : '' }}"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -912,6 +911,10 @@
                         <a href="{{ route('event.index') }}"
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('event') ? ' active' : '' }}">
                             <i class="fa fa-bullhorn text-danger"></i> <span>Acara</span>
+                        </a>
+                        <a href="{{ asset('template/img/mfp/sponsorsip.pdf') }}" download
+                            class="dropdown-item d-flex align-items-center gap-2 py-2 rounded">
+                            <i class="fa fa-file-pdf text-success"></i> <span>Proposal Sponsorship</span>
                         </a>
                     </div>
                 </div>
