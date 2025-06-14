@@ -46,7 +46,86 @@
 
         body {
             background-color: var(--mfp-white);
-        }        .bg-logo-color {
+        }
+        
+        /* Tentang Kami Section Styles */
+        #tentang .img-border {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            border: 4px solid rgba(97, 103, 122, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        #tentang .img-border:hover {
+            transform: translateY(-5px);
+        }
+        
+        #tentang .img-border img {
+            transition: transform 0.5s ease;
+        }
+        
+        #tentang .img-border:hover img {
+            transform: scale(1.05);
+        }
+        
+        #tentang .tentang-content {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        #tentang .tentang-content::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(to bottom, var(--mfp-blue), var(--primary));
+            border-radius: 5px;
+        }
+        
+        #tentang .tentang-text p {
+            line-height: 1.8;
+            text-align: justify;
+            color: #555;
+        }
+        
+        #tentang strong {
+            color: var(--mfp-dark-gray);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 991.98px) {
+            #tentang .tentang-content {
+                padding-left: 0;
+                margin-top: 30px;
+                border-top: 5px solid var(--mfp-blue);
+                padding-top: 20px;
+            }
+            
+            #tentang .tentang-content::before {
+                display: none;
+            }
+            
+            #tentang .img-border {
+                max-width: 80%;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            #tentang .img-border {
+                max-width: 100%;
+            }
+            
+            #tentang .tentang-text p {
+                font-size: 0.95rem;
+            }
+        }
+
+        .bg-logo-color {
             background: linear-gradient(to right, var(--mfp-logo-bg) 0%, #303738 100%) !important;
             color: var(--mfp-white);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
@@ -852,13 +931,24 @@
                         </span>
                     </a>
                 </div> --}}
+                <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
+                    <div class="text-light text-center mb-3 small">
+                        <span>Daftar Sekarang</span>
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform" class="btn btn-light rounded-pill py-3 px-4 w-100 btn-mobile-menu-login">
+                        <span class="d-flex align-items-center justify-content-center">
+                            <i class="fa fa-user me-2"></i>
+                            <span>Daftar</span>
+                        </span>
+                    </a>
+                </div>
             </div>
             
             <!-- Tombol Login untuk Desktop -->
             <div class="d-lg-flex align-items-center gap-2 d-none">
-                {{-- <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
-                    target="_blank" class="btn btn-sm btn-primary rounded-pill py-2 px-4">Daftar
-                    Sekarang</a> --}}
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform"
+                    target="_blank" class="btn btn-sm btn-danger rounded-pill py-2 px-4">Daftar
+                    Sekarang</a>
                 {{-- <a href="{{ route('login') }}" class="btn btn-sm btn-light rounded-pill py-2 px-4">
                     <i class="fa fa-user me-1"></i>Login
                 </a> --}}
