@@ -68,9 +68,10 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">                <div class="h-100 tentang-content">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">              
+                 <div class="h-100 tentang-content">
                     <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Kami</h6>
-                    <h1 class="display-6 mb-4">Akademi Sepak Bola <span class="mfp-accent">MFP ACADEMY</span></h1>
+                    <h1 class="display-6 mb-4">Future Football Educare</h1>
                       <div class="tentang-text">
                         <p class="mb-3">
                             <strong class="text-primary">Future Football Educare</strong> adalah program pembinaan sepak bola usia dini dan
