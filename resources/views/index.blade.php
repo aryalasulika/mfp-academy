@@ -62,7 +62,7 @@
     <div class="container">
         <div class="row g-5 align-items-center">            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="img-border position-relative">
-                    <img class="img-fluid rounded shadow" src="{{ asset('template/img/mfp/logonew.jpeg') }}" alt="Tentang MFP Academy">
+                    <img class="img-fluid rounded shadow" src="{{ asset('template/img/mfp/Logonew.webp') }}" alt="Tentang MFP Academy">
                     {{-- <div class="position-absolute top-0 end-0 translate-middle bg-primary text-white rounded-3 py-2 px-3 shadow">
                         <span class="fw-bold">Sejak 2018</span>
                     </div> --}}
