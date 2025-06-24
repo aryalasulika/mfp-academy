@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AuthController as AdminAuthController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\JadwalLatihanController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ContactMessage;
@@ -9,8 +8,6 @@ use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\Admin\GaleriController as AdminGaleriController;
-use App\Http\Controllers\PesertaDashboardController;
-use App\Http\Controllers\CoachDashboardController;
 
 Route::get('/', function () {
     return view('index');
@@ -32,9 +29,9 @@ Route::post('/contact', function (\Illuminate\Http\Request $request) {
     return back()->with('success', 'Pesan Anda berhasil dikirim!');
 });
 
-Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
-Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+Route::get('/admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
+Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 Route::get('/jadwal-latihan', [JadwalLatihanController::class, 'index'])->name('jadwal.latihan');
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
@@ -74,21 +71,6 @@ Route::middleware(['auth:admin'])->group(function () {
 });
 
 // Fallback for unauthorized access to admin dashboard
-Route::get('/admin', function () {
+Route::get('/login', function () {
     return redirect()->route('admin.login');
-});
-
-// User authentication routes (Peserta and Coach)
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Peserta Dashboard Routes
-Route::middleware(['auth', 'role:peserta'])->group(function () {
-    Route::get('/dashboard/peserta', [PesertaDashboardController::class, 'index'])->name('peserta.dashboard');
-});
-
-// Coach Dashboard Routes
-Route::middleware(['auth', 'role:coach'])->group(function () {
-    Route::get('/dashboard/coach', [CoachDashboardController::class, 'index'])->name('coach.dashboard');
-});
+})->name('login');

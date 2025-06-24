@@ -77,7 +77,7 @@
               <div class="app-brand justify-content-center mb-3">
                 <a href="/" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
-                    <img src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="Logo MFP" style="height:70px;max-width:120px;object-fit:contain;" class="mx-auto">
+                    <img src="{{ asset('template/img/mfp/logo.png') }}" alt="Logo MFP" style="height:70px;max-width:120px;object-fit:contain;" class="mx-auto">
                   </span>
                 </a>
               </div>

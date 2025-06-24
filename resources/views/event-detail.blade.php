@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header text-white text-center rounded-top-4 border-0 py-4" style="background-color: #61677A;">
+                    <div class="card-header bg-primary text-white text-center rounded-top-4 border-0 py-4">
                         <div class="fw-bold fs-3 mb-1">{{ $event->judul }}</div>
                         <div class="fs-6 mb-1">
                             <i class="bx bx-calendar"></i> {{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d M Y') }}

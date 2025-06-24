@@ -838,8 +838,8 @@
                         <img src="{{ asset('template/img/mfp/Logonew.png') }}" alt="MFP Academy Logo" class="logo-image"
                             style="height:80px; vertical-align:middle;">
                     </div>                    <div class="logo-text ms-2">
-                        <span class="logo-text-main" style="font-weight:900; font-size:2rem; letter-spacing:2px; color:white; text-shadow: 0 1px 3px rgba(0,0,0,0.3); white-space:nowrap;">MFP
-                            <span style="color:white !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">ACADEMY</span>
+                        <span class="logo-text-main" style="font-weight:900; font-size:2rem; letter-spacing:2px; color:white; text-shadow: 0 1px 3px rgba(0,0,0,0.3); white-space:nowrap;">FUTURE FOOTBALL
+                            <span style="color:white !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">EDUCARE</span>
                         </span>
                     </div>
                 </a>
@@ -855,7 +855,8 @@
                                 <h6 class="mb-0 text-white">Senin - Jumat, 08:00 - 18:00</h6>
                             </div>
                         </div>
-                    </div>                    <div class="col-4">
+                    </div>                   
+                     <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="fa fa-phone text-primary"></i>
@@ -866,7 +867,8 @@
                                         style="color:white;text-decoration:none;">+62 895 1878 8383</a></h6>
                             </div>
                         </div>
-                    </div>                    <div class="col-4">
+                    </div>                   
+                     <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="far fa-envelope text-primary"></i>
