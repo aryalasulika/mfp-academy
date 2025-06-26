@@ -147,110 +147,99 @@
             z-index: 2;
             display: flex;
             align-items: center;
-        }
-        
-        .logo-text {
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-        }
-          /* Enhanced responsive layout for logo and brand */        @media (max-width: 1199px) and (min-width: 992px) {
-            .top-bar {
-                padding: 15px 0;
-            }
-            
-            .logo-text-main {
-                font-size: 2.2rem !important;
-                letter-spacing: 2px !important;
-            }
-            
-            .logo-image {
-                max-height: 85px;
-            }
-            
-            /* Center the logo and text on 1024px screens */
-            .col-lg-12.col-md-12 {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .navbar-brand {
-                justify-content: center !important;
-                margin: 0 auto;
-            }
-            
-            /* Add some additional space to make the header more prominent */
-            .bg-logo-color {
-                padding-top: 20px !important;
-                padding-bottom: 20px !important;
-            }
+            overflow: visible;
+            padding: 5px 0;
         }
         
-        @media (max-width: 576px) {
-            .top-bar {
-                padding: 5px 0;
-            }
-            
-            .navbar-brand {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: center !important;
-            }
-            
-            .logo-container, .logo-text {
-                display: flex;
-                align-items: center;
-            }
-        }.logo-image {
+        /* Logo enhancements for better visibility */
+        .logo-container::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+            border-radius: 50%;
+        }
+        
+        .logo-image {
             filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2));
             transition: all 0.3s ease;
-            max-height: 80px;
+            height: 110px; /* Increased from 80px */
             width: auto;
             object-fit: contain;
-            margin-right: 5px;
+            vertical-align: middle;
+            transform-origin: center center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        @media (min-width: 992px) {
-            .logo-image:hover {
-                transform: scale(1.05);
-                filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
-            }
+        .logo-image:hover {
+            filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.25));
         }
-          @media (max-width: 480px) {
+        
+        /* Adjust logo position for better vertical alignment */
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0;
+        }
+        
+        /* Responsive adjustments for the larger logo */
+        @media (min-width: 1200px) {
             .logo-image {
-                max-height: 45px;
-                margin-right: 2px;
+                height: 110px; /* Large screens */
+            }
+            
+            .top-bar {
+                padding: 5px 0; /* Reduce padding to maintain overall navbar height */
             }
         }
         
-        /* Additional media queries for smaller screens */
-        @media (max-width: 375px) {
+        @media (min-width: 992px) and (max-width: 1199px) {
             .logo-image {
-                max-height: 40px;
-                margin-right: 1px;
+                height: 100px; /* Medium-large screens */
             }
             
-            .logo-text span {
-                font-size: 1.6rem !important;
-                letter-spacing: 1px !important;
+            .top-bar {
+                padding: 4px 0;
             }
         }
         
-        @media (max-width: 320px) {
+        @media (min-width: 768px) and (max-width: 991px) {
             .logo-image {
-                max-height: 35px;
-                margin-right: 0;
+                height: 90px; /* Medium screens */
             }
             
-            .logo-text span {
-                font-size: 1.4rem !important;
-                letter-spacing: 0.5px !important;
+            .top-bar {
+                padding: 3px 0;
+            }
+        }
+        
+        @media (min-width: 576px) and (max-width: 767px) {
+            .logo-image {
+                height: 80px; /* Small screens */
             }
             
-            .logo-text {
-                margin-left: 0 !important;
+            .top-bar {
+                padding: 2px 0;
             }
-        }.bg-primary,
+        }
+        
+        @media (max-width: 575px) {
+            .logo-image {
+                height: 70px; /* Mobile screens */
+            }
+            
+            .top-bar {
+                padding: 2px 0;
+            }
+        }        .bg-primary,
         .navbar,
         .btn-primary,
         .carousel-indicators .active {
@@ -793,6 +782,24 @@
               letter-spacing: 0.5px;
               font-size: 1.1rem;
           }
+        
+        /* Better navbar alignment for the larger logo */
+        .top-bar .col-xl-4 {
+            display: flex;
+            justify-content: center;
+        }
+        
+        @media (min-width: 1200px) {
+            .top-bar .col-xl-4 {
+                justify-content: flex-start;
+            }
+        }
+        
+        /* Adjust vertical alignment of elements next to the logo */
+        .top-bar .row .col-4 {
+            display: flex;
+            align-items: center;
+        }
     </style>
     <!-- End Floating Daftar Button -->
 </head>
@@ -831,17 +838,17 @@
     </div> --}}
     <!-- Topbar End -->
     <!-- Brand & Contact Start -->
-    <div class="container-fluid py-4 px-xl-5 px-lg-4 px-md-3 px-3 px-sm-2 wow fadeIn bg-logo-color" data-wow-delay="0.1s">
+    <div class="container-fluid py-3 px-xl-5 px-lg-4 px-md-3 px-3 px-sm-2 wow fadeIn bg-logo-color" data-wow-delay="0.1s">
         <div class="row align-items-center top-bar"><div class="col-xl-4 col-lg-12 col-md-12 text-center text-xl-start">
                 <a href="/" class="navbar-brand m-0 p-0 d-flex align-items-center justify-content-center justify-content-xl-start">
                     <div class="logo-container position-relative">
-                        <img src="{{ asset('template/img/mfp/Logonew.png') }}" alt="MFP Academy Logo" class="logo-image"
-                            style="height:80px; vertical-align:middle;">
-                    </div>                    <div class="logo-text ms-2">
+                        <img src="{{ asset('template/img/mfp/navlogo.png') }}" alt="MFP Academy Logo" class="logo-image">
+                    </div>                    
+                    {{-- <div class="logo-text ms-2">
                         <span class="logo-text-main" style="font-weight:900; font-size:2rem; letter-spacing:2px; color:white; text-shadow: 0 1px 3px rgba(0,0,0,0.3); white-space:nowrap;">FUTURE FOOTBALL
                             <span style="color:white !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4);">EDUCARE</span>
                         </span>
-                    </div>
+                    </div> --}}
                 </a>
             </div>            <div class="col-xl-8 col-lg-7 col-md-7 d-none d-xl-block">
                 <div class="row g-0 g-xl-4">

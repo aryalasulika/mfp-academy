@@ -139,7 +139,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item d-block rounded text-center h-100 p-4 bg-white border">
                     <img class="img-fluid rounded mb-4" src="{{ asset('template/img/service-3.jpg') }}" alt="">
-                    <h4 class="mb-0">Akademi Prestasi U-16, U-18</h4>
+                    <h4 class="mb-0">Akademi U-16, U-18</h4>
                 </div>
             </div>
         </div>
