@@ -21,7 +21,7 @@
                 <div class="carousel-caption">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-4 animated zoomIn">Selamat Datang di</h4>
-                        <h1 class="display-1 text-white mb-0 animated zoomIn">MFP ACADEMY</h1>
+                        <h1 class="display-1 text-white mb-0 animated zoomIn">Future Football Educare</h1>
                         <p class="lead text-white mt-3">Akademi Sepak Bola Profesional untuk Generasi Muda Indonesia</p>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">                <div class="h-100 tentang-content">
                     <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Kami</h6>
-                    <h1 class="display-6 mb-4">Akademi Sepak Bola <span class="mfp-accent">MFP ACADEMY</span></h1>
+                    <h1 class="display-6 mb-4">Akademi Sepak Bola <span class="mfp-accent">Future Football Educare</span></h1>
                       <div class="tentang-text">
                         <p class="mb-3">
                             <strong class="text-primary">Future Football Educare</strong> adalah program pembinaan sepak bola usia dini dan
@@ -213,7 +213,7 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Kutipan</h6>
-            <h1 class="display-6 mb-4">Pesan dari Pimpinan MFP Academy</h1>
+            <h1 class="display-6 mb-4">Pesan dari Pimpinan Future Football Educare</h1>
         </div>
         <div class="row g-4 justify-content-center">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -221,7 +221,7 @@
                     <img src="{{ asset('template/img/team-1.jpg') }}" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid #0d6efd;" alt="CEO">
                     <h5 class="mb-1">Bowo Widyatmono, S.Pd.Or</h5>
                     <span class="text-primary">CEO</span>
-                    <p class="mt-3 fst-italic">“Kami percaya setiap anak memiliki potensi besar. Di MFP Academy, kami berkomitmen membimbing mereka menjadi pemain sepak bola yang berkarakter dan berprestasi.”</p>
+                    <p class="mt-3 fst-italic">“Kami percaya setiap anak memiliki potensi besar. Di Future Football Educare, kami berkomitmen membimbing mereka menjadi pemain sepak bola yang berkarakter dan berprestasi.”</p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -251,7 +251,7 @@
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Jadwal</h6>
             <h1 class="display-6 mb-4">Jadwal Latihan Reguler</h1>
-            <p>Bergabunglah dengan sesi latihan reguler MFP Academy untuk mengembangkan potensi sepak bola Anda.</p>
+            <p>Bergabunglah dengan sesi latihan reguler Future Football Educare untuk mengembangkan potensi sepak bola Anda.</p>
         </div>        <div class="row justify-content-center">
             <div class="col-lg-10"><div class="jadwal-card-container">
                     <div class="row g-4 justify-content-center">
@@ -307,7 +307,7 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Program</h6>
-            <h1 class="display-6 mb-4">Program Unggulan MFP Academy</h1>
+            <h1 class="display-6 mb-4">Program Unggulan Future Football Educare</h1>
         </div>
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -435,7 +435,7 @@
                     <img class="flex-shrink-0 rounded-circle border p-1" src="{{ asset('template/img/testimonial-1.jpg') }}" alt="Testimoni 1">
                     <div class="ms-4">
                         <h5 class="mb-1">Orang Tua Siswa</h5>
-                        <span>"Anak saya berkembang pesat di MFP Academy!"</span>
+                        <span>"Anak saya berkembang pesat di Future Football Educare!"</span>
                     </div>
                 </div>
             </div>

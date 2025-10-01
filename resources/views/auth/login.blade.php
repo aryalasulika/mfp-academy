@@ -184,7 +184,7 @@
             <div class="login-card w-full md:w-2/3 lg:w-1/2 md:rounded-r-none">
         <div class="login-form">
                     <div class="text-center mb-8">
-                        <h1 class="text-3xl font-bold text-gray-800 mb-2">MFP ACADEMY</h1>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-2">Future Football Educare</h1>
                         <p class="text-gray-600">Silahkan masukkan detail akun Anda</p>
                     </div>
                     <div class="w-full max-w-full mx-auto">
