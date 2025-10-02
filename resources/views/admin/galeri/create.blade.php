@@ -13,7 +13,7 @@
                         </a>
                     </div>
                     <div class="navbar-nav-right d-flex align-items-center w-100" id="navbar-collapse">
-                        <span class="fw-bold text-primary fs-4 ms-2">Dashboard Admin MFP Academy</span>
+                        <span class="fw-bold text-primary fs-4 ms-2">Galeri</span>
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow d-flex align-items-center gap-2"

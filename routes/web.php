@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JadwalLatihanController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Admin\ContactMessageController;
@@ -46,6 +47,14 @@ Route::middleware(['auth:admin'])->group(function () {
         $totalJadwalLatihan = \App\Models\JadwalLatihan::count();
         return view('admin.dashboard', compact('totalJadwalLatihan'));
     })->name('admin.dashboard');
+
+    // User Management Routes
+    Route::get('/admin/users', [UserController::class, 'index'])->name('admin.user.index');
+    Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.user.create');
+    Route::post('/admin/users', [UserController::class, 'store'])->name('admin.user.store');
+    Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
+    Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('admin.user.update');
+    Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
 
     Route::get('/admin/jadwal-latihan', [JadwalLatihanController::class, 'adminIndex'])->name('admin.jadwal_latihan.index');
     Route::get('/admin/jadwal-latihan/create', [JadwalLatihanController::class, 'create'])->name('admin.jadwal_latihan.create');

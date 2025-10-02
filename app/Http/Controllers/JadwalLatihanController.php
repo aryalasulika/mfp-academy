@@ -33,6 +33,7 @@ class JadwalLatihanController extends Controller
             'hari' => 'required',
             'jam' => 'required',
             'kelompok_usia' => 'required',
+            'jenis_latihan' => 'required',
             'lokasi' => 'required',
         ]);
         JadwalLatihan::create($request->all());
@@ -53,6 +54,7 @@ class JadwalLatihanController extends Controller
             'hari' => 'required',
             'jam' => 'required',
             'kelompok_usia' => 'required',
+            'jenis_latihan' => 'required',
             'lokasi' => 'required',
         ]);
         $jadwal = JadwalLatihan::findOrFail($id);

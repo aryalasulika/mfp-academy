@@ -5,8 +5,8 @@
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h6 class="section-title bg-white text-center text-primary px-3">Galeri</h6>
-                <h1 class="display-6 mb-4">Galeri Kegiatan MFP Academy</h1>
-                <p>Lihat dokumentasi foto & video kegiatan, latihan, dan event MFP Academy.</p>
+                <h1 class="display-6 mb-4">Galeri Kegiatan Future Football Educare</h1>
+                <p>Lihat dokumentasi foto & video kegiatan, latihan, dan event Future Football Educare.</p>
             </div>
             <div class="row g-4">
                 @forelse($galeri as $item)

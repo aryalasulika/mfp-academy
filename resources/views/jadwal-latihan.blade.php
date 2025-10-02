@@ -5,8 +5,8 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Jadwal Latihan</h6>
-            <h1 class="display-6 mb-4">Jadwal Latihan MFP Academy</h1>
-            <p>Berikut adalah jadwal latihan terbaru di MFP Academy. Jadwal dapat berubah sewaktu-waktu sesuai kebijakan pelatih.</p>
+            <h1 class="display-6 mb-4">Jadwal Latihan Future Football Educare</h1>
+            <p>Berikut adalah jadwal latihan terbaru di Future Football Educare. Jadwal dapat berubah sewaktu-waktu sesuai kebijakan pelatih.</p>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -18,6 +18,7 @@
                                 <th class="bg-gradient-primary text-white">Hari</th>
                                 <th class="bg-gradient-primary text-white">Jam</th>
                                 <th class="bg-gradient-primary text-white">Kelompok Usia</th>
+                                <th class="bg-gradient-primary text-white">Jenis Latihan</th>
                                 <th class="bg-gradient-primary text-white rounded-end">Lokasi</th>
                             </tr>
                         </thead>
@@ -25,14 +26,15 @@
                             @forelse($jadwal as $item)
                             <tr class="jadwal-row">
                                 <td class="fw-bold text-primary fs-5">{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
-                                <td><span class="badge bg-info text-dark fs-6 px-3 py-2 shadow-sm">{{ $item->hari }}</span></td>
-                                <td><span class="badge bg-light text-primary border border-primary fs-6 px-3 py-2 shadow-sm">{{ $item->jam }}</span></td>
-                                <td><span class="badge bg-secondary text-white fs-6 px-3 py-2 shadow-sm">{{ $item->kelompok_usia }}</span></td>
-                                <td><i class="bx bx-map text-danger"></i> <span class="fw-semibold">{{ $item->lokasi }}</span></td>
+                                <td><span class="fw-bold text-primary fs-5">{{ $item->hari }}</span></td>
+                                <td><span class="fw-bold text-primary fs-5">{{ $item->jam }}</span></td>
+                                <td><span class="fw-bold text-primary fs-5">{{ $item->kelompok_usia }}</span></td>
+                                <td><span class="fw-bold text-primary fs-5">{{ $item->jenis_latihan ?? '-' }}</span></td>
+                                <td><i class=""></i> <span class="fw-bold text-primary fs-5">{{ $item->lokasi }}</span></td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5">Belum ada jadwal latihan.</td>
+                                <td colspan="6">Belum ada jadwal latihan.</td>
                             </tr>
                             @endforelse
                         </tbody>

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Kontak Kami</h6>
-            <h1 class="display-6 mb-4">Hubungi MFP Academy</h1>
+            <h1 class="display-6 mb-4">Hubungi Future Football Educare</h1>
             <p>Silakan hubungi kami untuk informasi pendaftaran, kerjasama, atau pertanyaan lainnya.</p>
         </div>
         <div class="row g-5">

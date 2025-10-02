@@ -5,8 +5,8 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Informasi Acara</h6>
-            <h1 class="display-6 mb-4">Acara & Pengumuman MFP Academy</h1>
-            <p>Berikut adalah informasi acara terbaru di MFP Academy. Pantau halaman ini untuk update pertemuan orang tua, event, dan pengumuman penting lainnya.</p>
+            <h1 class="display-6 mb-4">Acara & Pengumuman Future Football Educare</h1>
+            <p>Berikut adalah informasi acara terbaru di Future Football Educare. Pantau halaman ini untuk update pertemuan orang tua, event, dan pengumuman penting lainnya.</p>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-10">

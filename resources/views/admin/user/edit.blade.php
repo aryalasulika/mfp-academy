@@ -12,7 +12,7 @@
         </a>
     </div>
     <div class="navbar-nav-right d-flex align-items-center w-100" id="navbar-collapse">
-        <span class="fw-bold text-primary fs-4 ms-2">Jadwal Latihan</span>
+        <span class="fw-bold text-primary fs-4 ms-2">Manajemen User</span>
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
@@ -54,56 +54,46 @@
 
 <!-- Content wrapper -->
 <div class="content-wrapper">
-    <!-- Statistik Cards Modern Fancy -->
+    <!-- Content -->
     <div class="container-xxl py-4">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2>Jadwal Latihan</h2>
-        <a href="{{ route('admin.jadwal_latihan.create') }}" class="btn btn-primary">Tambah Jadwal</a>
+        <h2>Edit User</h2>
+        <form action="{{ route('admin.user.update', $user->id) }}" method="POST" class="mt-4">
+            @csrf
+            @method('PUT')
+            <div class="mb-3">
+                <label for="name" class="form-label">Nama</label>
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user->name) }}" required>
+                @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" required>
+                @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+            <div class="mb-3">
+                <label for="alamat" class="form-label">Alamat</label>
+                <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3">{{ old('alamat', $user->alamat) }}</textarea>
+                @error('alamat')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+            <div class="mb-3">
+                <label for="nomor_hp" class="form-label">Nomor HP</label>
+                <input type="text" name="nomor_hp" id="nomor_hp" class="form-control @error('nomor_hp') is-invalid @enderror" value="{{ old('nomor_hp', $user->nomor_hp) }}">
+                @error('nomor_hp')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" required>
+                    <option value="">Pilih Role</option>
+                    <option value="peserta" {{ old('role', $user->role) == 'peserta' ? 'selected' : '' }}>Peserta</option>
+                    <option value="coach" {{ old('role', $user->role) == 'coach' ? 'selected' : '' }}>Coach</option>
+                </select>
+                @error('role')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-secondary">Batal</a>
+        </form>
     </div>
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle text-center">
-            <thead class="table-primary">
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Hari</th>
-                    <th>Jam</th>
-                    <th>Kelompok Usia</th>
-                    <th>Jenis Latihan</th>
-                    <th>Lokasi</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($jadwal as $item)
-                <tr>
-                    <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') }}</td>
-                    <td>{{ $item->hari }}</td>
-                    <td>{{ $item->jam }}</td>
-                    <td>{{ $item->kelompok_usia }}</td>
-                    <td>{{ $item->jenis_latihan ?? '-' }}</td>
-                    <td>{{ $item->lokasi }}</td>
-                    <td>
-                        <a href="{{ route('admin.jadwal_latihan.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('admin.jadwal_latihan.destroy', $item->id) }}" method="POST" style="display:inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus jadwal ini?')">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="7">Belum ada jadwal latihan.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
-    </div>
-    </div>
-    <!-- End Statistik Cards Modern Fancy -->
+    <!-- / Content -->
     <div class="content-backdrop fade"></div>
 </div>
 <!-- / Content wrapper -->

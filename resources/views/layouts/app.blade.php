@@ -917,18 +917,18 @@
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('jadwal-latihan') ? ' active' : '' }}">
                             <i class="fa fa-calendar-alt text-primary"></i> <span>Jadwal Latihan</span>
                         </a>
-                        <a href="{{ route('event.index') }}"
+                        {{-- <a href="{{ route('event.index') }}"
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('event') ? ' active' : '' }}">
                             <i class="fa fa-bullhorn text-danger"></i> <span>Acara</span>
-                        </a>
+                        </a> --}}
                         <a href="{{ asset('template/img/mfp/sponsorsip.pdf') }}" download
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded">
                             <i class="fa fa-file-pdf text-success"></i> <span>Proposal Sponsorship</span>
                         </a>
                     </div>
                 </div>
-                <a href="#program"
-                    class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Program</a>
+                <a href="{{ route('event.index') }}"
+                    class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Berita</a>
                 <a href="{{ route('galeri.index') }}"
                     class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>                <a href="/contact"
                     class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>                <!-- Tombol Login Mobile - Dalam menu hamburger -->
@@ -1044,7 +1044,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; {{ date('Y') }} MFP Academy, All Right Reserved.
+                        &copy; {{ date('Y') }} Future Football Educare, All Right Reserved.
                     </div>
                     <div class="col-md-6 text-center text-md-end">
                         Designed By Teknologi Informasi Unisa

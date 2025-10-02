@@ -12,7 +12,7 @@
         </a>
     </div>
     <div class="navbar-nav-right d-flex align-items-center w-100" id="navbar-collapse">
-        <span class="fw-bold text-primary fs-4 ms-2">Dashboard Admin MFP Academy</span>
+        <span class="fw-bold text-primary fs-4 ms-2">Jadwal Latihan</span>
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow d-flex align-items-center gap-2" href="#" data-bs-toggle="dropdown">
@@ -74,6 +74,21 @@
             <label for="kelompok_usia" class="form-label">Kelompok Usia</label>
             <input type="text" name="kelompok_usia" id="kelompok_usia" class="form-control @error('kelompok_usia') is-invalid @enderror" value="{{ old('kelompok_usia', $jadwal->kelompok_usia) }}" required>
             @error('kelompok_usia')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label for="jenis_latihan" class="form-label">Jenis Latihan</label>
+            <select name="jenis_latihan" id="jenis_latihan" class="form-control @error('jenis_latihan') is-invalid @enderror" required>
+                <option value="">Pilih Jenis Latihan</option>
+                <option value="Teknik Dasar" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Teknik Dasar' ? 'selected' : '' }}>Teknik Dasar</option>
+                <option value="Fisik" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Fisik' ? 'selected' : '' }}>Fisik</option>
+                <option value="Taktik" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Taktik' ? 'selected' : '' }}>Taktik</option>
+                <option value="Shooting" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Shooting' ? 'selected' : '' }}>Shooting</option>
+                <option value="Passing" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Passing' ? 'selected' : '' }}>Passing</option>
+                <option value="Dribbling" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Dribbling' ? 'selected' : '' }}>Dribbling</option>
+                <option value="Defending" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Defending' ? 'selected' : '' }}>Defending</option>
+                <option value="Sparring" {{ old('jenis_latihan', $jadwal->jenis_latihan) == 'Sparring' ? 'selected' : '' }}>Sparring</option>
+            </select>
+            @error('jenis_latihan')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">
             <label for="lokasi" class="form-label">Lokasi</label>

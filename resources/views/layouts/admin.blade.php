@@ -53,7 +53,7 @@
             <a href="{{ route('admin.dashboard') }}" class="app-brand-link">                <span class="app-brand-logo demo">                    <img src="{{ asset('template/img/mfp/Logonew.jpeg') }}" alt="Logo"
                         style="height:70px;max-width:120px;object-fit:contain;" class="mx-auto">
                 </span>
-                <span class="app-brand-text demo menu-text fw-bolder ms-2 text-uppercase">MFP</span>
+                {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2 text-uppercase">MFP</span> --}}
             </a>
 
             <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -64,13 +64,7 @@
         <div class="menu-inner-shadow"></div>
 
         <ul class="menu-inner py-1">
-            <!-- Dashboard -->
-            <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                <a href="{{ route('admin.dashboard') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                    <div data-i18n="Analytics">Dashboard</div>
-                </a>
-            </li>
+
             <!-- Layouts -->
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Pages</span>
@@ -87,6 +81,19 @@
                 <div data-i18n="User interface">News</div>
               </a>
             </li> --}}
+                        <!-- Dashboard -->
+            <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.dashboard') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Dashboard</div>
+                </a>
+            </li>
+            <li class="menu-item {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.user.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="User">User</div>
+                </a>
+            </li>
             <li class="menu-item {{ request()->routeIs('admin.jadwal_latihan.*') ? 'active' : '' }}">
                 <a href="{{ route('admin.jadwal_latihan.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-calendar"></i>

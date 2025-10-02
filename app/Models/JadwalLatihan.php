@@ -12,6 +12,7 @@ class JadwalLatihan extends Model
         'hari',
         'jam',
         'kelompok_usia',
+        'jenis_latihan',
         'lokasi',
         'tanggal',
     ];
