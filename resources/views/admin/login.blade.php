@@ -82,7 +82,7 @@
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2 text-center text-primary fw-bold">Login Admin MFP Academy</h4>
+              <h4 class="mb-2 text-center text-primary fw-bold">Login Admin Future Football Educare</h4>
               <p class="mb-4 text-center text-muted">Masuk ke dashboard admin menggunakan akun resmi Anda.</p>
               <form id="formAuthentication" class="mb-3" action="{{ route('admin.login.submit') }}" method="POST">
                 @csrf
