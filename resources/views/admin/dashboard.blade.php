@@ -65,8 +65,8 @@
                                 <i class="bx bx-user fs-1 text-white"></i>
                             </span>
                         </div>
-                        <h6 class="text-uppercase mb-1 mt-2" style="letter-spacing:2px;color:#e3e6f0;">Total Admin</h6>
-                        <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\Admin::count() }}</h1>
+                        <h6 class="text-uppercase mb-1 mt-2" style="letter-spacing:2px;color:#e3e6f0;">Total User</h6>
+                        <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\User::count() }}</h1>
                     </div>
                     <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
                         <i class="bx bx-user-circle text-white"></i>
