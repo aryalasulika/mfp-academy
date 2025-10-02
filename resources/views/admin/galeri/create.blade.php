@@ -64,27 +64,58 @@
                 <div class="content-wrapper">
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
-                        <h2>Tambah Media Galeri</h2>
+                        <h2>Tambah Foto Galeri</h2>
                         <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data"
                             class="mt-4">
                             @csrf
                             <div class="mb-3">
                                 <label for="judul" class="form-label">Judul</label>
-                                <input type="text" name="judul" id="judul" class="form-control"
+                                <input type="text" name="judul" id="judul" class="form-control @error('judul') is-invalid @enderror"
                                     value="{{ old('judul') }}">
+                                @error('judul')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="file" class="form-label">File (Gambar/Video)</label>
-                                <input type="file" name="file" id="file" class="form-control" required
-                                    accept="image/*,video/*">
+                                <label for="file" class="form-label">File Foto</label>
+                                <input type="file" name="file" id="file" class="form-control @error('file') is-invalid @enderror" required
+                                    accept="image/*">
+                                <div class="form-text text-muted mt-2">
+                                    <i class="bx bx-info-circle"></i>
+                                    <strong>Ketentuan Upload:</strong><br>
+                                    • Format yang didukung: JPG, JPEG, PNG, GIF, WEBP<br>
+                                    • Ukuran maksimal: <strong>2 MB</strong><br>
+                                    • Pastikan foto tidak rusak atau corrupt
+                                </div>
+                                @error('file')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="keterangan" class="form-label">Keterangan</label>
-                                <textarea name="keterangan" id="keterangan" class="form-control" rows="8">{{ old('keterangan') }}</textarea>
+                                <textarea name="keterangan" id="keterangan" class="form-control @error('keterangan') is-invalid @enderror" rows="8">{{ old('keterangan') }}</textarea>
+                                @error('keterangan')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary">Batal</a>
                         </form>
+                        
+                        <script>
+                            document.getElementById('file').addEventListener('change', function(e) {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert to MB
+                                    const maxSize = 2; // 2 MB
+                                    
+                                    if (fileSize > maxSize) {
+                                        alert(`Ukuran file terlalu besar (${fileSize} MB). Maksimal 2 MB.`);
+                                        e.target.value = ''; // Clear the input
+                                    }
+                                }
+                            });
+                        </script>
                     </div>
                     <!-- End Statistik Cards Modern Fancy -->
                     <div class="content-backdrop fade"></div>

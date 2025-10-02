@@ -22,7 +22,7 @@ class GaleriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|file|mimes:jpg,jpeg,png,gif,webp,mp4',
+            'file' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:2048',
             'judul' => 'nullable|string|max:255',
             'keterangan' => 'nullable|string',
         ]);
@@ -50,7 +50,7 @@ class GaleriController extends Controller
             'keterangan' => 'nullable|string',
         ]);
         if ($request->hasFile('file')) {
-            $request->validate(['file' => 'file|mimes:jpg,jpeg,png,gif,webp,mp4']);
+            $request->validate(['file' => 'file|mimes:jpg,jpeg,png,gif,webp|max:2048']);
             if ($item->file && Storage::disk('public')->exists($item->file)) {
                 Storage::disk('public')->delete($item->file);
             }

@@ -64,7 +64,7 @@
                 <div class="content-wrapper">
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
-                        <h2>Edit Media Galeri</h2>
+                        <h2>Edit Foto Galeri</h2>
                         <form action="{{ route('admin.galeri.update', $item->id) }}" method="POST"
                             enctype="multipart/form-data" class="mt-4">
                             @csrf
@@ -75,19 +75,24 @@
                                     value="{{ old('judul', $item->judul) }}">
                             </div>
                             <div class="mb-3">
-                                <label for="file" class="form-label">File (Gambar/Video)</label>
-                                <input type="file" name="file" id="file" class="form-control"
-                                    accept="image/*,video/*">
+                                <label for="file" class="form-label">File Foto</label>
+                                <input type="file" name="file" id="file" class="form-control @error('file') is-invalid @enderror"
+                                    accept="image/*">
+                                <div class="form-text text-muted mt-2">
+                                    <i class="bx bx-info-circle"></i>
+                                    <strong>Ketentuan Upload:</strong><br>
+                                    • Format yang didukung: JPG, JPEG, PNG, GIF, WEBP<br>
+                                    • Ukuran maksimal: <strong>2 MB</strong><br>
+                                    • Kosongkan jika tidak ingin mengubah foto
+                                </div>
+                                @error('file')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                                 @if ($item->file)
                                     <div class="mt-2">
-                                        <span class="small text-muted">File saat ini:</span><br>
-                                        @if (Str::startsWith($item->tipe, 'image'))
-                                            <img src="{{ asset('storage/' . $item->file) }}" alt="{{ $item->judul }}"
-                                                style="max-width:120px;max-height:80px;">
-                                        @elseif(Str::startsWith($item->tipe, 'video'))
-                                            <video src="{{ asset('storage/' . $item->file) }}"
-                                                style="max-width:120px;max-height:80px;" controls></video>
-                                        @endif
+                                        <span class="small text-muted">Foto saat ini:</span><br>
+                                        <img src="{{ asset('storage/' . $item->file) }}" alt="{{ $item->judul }}"
+                                            style="max-width:120px;max-height:80px;" class="img-thumbnail">
                                     </div>
                                 @endif
                             </div>
@@ -98,6 +103,21 @@
                             <button type="submit" class="btn btn-primary">Update</button>
                             <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary">Batal</a>
                         </form>
+                        
+                        <script>
+                            document.getElementById('file').addEventListener('change', function(e) {
+                                const file = e.target.files[0];
+                                if (file) {
+                                    const fileSize = (file.size / 1024 / 1024).toFixed(2); // Convert to MB
+                                    const maxSize = 2; // 2 MB
+                                    
+                                    if (fileSize > maxSize) {
+                                        alert(`Ukuran file terlalu besar (${fileSize} MB). Maksimal 2 MB.`);
+                                        e.target.value = ''; // Clear the input
+                                    }
+                                }
+                            });
+                        </script>
                     </div>
                     <!-- End Statistik Cards Modern Fancy -->
                     <div class="content-backdrop fade"></div>

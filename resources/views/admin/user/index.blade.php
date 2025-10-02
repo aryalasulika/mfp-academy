@@ -119,7 +119,6 @@
                         <th>Alamat</th>
                         <th>Nomor HP</th>
                         <th>Role</th>
-                        <th>Tanggal Daftar</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -135,7 +134,6 @@
                                 {{ ucfirst($user->role) }}
                             </span>
                         </td>
-                        <td>{{ $user->created_at->format('d-m-Y') }}</td>
                         <td>
                             <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <form action="{{ route('admin.user.destroy', $user->id) }}" method="POST" style="display:inline-block;">

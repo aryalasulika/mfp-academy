@@ -136,7 +136,7 @@
             style="width:100%;padding-left:0;padding-right:0;">
             <div class="container-xxl d-flex flex-wrap justify-content-center py-2 flex-md-row flex-column">
                 <div class="mb-2 mb-md-0 text-center w-100" style="font-size:1rem;letter-spacing:0.5px;">
-                    © <span id="year"></span> MFP Academy. All rights reserved.
+                    © <span id="year"></span> Future Football Educare. All rights reserved.
                 </div>
             </div>
         </footer>
