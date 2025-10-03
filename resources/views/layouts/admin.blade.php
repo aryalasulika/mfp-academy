@@ -91,7 +91,7 @@
             <li class="menu-item {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
                 <a href="{{ route('admin.user.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-user"></i>
-                    <div data-i18n="User">User</div>
+                    <div data-i18n="User">Akademi</div>
                 </a>
             </li>
             <li class="menu-item {{ request()->routeIs('admin.jadwal_latihan.*') ? 'active' : '' }}">
