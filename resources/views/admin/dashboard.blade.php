@@ -57,7 +57,7 @@
     <!-- Statistik Cards Modern Fancy -->
     <div class="container-xxl py-4">
         <div class="row g-4 mb-4 justify-content-center">
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
                 <div class="card border-0 shadow-lg h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #4e73df 60%, #1cc88a 100%);">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-4 position-relative">
                         <div class="mb-3 position-relative">
@@ -73,7 +73,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-3">
                 <div class="card border-0 shadow-lg h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #1cc88a 60%, #36b9cc 100%);">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-4 position-relative">
                         <div class="mb-3 position-relative">
@@ -89,8 +89,24 @@
                     </span>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card border-0 shadow-lg h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #36b9cc 60%, #f6c23e 100%);">
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-lg h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #f6c23e 60%, #e74a3b 100%);">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-4 position-relative">
+                        <div class="mb-3 position-relative">
+                            <span class="d-inline-flex align-items-center justify-content-center rounded-circle shadow-lg" style="width:80px;height:80px;background:rgba(255,255,255,0.15);backdrop-filter:blur(2px);">
+                                <i class="bx bx-store fs-1 text-white"></i>
+                            </span>
+                        </div>
+                        <h6 class="text-uppercase mb-1 mt-2" style="letter-spacing:2px;color:#e3e6f0;">Total Merchandise</h6>
+                        <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\Merchandise::count() }}</h1>
+                    </div>
+                    <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
+                        <i class="bx bx-store-alt text-white"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card border-0 shadow-lg h-100 position-relative overflow-hidden" style="background: linear-gradient(135deg, #36b9cc 60%, #6f42c1 100%);">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center text-center p-4 position-relative">
                         <div class="mb-3 position-relative">
                             <span class="d-inline-flex align-items-center justify-content-center rounded-circle shadow-lg" style="width:80px;height:80px;background:rgba(255,255,255,0.15);backdrop-filter:blur(2px);">

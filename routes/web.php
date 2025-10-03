@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JadwalLatihanController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\MerchandiseController;
+use App\Http\Controllers\Admin\MerchandiseController as AdminMerchandiseController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Admin\ContactMessageController;
@@ -41,6 +43,7 @@ Route::get('/jadwal-latihan', [JadwalLatihanController::class, 'index'])->name('
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/{id}', [EventController::class, 'show'])->name('event.show');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
+Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merchandise.index');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
@@ -80,6 +83,9 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/galeri/{id}/edit', [AdminGaleriController::class, 'edit'])->name('admin.galeri.edit');
     Route::put('/admin/galeri/{id}', [AdminGaleriController::class, 'update'])->name('admin.galeri.update');
     Route::delete('/admin/galeri/{id}', [AdminGaleriController::class, 'destroy'])->name('admin.galeri.destroy');
+
+    // Merchandise Management Routes
+    Route::resource('admin/merchandise', AdminMerchandiseController::class, ['as' => 'admin']);
 });
 
 // Fallback for unauthorized access to admin dashboard

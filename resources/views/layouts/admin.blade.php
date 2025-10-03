@@ -124,6 +124,12 @@
                     <div data-i18n="Galeri">Galeri</div>
                 </a>
             </li>
+            <li class="menu-item {{ request()->routeIs('admin.merchandise.*') ? 'active' : '' }}">
+                <a href="{{ route('admin.merchandise.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-store"></i>
+                    <div data-i18n="Merchandise">Merchandise</div>
+                </a>
+            </li>
         </ul>
     </aside>
     <!-- / Menu -->

@@ -930,7 +930,10 @@
                 <a href="{{ route('event.index') }}"
                     class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Berita</a>
                 <a href="{{ route('galeri.index') }}"
-                    class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>                <a href="/contact"
+                    class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>
+                <a href="{{ route('merchandise.index') }}"
+                    class="nav-item nav-link{{ request()->is('merchandise') ? ' active' : '' }}">Merchandise</a>
+                <a href="/contact"
                     class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>                <!-- Tombol Login Mobile - Dalam menu hamburger -->
                 {{-- <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
                     <div class="text-light text-center mb-3 small">
