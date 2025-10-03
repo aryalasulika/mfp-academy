@@ -84,7 +84,7 @@
                                 @endif
 
                                 <div class="table-responsive">
-                                    <table class="table table-bordered dt-responsive nowrap w-100">
+                                    <table class="table table-bordered dt-responsive nowrap w-100 text-center align-middle">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
