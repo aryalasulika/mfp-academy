@@ -57,7 +57,7 @@
     <!-- Content -->
     <div class="container-xxl py-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2>Manajemen User</h2>
+            <h2>Akademi</h2>
             <a href="{{ route('admin.user.create') }}" class="btn btn-primary">Tambah User</a>
         </div>
         @if(session('success'))
