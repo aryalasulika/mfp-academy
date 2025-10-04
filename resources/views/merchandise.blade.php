@@ -17,18 +17,49 @@
 <!-- Products Section -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-4">
+        <!-- Category Filter -->
+        @php
+            $categories = $merchandise->pluck('category')->unique()->sort();
+        @endphp
+        
+        @if($categories->count() > 1)
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="text-center">
+                    <h5 class="mb-3">Filter Kategori</h5>
+                    <div class="btn-group flex-wrap justify-content-center" role="group">
+                        <button type="button" class="btn btn-outline-primary filter-btn active mx-1 mb-2" data-filter="all">
+                            Semua Produk
+                        </button>
+                        @foreach($categories as $category)
+                        <button type="button" class="btn btn-outline-primary filter-btn mx-1 mb-2" data-filter="{{ $category }}">
+                            {{ $category }}
+                        </button>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        <div class="row g-4" id="products-container">
             @foreach($merchandise as $item)
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.{{ $loop->index }}s">
+            <div class="col-lg-4 col-md-6 wow fadeInUp product-item" data-wow-delay="0.{{ $loop->index }}s" data-category="{{ $item->category }}">
                 <div class="card h-100 border-0 shadow-sm product-card">
                     <div class="position-relative overflow-hidden">
-                        <img src="{{ asset($item['image']) }}" class="card-img-top product-image" alt="{{ $item['name'] }}" style="height: 300px; object-fit: cover;">
+                        @if($item->image)
+                            <img src="{{ asset($item->image) }}" class="card-img-top product-image" alt="{{ $item->name }}" style="height: 300px; object-fit: cover;">
+                        @else
+                            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 300px;">
+                                <i class="fas fa-image text-muted" style="font-size: 3rem;"></i>
+                            </div>
+                        @endif
                         <div class="product-overlay">
                             <div class="d-flex justify-content-center align-items-center h-100">
-                                <button class="btn btn-primary btn-lg rounded-pill mx-1" onclick="quickView({{ json_encode($item) }})">
+                                <button class="btn btn-primary btn-lg rounded-pill mx-1" onclick="quickView({{ $item->id }})">
                                     <i class="fas fa-eye"></i> Quick View
                                 </button>
-                                <a href="https://wa.me/628123456789?text=Halo, saya tertarik dengan {{ $item['name'] }}" 
+                                <a href="https://wa.me/628123456789?text=Halo, saya tertarik dengan {{ $item->name }}" 
                                    class="btn btn-success btn-lg rounded-pill mx-1" target="_blank">
                                     <i class="fab fa-whatsapp"></i> Order
                                 </a>
@@ -36,10 +67,13 @@
                         </div>
                     </div>
                     <div class="card-body text-center p-4">
-                        <h5 class="card-title mb-2">{{ $item['name'] }}</h5>
-                        <p class="card-text text-muted mb-3" style="font-size: 0.9rem;">{{ Str::limit($item['description'], 80) }}</p>
+                        <div class="mb-2">
+                            <span class="badge bg-info">{{ $item->category }}</span>
+                        </div>
+                        <h5 class="card-title mb-2">{{ $item->name }}</h5>
+                        <p class="card-text text-muted mb-3" style="font-size: 0.9rem;">{{ Str::limit($item->description, 80) }}</p>
                         <div class="d-flex justify-content-center align-items-center">
-                            <h4 class="text-primary mb-0 fw-bold">Rp {{ number_format($item['price'], 0, ',', '.') }}</h4>
+                            <h4 class="text-primary mb-0 fw-bold">Rp {{ number_format($item->price, 0, ',', '.') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -47,6 +81,27 @@
             @endforeach
         </div>
 
+        <!-- Pagination -->
+        @if($merchandise->hasPages())
+            <div class="row mt-5">
+                <div class="col-12 d-flex justify-content-center">
+                    {{ $merchandise->links() }}
+                </div>
+            </div>
+        @endif
+
+        <!-- Info jika tidak ada produk -->
+        @if($merchandise->count() == 0)
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="py-5">
+                        <i class="fas fa-box-open text-muted" style="font-size: 5rem;"></i>
+                        <h4 class="text-muted mt-3">Belum Ada Produk</h4>
+                        <p class="text-muted">Merchandise sedang dalam proses persiapan. Silakan kembali lagi nanti!</p>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 
@@ -106,6 +161,9 @@
         opacity: 0;
         transition: opacity 0.3s ease;
         border-radius: 15px 15px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .product-card:hover .product-overlay {
@@ -127,6 +185,16 @@
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
+    .product-item {
+        transition: all 0.3s ease;
+    }
+
+    .product-item.filtered-out {
+        opacity: 0;
+        transform: translateY(30px);
+        pointer-events: none;
+    }
+
     .modal-content {
         border-radius: 15px;
         overflow: hidden;
@@ -145,13 +213,22 @@
 
     @media (max-width: 768px) {
         .product-overlay {
+            opacity: 0;
+            background: rgba(0,0,0,0.8);
+        }
+        
+        .product-overlay.show {
             opacity: 1;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         }
         
         .product-overlay .btn {
             padding: 8px 16px;
             font-size: 0.9rem;
+        }
+        
+        .product-card {
+            cursor: pointer;
+            position: relative;
         }
     }
 </style>
@@ -159,18 +236,167 @@
 <!-- Custom JavaScript -->
 <script>
     // Quick view modal
-    function quickView(product) {
-        document.getElementById('modal-image').src = "{{ asset('') }}" + product.image;
-        document.getElementById('modal-name').textContent = product.name;
-        document.getElementById('modal-description').textContent = product.description;
-        document.getElementById('modal-price').textContent = 'Rp ' + new Intl.NumberFormat('id-ID').format(product.price);
+    function quickView(productId) {
+        // Cari data produk dari halaman
+        const productCards = document.querySelectorAll('.product-card');
+        let productData = null;
         
-        const orderBtn = document.getElementById('modal-order-btn');
-        orderBtn.href = `https://wa.me/628123456789?text=Halo, saya tertarik dengan ${product.name}`;
+        // Ambil data dari card yang diklik
+        productCards.forEach(card => {
+            const quickViewBtn = card.querySelector('[onclick*="' + productId + '"]');
+            if (quickViewBtn) {
+                const img = card.querySelector('.product-image');
+                const name = card.querySelector('.card-title').textContent;
+                const description = card.querySelector('.card-text').textContent;
+                const price = card.querySelector('.text-primary').textContent;
+                const category = card.querySelector('.badge').textContent;
+                
+                productData = {
+                    id: productId,
+                    image: img ? img.src : '',
+                    name: name.trim(),
+                    description: description.trim(),
+                    price: price.trim(),
+                    category: category.trim()
+                };
+            }
+        });
         
-        const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
-        modal.show();
+        if (productData) {
+            document.getElementById('modal-image').src = productData.image;
+            document.getElementById('modal-name').textContent = productData.name;
+            document.getElementById('modal-description').textContent = productData.description;
+            document.getElementById('modal-price').textContent = productData.price;
+            
+            const orderBtn = document.getElementById('modal-order-btn');
+            orderBtn.href = `https://wa.me/628123456789?text=Halo, saya tertarik dengan ${productData.name}`;
+            
+            const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
+            modal.show();
+        }
     }
+    
+    // Smooth scroll dan loading animation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add loading animation
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'all 0.5s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+
+        // Mobile overlay functionality
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        // Handle mobile card taps
+        if (isMobile()) {
+            cards.forEach(card => {
+                const overlay = card.querySelector('.product-overlay');
+                let isOverlayVisible = false;
+                
+                card.addEventListener('click', function(e) {
+                    // Jika click pada button, biarkan default behavior
+                    if (e.target.closest('.btn')) {
+                        return;
+                    }
+                    
+                    e.preventDefault();
+                    
+                    // Hide all other overlays
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            const otherOverlay = otherCard.querySelector('.product-overlay');
+                            otherOverlay.classList.remove('show');
+                        }
+                    });
+                    
+                    // Toggle current overlay
+                    if (!isOverlayVisible) {
+                        overlay.classList.add('show');
+                        isOverlayVisible = true;
+                    } else {
+                        overlay.classList.remove('show');
+                        isOverlayVisible = false;
+                    }
+                });
+                
+                // Reset overlay visibility when card is no longer visible
+                card.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        if (!card.matches(':hover')) {
+                            isOverlayVisible = overlay.classList.contains('show');
+                        }
+                    }, 100);
+                });
+            });
+            
+            // Hide overlay when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.product-card')) {
+                    cards.forEach(card => {
+                        const overlay = card.querySelector('.product-overlay');
+                        overlay.classList.remove('show');
+                    });
+                }
+            });
+        }
+
+        // Category filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productItems = document.querySelectorAll('.product-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter products
+                productItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 100);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(30px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+                
+                // Update product count
+                setTimeout(() => {
+                    const visibleProducts = document.querySelectorAll('.product-item[style*="block"]').length;
+                    console.log(`Menampilkan ${visibleProducts} produk untuk kategori: ${filter}`);
+                }, 400);
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            // Reset overlays when switching between mobile and desktop
+            cards.forEach(card => {
+                const overlay = card.querySelector('.product-overlay');
+                overlay.classList.remove('show');
+            });
+        });
+    });
 </script>
 
 @endsection
