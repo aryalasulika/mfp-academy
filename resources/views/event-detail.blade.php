@@ -18,131 +18,138 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-8">
-                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-                    @if($event->image)
-                    <div class="position-relative hero-image">
-                        <img src="{{ asset($event->image) }}" class="card-img-top w-100" alt="{{ $event->judul }}" 
-                             style="height: 400px; object-fit: cover;">
-                        <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
-                        
-                        <!-- Hero Content -->
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3 p-md-4 text-white">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h1 class="hero-title fw-bold mb-2 mb-md-3 text-white text-shadow">{{ $event->judul }}</h1>
-                                        <div class="d-flex flex-wrap gap-2 gap-md-3 mb-2">
-                                            <div class="d-flex align-items-center">
-                                                <i class="bx bx-calendar me-2 fs-6 fs-md-5"></i>
-                                                <span class="hero-meta-text">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
-                                            </div>
-                                            @if($event->lokasi)
-                                            <div class="d-flex align-items-center">
-                                                <i class="bx bx-map me-2 fs-6 fs-md-5"></i>
-                                                <span class="hero-meta-text">{{ $event->lokasi }}</span>
-                                            </div>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- News Header Style -->
+                <div class="mb-4">
+                    <!-- Category Badge -->
+                    <div class="mb-3">
+                        <span class="badge bg-danger bg-gradient px-3 py-2 fs-6 rounded-pill">
+                            <i class="bx bx-calendar-event me-1"></i> Berita & Acara
+                        </span>
                     </div>
-                    @else
-                    <!-- Fallback Header without Image -->
-                    <div class="card-header text-white text-center border-0 py-4 py-md-5" style="background: linear-gradient(135deg, #61677A 0%, #4a5568 100%);">
-                        <div class="container-fluid px-3 px-md-4">
-                            <h1 class="hero-title fw-bold mb-2 mb-md-3">{{ $event->judul }}</h1>
-                            <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3">
-                                <div class="d-flex align-items-center">
-                                    <i class="bx bx-calendar me-2 fs-6 fs-md-5"></i>
-                                    <span class="hero-meta-text">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
-                                </div>
-                                @if($event->lokasi)
-                                <div class="d-flex align-items-center">
-                                    <i class="bx bx-map me-2 fs-6 fs-md-5"></i>
-                                    <span class="hero-meta-text">{{ $event->lokasi }}</span>
-                                </div>
-                                @endif
-                            </div>
+                    
+                    <!-- Title -->
+                    <h1 class="news-title fw-bold mb-3 text-dark lh-base">{{ $event->judul }}</h1>
+                    
+                    <!-- Meta Information -->
+                    <div class="news-meta d-flex flex-wrap align-items-center gap-3 mb-4 pb-3 border-bottom">
+                        <div class="d-flex align-items-center text-muted">
+                            <i class="bx bx-calendar me-2"></i>
+                            <span>{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
                         </div>
-                    </div>
-                    @endif
-
-                    <!-- Event Meta Information -->
-                    <div class="card-body p-0">
-                        <div class="bg-light border-bottom p-4">
-                            <div class="row align-items-center">
-                                <div class="col-md-6">
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-primary rounded-circle p-3 me-3">
-                                            <i class="bx bx-calendar-event text-white fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-1 text-primary">Tanggal Acara</h6>
-                                            <p class="mb-0 fw-semibold">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if($event->lokasi)
-                                <div class="col-md-6 mt-3 mt-md-0">
-                                    <div class="d-flex align-items-center">
-                                        <div class="bg-success rounded-circle p-3 me-3">
-                                            <i class="bx bx-map-pin text-white fs-4"></i>
-                                        </div>
-                                        <div>
-                                            <h6 class="mb-1 text-success">Lokasi</h6>
-                                            <p class="mb-0 fw-semibold">{{ $event->lokasi }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @endif
-                            </div>
+                        @if($event->lokasi)
+                        <div class="d-flex align-items-center text-muted">
+                            <i class="bx bx-map-pin me-2"></i>
+                            <span>{{ $event->lokasi }}</span>
                         </div>
-
-                        <!-- Event Description -->
-                        <div class="p-4 p-md-5">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h3 class="mb-4 text-primary border-bottom pb-2">Deskripsi Acara</h3>
-                                    <div class="event-description fs-6 lh-lg text-justify">
-                                        {!! nl2br(e($event->deskripsi)) !!}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Social Share & Actions -->
-                        <div class="bg-light p-4 border-top">
-                            <div class="row align-items-center">
-                                <div class="col-md-6 mb-3 mb-md-0">
-                                    <h6 class="mb-2">Bagikan Acara Ini:</h6>
-                                    <div class="d-flex gap-2">
-                                        <a href="https://wa.me/?text=Lihat acara ini: {{ $event->judul }} - {{ url()->current() }}" 
-                                           target="_blank" class="btn btn-success btn-sm rounded-pill">
-                                            <i class="fab fa-whatsapp me-1"></i> WhatsApp
-                                        </a>
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" 
-                                           target="_blank" class="btn btn-primary btn-sm rounded-pill">
-                                            <i class="fab fa-facebook-f me-1"></i> Facebook
-                                        </a>
-                                        <button onclick="copyToClipboard()" class="btn btn-outline-secondary btn-sm rounded-pill">
-                                            <i class="bx bx-copy me-1"></i> Copy Link
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 text-md-end">
-                                    <span class="badge bg-danger bg-gradient px-3 py-2 fs-6 me-3">MFP Academy</span>
-                                    <a href="{{ route('event.index') }}" class="btn btn-outline-primary rounded-pill">
-                                        <i class="bx bx-arrow-back me-1"></i> Kembali ke Daftar Acara
-                                    </a>
-                                </div>
-                            </div>
+                        @endif
+                        <div class="d-flex align-items-center text-muted">
+                            <i class="bx bx-user me-2"></i>
+                            {{-- <span>Future Football Educare</span> --}}
                         </div>
                     </div>
                 </div>
 
-                <!-- Related Events -->
+                <!-- Featured Image -->
+                @if($event->image)
+                <div class="news-image mb-4">
+                    <img src="{{ asset($event->image) }}" 
+                         class="img-fluid w-100 rounded-3 shadow-sm" 
+                         alt="{{ $event->judul }}"
+                         style="max-height: 500px; object-fit: cover;">
+                    <div class="image-caption mt-2 text-muted small text-center fst-italic">
+                        Ilustrasi: {{ $event->judul }}
+                    </div>
+                </div>
+                @endif
+
+                <!-- Article Content -->
+                <article class="news-content">
+                    <!-- Lead Paragraph -->
+                    <div class="lead-paragraph mb-4">
+                        <p class="lead text-dark lh-lg">
+                            {{ \Illuminate\Support\Str::limit(strip_tags($event->deskripsi), 200) }}
+                        </p>
+                    </div>
+
+                    <!-- Full Content -->
+                    <div class="article-body">
+                        <div class="content-text fs-6 lh-lg text-dark">
+                            {!! nl2br(e($event->deskripsi)) !!}
+                        </div>
+                    </div>
+
+                    <!-- Event Details Box -->
+                    <div class="event-details-box bg-light rounded-3 p-4 my-4">
+                        <h5 class="mb-3 text-primary">
+                            <i class="bx bx-info-circle me-2"></i>Detail Acara
+                        </h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <div class="detail-label text-muted small">Tanggal</div>
+                                    <div class="detail-value fw-semibold">
+                                        {{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}
+                                    </div>
+                                </div>
+                            </div>
+                            @if($event->lokasi)
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <div class="detail-label text-muted small">Lokasi</div>
+                                    <div class="detail-value fw-semibold">{{ $event->lokasi }}</div>
+                                </div>
+                            </div>
+                            @endif
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <div class="detail-label text-muted small">Penyelenggara</div>
+                                    <div class="detail-value fw-semibold">Future Football Educare</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="detail-item">
+                                    <div class="detail-label text-muted small">Kategori</div>
+                                    <div class="detail-value fw-semibold">Berita & Acara</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Share Section -->
+                    <div class="social-share-section bg-white border rounded-3 p-4 my-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8 mb-3 mb-md-0">
+                                <h6 class="mb-2">
+                                    <i class="bx bx-share-alt me-2 text-primary"></i>Bagikan Artikel Ini:
+                                </h6>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a href="https://wa.me/?text=Baca berita ini: {{ $event->judul }} - {{ url()->current() }}" 
+                                       target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fab fa-whatsapp me-1"></i> WhatsApp
+                                    </a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" 
+                                       target="_blank" class="btn btn-primary btn-sm">
+                                        <i class="fab fa-facebook-f me-1"></i> Facebook
+                                    </a>
+                                    <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}&text={{ $event->judul }}" 
+                                       target="_blank" class="btn btn-info btn-sm">
+                                        <i class="fab fa-twitter me-1"></i> Twitter
+                                    </a>
+                                    <button onclick="copyToClipboard()" class="btn btn-outline-secondary btn-sm">
+                                        <i class="bx bx-copy me-1"></i> Copy Link
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-md-end">
+                                <a href="{{ route('event.index') }}" class="btn btn-outline-primary">
+                                    <i class="bx bx-arrow-back me-1"></i> Kembali
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related News/Events -->
                 @php
                     $relatedEvents = \App\Models\Event::where('id', '!=', $event->id)
                                                       ->where('tanggal', '>=', now())
@@ -152,30 +159,56 @@
                 @endphp
                 
                 @if($relatedEvents->count() > 0)
-                <div class="mt-5">
-                    <h4 class="mb-4 text-center">Acara Lainnya</h4>
+                <div class="related-news mt-5">
+                    <div class="section-header mb-4">
+                        <h4 class="mb-2">
+                            <i class="bx bx-news me-2 text-primary"></i>Berita Terkait
+                        </h4>
+                        <div class="section-divider bg-primary" style="height: 3px; width: 60px;"></div>
+                    </div>
+                    
                     <div class="row g-4">
                         @foreach($relatedEvents as $relatedEvent)
-                        <div class="col-md-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                @if($relatedEvent->image)
-                                <img src="{{ asset($relatedEvent->image) }}" class="card-img-top" 
-                                     alt="{{ $relatedEvent->judul }}" style="height: 150px; object-fit: cover;">
-                                @endif
-                                <div class="card-body">
-                                    <h6 class="card-title text-primary">{{ Str::limit($relatedEvent->judul, 50) }}</h6>
-                                    <p class="card-text small text-muted mb-2">
-                                        <i class="bx bx-calendar me-1"></i>
-                                        {{ \Carbon\Carbon::parse($relatedEvent->tanggal)->format('d M Y') }}
-                                    </p>
-                                    <p class="card-text">{{ Str::limit(strip_tags($relatedEvent->deskripsi), 80) }}</p>
+                        <div class="col-lg-4 col-md-6">
+                            <article class="news-card h-100">
+                                <div class="card border-0 shadow-sm h-100">
+                                    @if($relatedEvent->image)
+                                    <div class="news-card-image">
+                                        <img src="{{ asset($relatedEvent->image) }}" 
+                                             class="card-img-top" 
+                                             alt="{{ $relatedEvent->judul }}" 
+                                             style="height: 180px; object-fit: cover;">
+                                        <div class="news-category-badge">
+                                            <span class="badge bg-danger">Berita</span>
+                                        </div>
+                                    </div>
+                                    @endif
+                                    
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="news-meta-small mb-2">
+                                            <small class="text-muted">
+                                                <i class="bx bx-calendar me-1"></i>
+                                                {{ \Carbon\Carbon::parse($relatedEvent->tanggal)->format('d M Y') }}
+                                            </small>
+                                        </div>
+                                        
+                                        <h6 class="news-card-title mb-2">
+                                            <a href="{{ route('event.show', $relatedEvent->slug) }}" 
+                                               class="text-decoration-none text-dark stretched-link">
+                                                {{ $relatedEvent->judul }}
+                                            </a>
+                                        </h6>
+                                        
+                                        <p class="news-card-excerpt text-muted small flex-grow-1">
+                                            {{ Str::limit(strip_tags($relatedEvent->deskripsi), 100) }}
+                                        </p>
+                                        
+                                        <div class="news-card-footer mt-auto pt-2">
+                                            <small class="text-primary">Baca selengkapnya →</small>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="card-footer bg-white border-0">
-                                    <a href="{{ route('event.show', $relatedEvent->slug) }}" class="btn btn-sm btn-outline-primary rounded-pill">
-                                        Lihat Detail
-                                    </a>
-                                </div>
-                            </div>
+                            </article>
                         </div>
                         @endforeach
                     </div>
@@ -188,123 +221,185 @@
 
 <!-- Custom Styles -->
 <style>
-.hero-image {
-    overflow: hidden;
-}
-
-.hero-image img {
-    transition: transform 0.3s ease;
-}
-
-.hero-image:hover img {
-    transform: scale(1.02);
-}
-
-.hero-overlay {
-    background: linear-gradient(to bottom, 
-                                rgba(0,0,0,0.1) 0%, 
-                                rgba(0,0,0,0.3) 50%, 
-                                rgba(0,0,0,0.7) 100%);
-}
-
-.text-shadow {
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero-title {
-    font-size: 1.5rem;
+/* News Layout Styling - Modern News Website Style */
+.news-title {
+    font-size: 1.75rem;
     line-height: 1.3;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-}
-
-.hero-meta-text {
-    font-size: 0.85rem;
-}
-
-.event-description {
-    text-align: justify;
-    line-height: 1.8;
-}
-
-.event-description p {
+    color: #1a1a1a;
     margin-bottom: 1rem;
 }
 
-/* Mobile First Approach */
+.news-meta {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.news-meta i {
+    color: #6c757d;
+}
+
+.news-image {
+    position: relative;
+}
+
+.image-caption {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.lead-paragraph {
+    border-left: 4px solid #dc3545;
+    padding-left: 1rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 0.375rem;
+}
+
+.content-text {
+    line-height: 1.8;
+    color: #333;
+}
+
+.content-text p {
+    margin-bottom: 1.2rem;
+}
+
+.event-details-box {
+    border: 1px solid #e9ecef;
+}
+
+.detail-item {
+    margin-bottom: 0.5rem;
+}
+
+.detail-label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-value {
+    color: #333;
+}
+
+.social-share-section {
+    border: 1px solid #e9ecef;
+}
+
+.news-card {
+    transition: transform 0.2s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-2px);
+}
+
+.news-card-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.news-category-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+}
+
+.news-card-title a:hover {
+    color: #dc3545 !important;
+}
+
+.section-divider {
+    border-radius: 2px;
+}
+
+/* Responsive Design */
 @media (min-width: 576px) {
-    .hero-title {
-        font-size: 1.75rem;
-        line-height: 1.4;
-    }
-    
-    .hero-meta-text {
-        font-size: 0.9rem;
+    .news-title {
+        font-size: 2rem;
     }
 }
 
 @media (min-width: 768px) {
-    .hero-title {
+    .news-title {
         font-size: 2.25rem;
         line-height: 1.2;
     }
     
-    .hero-meta-text {
+    .news-meta {
         font-size: 1rem;
-    }
-    
-    .hero-image img {
-        height: 350px !important;
     }
 }
 
 @media (min-width: 992px) {
-    .hero-title {
+    .news-title {
         font-size: 2.5rem;
-    }
-    
-    .hero-image img {
-        height: 400px !important;
     }
 }
 
+/* Mobile Optimization */
 @media (max-width: 575px) {
-    .hero-image img {
-        height: 200px !important;
+    .news-title {
+        font-size: 1.5rem;
+        line-height: 1.4;
     }
     
-    .p-4 {
-        padding: 1rem !important;
+    .news-meta {
+        flex-direction: column;
+        gap: 0.5rem !important;
     }
     
-    .p-md-5 {
-        padding: 1.5rem !important;
+    .news-meta > div {
+        margin-bottom: 0.5rem;
     }
     
     .container-xxl {
-        padding-left: 0.75rem;
-        padding-right: 0.75rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     
-    .card {
-        margin: 0 0.5rem;
+    .lead-paragraph {
+        padding: 0.75rem;
+    }
+    
+    .event-details-box {
+        padding: 1rem !important;
+    }
+    
+    .social-share-section {
+        padding: 1rem !important;
+    }
+    
+    .social-share-section .row {
+        margin: 0;
+    }
+    
+    .social-share-section .col-md-8,
+    .social-share-section .col-md-4 {
+        padding: 0.5rem;
+    }
+    
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .btn-sm {
+        font-size: 0.8rem;
+        padding: 0.375rem 0.5rem;
     }
     
     .breadcrumb {
         font-size: 0.85rem;
     }
     
-    .btn {
-        font-size: 0.85rem;
-        padding: 0.375rem 0.75rem;
+    .content-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
     }
     
-    h3 {
-        font-size: 1.25rem;
-    }
-    
-    h4 {
+    h5 {
         font-size: 1.1rem;
     }
     
@@ -314,69 +409,42 @@
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
-    .hero-image img {
-        height: 250px !important;
-    }
-    
-    .p-4 {
+    .event-details-box {
         padding: 1.25rem !important;
     }
     
-    .p-md-5 {
-        padding: 1.75rem !important;
+    .social-share-section {
+        padding: 1.25rem !important;
     }
 }
 
-.btn-social {
-    transition: transform 0.2s ease;
+/* Loading Animation */
+.news-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
 }
 
-.btn-social:hover {
-    transform: translateY(-2px);
+.news-card:nth-child(1) { animation-delay: 0.1s; }
+.news-card:nth-child(2) { animation-delay: 0.2s; }
+.news-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.card {
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
-}
-
-/* Better text readability on mobile */
-@media (max-width: 575px) {
-    .event-description {
-        font-size: 0.9rem;
-        line-height: 1.6;
-        text-align: left;
+/* Print Styles */
+@media print {
+    .social-share-section,
+    .related-news {
+        display: none;
     }
     
-    .bg-light .row {
-        margin: 0;
-    }
-    
-    .bg-light .col-md-6 {
-        padding: 0.5rem;
-    }
-    
-    .d-flex.align-items-center {
-        flex-wrap: wrap;
-    }
-    
-    .bg-primary.rounded-circle,
-    .bg-success.rounded-circle {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    
-    .bg-primary.rounded-circle i,
-    .bg-success.rounded-circle i {
-        font-size: 1.1rem;
+    .news-image img {
+        max-height: 300px;
     }
 }
 </style>
@@ -389,7 +457,7 @@ function copyToClipboard() {
         // Show success message
         const btn = event.target.closest('button');
         const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="bx bx-check me-1"></i> Disalin!';
+        btn.innerHTML = '<i class="bx bx-check me-1"></i> Tersalin!';
         btn.classList.remove('btn-outline-secondary');
         btn.classList.add('btn-success');
         
@@ -397,24 +465,111 @@ function copyToClipboard() {
             btn.innerHTML = originalText;
             btn.classList.remove('btn-success');
             btn.classList.add('btn-outline-secondary');
-        }, 2000);
+        }, 2500);
+    }).catch(function() {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = url;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        const btn = event.target.closest('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="bx bx-check me-1"></i> Tersalin!';
+        btn.classList.remove('btn-outline-secondary');
+        btn.classList.add('btn-success');
+        
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-outline-secondary');
+        }, 2500);
     });
 }
 
-// Smooth scroll for related events
+// Enhanced page loading effects
 document.addEventListener('DOMContentLoaded', function() {
-    // Add loading animation
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
+    // Smooth fade in for main content
+    const mainContent = document.querySelector('.news-content');
+    if (mainContent) {
+        mainContent.style.opacity = '0';
+        mainContent.style.transform = 'translateY(20px)';
         
         setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
+            mainContent.style.transition = 'all 0.6s ease';
+            mainContent.style.opacity = '1';
+            mainContent.style.transform = 'translateY(0)';
+        }, 200);
+    }
+    
+    // Staggered animation for related news cards
+    const newsCards = document.querySelectorAll('.news-card');
+    newsCards.forEach((card, index) => {
+        card.style.animationDelay = `${0.1 + (index * 0.1)}s`;
     });
+    
+    // Image lazy loading enhancement
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+        
+        if (img.complete) {
+            img.style.opacity = '1';
+        }
+    });
+    
+    // Smooth scroll for internal links
+    const internalLinks = document.querySelectorAll('a[href^="#"]');
+    internalLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Reading time estimator (optional feature)
+    const content = document.querySelector('.content-text');
+    if (content) {
+        const wordCount = content.innerText.split(/\s+/).length;
+        const readingTime = Math.ceil(wordCount / 200); // Average reading speed
+        const metaSection = document.querySelector('.news-meta');
+        if (metaSection && readingTime > 1) {
+            const readingTimeElement = document.createElement('div');
+            readingTimeElement.className = 'd-flex align-items-center text-muted';
+            readingTimeElement.innerHTML = `<i class="bx bx-time me-2"></i><span>${readingTime} menit baca</span>`;
+            metaSection.appendChild(readingTimeElement);
+        }
+    }
 });
+
+// Enhanced social sharing
+function shareToWhatsApp() {
+    const title = document.querySelector('.news-title').textContent;
+    const url = window.location.href;
+    const text = `Baca berita menarik ini: ${title} - ${url}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function shareToFacebook() {
+    const url = window.location.href;
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+}
+
+function shareToTwitter() {
+    const title = document.querySelector('.news-title').textContent;
+    const url = window.location.href;
+    const text = `${title} - ${url}`;
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, '_blank');
+}
 </script>
 @endsection

@@ -44,7 +44,7 @@
                                 </p>
                             </div>
                             <div class="card-footer bg-white border-0 text-end py-3">
-                                <a href="{{ route('event.show', $event->slug) }}" class="btn btn-danger rounded-pill px-3 py-2 shadow-sm">Lihat Acara</a>
+                                <a href="{{ route('event.show', $event->slug) }}" class="btn btn-danger rounded-pill px-3 py-2 shadow-sm">Lihat Berita/Acara</a>
                             </div>
                         </div>
                     </div>
