@@ -65,7 +65,7 @@
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
                         <h2>Edit Berita/Acara</h2>
-                        <form action="{{ route('admin.events.update', $event->id) }}" method="POST" class="mt-4">
+                        <form action="{{ route('admin.events.update', $event->id) }}" method="POST" enctype="multipart/form-data" class="mt-4">
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
@@ -96,6 +96,24 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="image" class="form-label">Foto Acara</label>
+                                @if($event->image)
+                                <div class="mb-2">
+                                    <img src="{{ asset($event->image) }}" alt="Current Image" class="img-thumbnail" style="max-width: 200px; max-height: 200px; object-fit: cover;">
+                                    <div class="form-text">Foto saat ini</div>
+                                </div>
+                                @endif
+                                <input type="file" name="image" id="image"
+                                    class="form-control @error('image') is-invalid @enderror" accept="image/*">
+                                @error('image')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                                <div class="form-text">Format yang didukung: JPEG, PNG, JPG, GIF. Maksimal 2MB. Biarkan kosong jika tidak ingin mengubah foto.</div>
+                                <div class="mt-2">
+                                    <img id="imagePreview" src="" alt="Preview" style="display: none; max-width: 200px; max-height: 200px; object-fit: cover;" class="img-thumbnail">
+                                </div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
                                 <textarea name="deskripsi" id="deskripsi" class="form-control @error('deskripsi') is-invalid @enderror" rows="8"
                                     required>{{ old('deskripsi', $event->deskripsi) }}</textarea>
@@ -118,4 +136,23 @@
         <!-- Overlay -->
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+
+<script>
+// Image preview functionality
+document.getElementById('image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const preview = document.getElementById('imagePreview');
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    } else {
+        preview.style.display = 'none';
+    }
+});
+</script>
 @endsection

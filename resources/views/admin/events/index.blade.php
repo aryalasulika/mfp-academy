@@ -75,8 +75,10 @@
                             <table class="table table-bordered table-striped align-middle text-center">
                                 <thead class="table-primary">
                                     <tr>
+                                        <th>Foto</th>
                                         <th>Tanggal</th>
                                         <th>Judul</th>
+                                        <th>Slug URL</th>
                                         <th>Lokasi</th>
                                         <th>Deskripsi</th>
                                         <th>Aksi</th>
@@ -85,10 +87,28 @@
                                 <tbody>
                                     @forelse($events as $event)
                                         <tr>
+                                            <td>
+                                                @if($event->image)
+                                                    <img src="{{ asset($event->image) }}" alt="{{ $event->judul }}" 
+                                                         class="img-thumbnail" style="width: 80px; height: 80px; object-fit: cover;">
+                                                @else
+                                                    <div class="bg-light d-flex align-items-center justify-content-center" 
+                                                         style="width: 80px; height: 80px;">
+                                                        <i class="bx bx-image text-muted"></i>
+                                                    </div>
+                                                @endif
+                                            </td>
                                             <td>{{ \Carbon\Carbon::parse($event->tanggal)->format('d-m-Y') }}</td>
-                                            <td>{{ $event->judul }}</td>
+                                            <td class="text-start">{{ $event->judul }}</td>
+                                            <td class="text-start">
+                                                <small class="text-muted">{{ $event->slug }}</small><br>
+                                                <a href="{{ route('event.show', $event->slug) }}" 
+                                                   target="_blank" class="btn btn-outline-primary btn-xs">
+                                                    <i class="bx bx-link-external"></i> Lihat
+                                                </a>
+                                            </td>
                                             <td>{{ $event->lokasi }}</td>
-                                            <td class="text-start">{{ $event->deskripsi }}</td>
+                                            <td class="text-start">{{ Str::limit($event->deskripsi, 80) }}</td>
                                             <td>
                                                 <a href="{{ route('admin.events.edit', $event->id) }}"
                                                     class="btn btn-warning btn-sm">Edit</a>
@@ -103,7 +123,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5">Belum ada acara.</td>
+                                            <td colspan="7">Belum ada acara.</td>
                                         </tr>
                                     @endforelse
                                 </tbody>

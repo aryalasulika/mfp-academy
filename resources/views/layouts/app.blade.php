@@ -1033,10 +1033,12 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse" id="navbarCollapse">            <div class="navbar-nav me-auto p-3 p-lg-0">
-                <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>                <div class="nav-item dropdown">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav me-auto p-3 p-lg-0">
+                <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
+                <div class="nav-item dropdown">
                     <a href="#"
-                        class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan')}}"
+                        class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') ? ' active' : ''}}"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Informasi
                     </a>

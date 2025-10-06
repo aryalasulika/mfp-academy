@@ -41,7 +41,7 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admi
 
 Route::get('/jadwal-latihan', [JadwalLatihanController::class, 'index'])->name('jadwal.latihan');
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
-Route::get('/event/{id}', [EventController::class, 'show'])->name('event.show');
+Route::get('/event/{event:slug}', [EventController::class, 'show'])->name('event.show');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
 Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merchandise.index');
 
