@@ -115,7 +115,7 @@
             <li class="menu-item {{ request()->routeIs('admin.events.*') ? 'active' : '' }}">
                 <a href="{{ route('admin.events.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bxs-megaphone"></i>
-                    <div data-i18n="Acara">Acara</div>
+                    <div data-i18n="Acara">Berita/Acara</div>
                 </a>
             </li>
             <li class="menu-item {{ request()->routeIs('admin.galeri.*') ? 'active' : '' }}">

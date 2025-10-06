@@ -133,6 +133,41 @@
             position: relative;
             overflow: hidden;
         }
+
+        /* Base styles for topbar contact info */
+        .bg-logo-color .col-4 {
+            display: flex;
+            align-items: center;
+        }
+        
+        .bg-logo-color .col-4 .d-flex {
+            width: 100%;
+            min-width: 0;
+        }
+        
+        .bg-logo-color .col-4 .ps-3 {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+        }
+        
+        .bg-logo-color .col-4 h6,
+        .bg-logo-color .col-4 p {
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        /* Ensure consistent icon sizing */
+        .bg-logo-color .btn-lg-square {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
           .bg-logo-color::before {
             content: '';
             position: absolute;
@@ -667,6 +702,100 @@
                 width: 66.66667%;
             }
         }
+
+        /* Fix topbar overlapping issues for medium-large screens (1200px - 1400px) */
+        @media (min-width: 1200px) and (max-width: 1400px) {
+            .bg-logo-color .row.g-0.g-xl-4 {
+                gap: 0.5rem !important;
+            }
+            
+            .bg-logo-color .col-4 {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .bg-logo-color .col-4 .ps-3 {
+                padding-left: 0.75rem !important;
+            }
+            
+            .bg-logo-color .col-4 h6 {
+                font-size: 0.9rem !important;
+                line-height: 1.2;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            
+            .bg-logo-color .col-4 p {
+                font-size: 0.8rem !important;
+                margin-bottom: 0.25rem !important;
+            }
+            
+            .bg-logo-color .btn-lg-square {
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px;
+                flex-shrink: 0;
+            }
+            
+            .bg-logo-color .btn-lg-square i {
+                font-size: 0.9rem;
+            }
+            
+            /* Adjust padding for topbar container */
+            .bg-logo-color {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+        }
+
+        /* Additional fix for very specific range around 1250px */
+        @media (min-width: 1200px) and (max-width: 1300px) {
+            .bg-logo-color .col-4 h6 {
+                font-size: 0.85rem !important;
+            }
+            
+            .bg-logo-color .col-4 p {
+                font-size: 0.75rem !important;
+            }
+            
+            .bg-logo-color .col-4 .d-flex {
+                gap: 0.5rem;
+            }
+            
+            /* Specific fix for email overflow */
+            .bg-logo-color .col-4:last-child h6 {
+                font-size: 0.8rem !important;
+                max-width: 200px;
+            }
+        }
+
+        /* Ultra-wide screen adjustments */
+        @media (min-width: 1400px) {
+            .bg-logo-color .col-4 h6 {
+                font-size: 1rem;
+            }
+            
+            .bg-logo-color .col-4 p {
+                font-size: 0.875rem;
+            }
+            
+            .bg-logo-color .btn-lg-square {
+                width: 48px !important;
+                height: 48px !important;
+            }
+        }
+
+        /* Fix for screens between 1300px - 1400px */
+        @media (min-width: 1300px) and (max-width: 1399px) {
+            .bg-logo-color .col-4 h6 {
+                font-size: 0.9rem !important;
+            }
+            
+            .bg-logo-color .col-4 p {
+                font-size: 0.8rem !important;
+            }
+        }
         
         @media (min-width: 992px) and (max-width: 1199px) {
             .navbar {
@@ -851,14 +980,14 @@
                 </a>
             </div>           
              <div class="col-xl-8 col-lg-7 col-md-7 d-none d-xl-block">
-                <div class="row g-0 g-xl-4">
+                <div class="row g-0 g-xl-2 g-xxl-4">
                      <div class="col-4">
                         <div class="d-flex align-items-center justify-content-end">
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="far fa-clock text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2 text-white">Jam Latihan</p>
+                            <div class="ps-2 ps-xl-3 text-end text-xl-start">
+                                <p class="mb-1 mb-xl-2 text-white small">Jam Latihan</p>
                                 <h6 class="mb-0 text-white">Senin - Jumat, 08:00 - 18:00</h6>
                             </div>
                         </div>
@@ -868,8 +997,8 @@
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="fa fa-phone text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2 text-white">Hubungi Kami</p>
+                            <div class="ps-2 ps-xl-3 text-end text-xl-start">
+                                <p class="mb-1 mb-xl-2 text-white small">Hubungi Kami</p>
                                 <h6 class="mb-0"><a href="https://wa.me/6289518788383" target="_blank"
                                         style="color:white;text-decoration:none;">+62 895 1878 8383</a></h6>
                             </div>
@@ -880,9 +1009,9 @@
                             <div class="flex-shrink-0 btn-lg-square border rounded-circle bg-white">
                                 <i class="far fa-envelope text-primary"></i>
                             </div>
-                            <div class="ps-3">
-                                <p class="mb-2 text-white">Email</p>
-                                <h6 class="mb-0 text-white">mfpsoccerschool@gmail.com</h6>
+                            <div class="ps-2 ps-xl-3 text-end text-xl-start">
+                                <p class="mb-1 mb-xl-2 text-white small">Email</p>
+                                <h6 class="mb-0 text-white text-truncate">mfpsoccerschool@gmail.com</h6>
                             </div>
                         </div>
                     </div>
@@ -907,7 +1036,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">            <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>                <div class="nav-item dropdown">
                     <a href="#"
-                        class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') || request()->is('event') ? ' active' : '' }}"
+                        class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan')}}"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Informasi
                     </a>
@@ -928,7 +1057,7 @@
                     </div>
                 </div>
                 <a href="{{ route('event.index') }}"
-                    class="nav-item nav-link{{ request()->is('program') ? ' active' : '' }}">Berita</a>
+                    class="nav-item nav-link{{ request()->is('event') ? ' active' : '' }}">Berita/Acara</a>
                 <a href="{{ route('galeri.index') }}"
                     class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>
                 <a href="{{ route('merchandise.index') }}"
@@ -999,8 +1128,8 @@
                     <h5 class="text-light mb-4">Tautan Cepat</h5>
                     <a class="btn btn-link" href="/">Beranda</a>
                     <a class="btn btn-link" href="{{ route('jadwal.latihan') }}">Jadwal Latihan</a>
-                    <a class="btn btn-link" href="{{ route('event.index') }}">Acara</a>
-                    <a class="btn btn-link" href="#program">Program</a>
+                    <a class="btn btn-link" href="{{ route('event.index') }}">Berita/Acara</a>
+                    {{-- <a class="btn btn-link" href="#program">Program</a> --}}
                     <a class="btn btn-link" href="{{ route('galeri.index') }}">Galeri</a>
                     <a class="btn btn-link" href="/contact">Kontak</a>
                     <a class="btn btn-link"

@@ -65,8 +65,8 @@
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
                         <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h2>Daftar Acara</h2>
-                            <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Tambah Acara</a>
+                            <h2>Daftar Berita & Acara</h2>
+                            <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Tambah Berita/Acara</a>
                         </div>
                         @if (session('success'))
                             <div class="alert alert-success">{{ session('success') }}</div>

@@ -64,7 +64,7 @@
                 <div class="content-wrapper">
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
-                        <h2>Edit Acara</h2>
+                        <h2>Edit Berita/Acara</h2>
                         <form action="{{ route('admin.events.update', $event->id) }}" method="POST" class="mt-4">
                             @csrf
                             @method('PUT')

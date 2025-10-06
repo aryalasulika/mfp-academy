@@ -64,7 +64,7 @@
                 <div class="content-wrapper">
                     <!-- Statistik Cards Modern Fancy -->
                     <div class="container-xxl py-4">
-                        <h2>Tambah Acara</h2>
+                        <h2>Tambah Berita/Acara</h2>
                         <form action="{{ route('admin.events.store') }}" method="POST" class="mt-4">
                             @csrf
                             <div class="mb-3">
