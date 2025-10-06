@@ -26,20 +26,20 @@
                         <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
                         
                         <!-- Hero Content -->
-                        <div class="position-absolute bottom-0 start-0 w-100 p-4 text-white">
-                            <div class="container">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3 p-md-4 text-white">
+                            <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-12">
-                                        <h1 class="display-5 fw-bold mb-3 text-white text-shadow">{{ $event->judul }}</h1>
-                                        <div class="d-flex flex-wrap gap-3 mb-2">
+                                        <h1 class="hero-title fw-bold mb-2 mb-md-3 text-white text-shadow">{{ $event->judul }}</h1>
+                                        <div class="d-flex flex-wrap gap-2 gap-md-3 mb-2">
                                             <div class="d-flex align-items-center">
-                                                <i class="bx bx-calendar me-2 fs-5"></i>
-                                                <span class="fs-6">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
+                                                <i class="bx bx-calendar me-2 fs-6 fs-md-5"></i>
+                                                <span class="hero-meta-text">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
                                             </div>
                                             @if($event->lokasi)
                                             <div class="d-flex align-items-center">
-                                                <i class="bx bx-map me-2 fs-5"></i>
-                                                <span class="fs-6">{{ $event->lokasi }}</span>
+                                                <i class="bx bx-map me-2 fs-6 fs-md-5"></i>
+                                                <span class="hero-meta-text">{{ $event->lokasi }}</span>
                                             </div>
                                             @endif
                                         </div>
@@ -50,18 +50,18 @@
                     </div>
                     @else
                     <!-- Fallback Header without Image -->
-                    <div class="card-header text-white text-center border-0 py-5" style="background: linear-gradient(135deg, #61677A 0%, #4a5568 100%);">
-                        <div class="container">
-                            <h1 class="display-5 fw-bold mb-3">{{ $event->judul }}</h1>
-                            <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <div class="card-header text-white text-center border-0 py-4 py-md-5" style="background: linear-gradient(135deg, #61677A 0%, #4a5568 100%);">
+                        <div class="container-fluid px-3 px-md-4">
+                            <h1 class="hero-title fw-bold mb-2 mb-md-3">{{ $event->judul }}</h1>
+                            <div class="d-flex justify-content-center flex-wrap gap-2 gap-md-3">
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-calendar me-2 fs-5"></i>
-                                    <span class="fs-6">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
+                                    <i class="bx bx-calendar me-2 fs-6 fs-md-5"></i>
+                                    <span class="hero-meta-text">{{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l, d F Y') }}</span>
                                 </div>
                                 @if($event->lokasi)
                                 <div class="d-flex align-items-center">
-                                    <i class="bx bx-map me-2 fs-5"></i>
-                                    <span class="fs-6">{{ $event->lokasi }}</span>
+                                    <i class="bx bx-map me-2 fs-6 fs-md-5"></i>
+                                    <span class="hero-meta-text">{{ $event->lokasi }}</span>
                                 </div>
                                 @endif
                             </div>
@@ -211,6 +211,18 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
+.hero-title {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+.hero-meta-text {
+    font-size: 0.85rem;
+}
+
 .event-description {
     text-align: justify;
     line-height: 1.8;
@@ -220,31 +232,98 @@
     margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-    .hero-image img {
-        height: 250px !important;
+/* Mobile First Approach */
+@media (min-width: 576px) {
+    .hero-title {
+        font-size: 1.75rem;
+        line-height: 1.4;
     }
     
-    .display-5 {
-        font-size: 1.75rem !important;
-    }
-    
-    .p-4 {
-        padding: 1.5rem !important;
-    }
-    
-    .p-md-5 {
-        padding: 2rem !important;
+    .hero-meta-text {
+        font-size: 0.9rem;
     }
 }
 
-@media (max-width: 576px) {
+@media (min-width: 768px) {
+    .hero-title {
+        font-size: 2.25rem;
+        line-height: 1.2;
+    }
+    
+    .hero-meta-text {
+        font-size: 1rem;
+    }
+    
+    .hero-image img {
+        height: 350px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-image img {
+        height: 400px !important;
+    }
+}
+
+@media (max-width: 575px) {
     .hero-image img {
         height: 200px !important;
     }
     
-    .display-5 {
-        font-size: 1.5rem !important;
+    .p-4 {
+        padding: 1rem !important;
+    }
+    
+    .p-md-5 {
+        padding: 1.5rem !important;
+    }
+    
+    .container-xxl {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+    
+    .card {
+        margin: 0 0.5rem;
+    }
+    
+    .breadcrumb {
+        font-size: 0.85rem;
+    }
+    
+    .btn {
+        font-size: 0.85rem;
+        padding: 0.375rem 0.75rem;
+    }
+    
+    h3 {
+        font-size: 1.25rem;
+    }
+    
+    h4 {
+        font-size: 1.1rem;
+    }
+    
+    h6 {
+        font-size: 0.95rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+    .hero-image img {
+        height: 250px !important;
+    }
+    
+    .p-4 {
+        padding: 1.25rem !important;
+    }
+    
+    .p-md-5 {
+        padding: 1.75rem !important;
     }
 }
 
@@ -263,6 +342,42 @@
 .card:hover {
     transform: translateY(-2px);
     box-shadow: 0 1rem 3rem rgba(0,0,0,0.175) !important;
+}
+
+/* Better text readability on mobile */
+@media (max-width: 575px) {
+    .event-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: left;
+    }
+    
+    .bg-light .row {
+        margin: 0;
+    }
+    
+    .bg-light .col-md-6 {
+        padding: 0.5rem;
+    }
+    
+    .d-flex.align-items-center {
+        flex-wrap: wrap;
+    }
+    
+    .bg-primary.rounded-circle,
+    .bg-success.rounded-circle {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+    
+    .bg-primary.rounded-circle i,
+    .bg-success.rounded-circle i {
+        font-size: 1.1rem;
+    }
 }
 </style>
 
