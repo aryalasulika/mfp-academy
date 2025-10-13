@@ -10,10 +10,19 @@ class JadwalLatihan extends Model
     protected $table = 'jadwal_latihan';
     protected $fillable = [
         'hari',
-        'jam',
+        'jam_in',
+        'jam_out',
         'kelompok_usia',
         'jenis_latihan',
         'lokasi',
         'tanggal',
     ];
+
+    /**
+     * Relasi ke HasilLatihan
+     */
+    public function hasilLatihan()
+    {
+        return $this->hasOne(HasilLatihan::class);
+    }
 }

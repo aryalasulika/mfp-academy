@@ -60,44 +60,47 @@
     <form action="{{ route('admin.jadwal_latihan.store') }}" method="POST" class="mt-4">
         @csrf
         <div class="mb-3">
-            <label for="hari" class="form-label">Hari</label>
+            <label for="hari" class="form-label">Hari <span class="text-danger">*</span></label>
             <input type="text" name="hari" id="hari" class="form-control @error('hari') is-invalid @enderror" value="{{ old('hari') }}" required readonly>
             @error('hari')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
-        <div class="mb-3">
-            <label for="jam" class="form-label">Jam</label>
-            <input type="text" name="jam" id="jam" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam') }}" required>
-            @error('jam')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                <div class="mb-3">
+            <label for="tanggal" class="form-label">Tanggal <span class="text-danger">*</span></label>
+            <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', isset($jadwal) ? $jadwal->tanggal : '') }}" required min="{{ date('Y-m-d') }}">
+            @error('tanggal')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">
-            <label for="kelompok_usia" class="form-label">Kelompok Usia</label>
+            <label for="jam_in" class="form-label">Jam Masuk <span class="text-danger">*</span></label>
+            <input type="time" name="jam_in" id="jam_in" class="form-control @error('jam_in') is-invalid @enderror" value="{{ old('jam_in') }}" required>
+            @error('jam_in')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label for="jam_out" class="form-label">Jam Keluar <span class="text-danger">*</span></label>
+            <input type="time" name="jam_out" id="jam_out" class="form-control @error('jam_out') is-invalid @enderror" value="{{ old('jam_out') }}" required>
+            @error('jam_out')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+        <div class="mb-3">
+            <label for="kelompok_usia" class="form-label">Kelompok Usia <span class="text-danger">*</span></label>
             <input type="text" name="kelompok_usia" id="kelompok_usia" class="form-control @error('kelompok_usia') is-invalid @enderror" value="{{ old('kelompok_usia') }}" required>
+            <div class="mt-2">
+                <small class="text-muted">Pilihan cepat:</small>
+                <div class="btn-group btn-group-sm mt-1" role="group">
+                    <button type="button" class="btn btn-outline-primary kelompok-btn" data-value="U-10">U-10</button>
+                    <button type="button" class="btn btn-outline-primary kelompok-btn" data-value="U-12">U-12</button>
+                    <button type="button" class="btn btn-outline-primary kelompok-btn" data-value="U-13">U-13</button>
+                </div>
+            </div>
             @error('kelompok_usia')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">
-            <label for="jenis_latihan" class="form-label">Jenis Latihan</label>
-            <select name="jenis_latihan" id="jenis_latihan" class="form-control @error('jenis_latihan') is-invalid @enderror" required>
-                <option value="">Pilih Jenis Latihan</option>
-                <option value="Teknik Dasar" {{ old('jenis_latihan') == 'Teknik Dasar' ? 'selected' : '' }}>Teknik Dasar</option>
-                <option value="Fisik" {{ old('jenis_latihan') == 'Fisik' ? 'selected' : '' }}>Fisik</option>
-                <option value="Taktik" {{ old('jenis_latihan') == 'Taktik' ? 'selected' : '' }}>Taktik</option>
-                <option value="Shooting" {{ old('jenis_latihan') == 'Shooting' ? 'selected' : '' }}>Shooting</option>
-                <option value="Passing" {{ old('jenis_latihan') == 'Passing' ? 'selected' : '' }}>Passing</option>
-                <option value="Dribbling" {{ old('jenis_latihan') == 'Dribbling' ? 'selected' : '' }}>Dribbling</option>
-                <option value="Defending" {{ old('jenis_latihan') == 'Defending' ? 'selected' : '' }}>Defending</option>
-                <option value="Sparring" {{ old('jenis_latihan') == 'Sparring' ? 'selected' : '' }}>Sparring</option>
-            </select>
+            <label for="jenis_latihan" class="form-label">Jenis Latihan <span class="text-danger">*</span></label>
+            <input type="text" name="jenis_latihan" id="jenis_latihan" class="form-control @error('jenis_latihan') is-invalid @enderror" value="{{ old('jenis_latihan') }}" required placeholder="Contoh: Teknik Dasar">
             @error('jenis_latihan')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="mb-3">
-            <label for="lokasi" class="form-label">Lokasi</label>
+            <label for="lokasi" class="form-label">Lokasi <span class="text-danger">*</span></label>
             <input type="text" name="lokasi" id="lokasi" class="form-control @error('lokasi') is-invalid @enderror" value="{{ old('lokasi') }}" required>
             @error('lokasi')<div class="invalid-feedback">{{ $message }}</div>@enderror
-        </div>
-        <div class="mb-3">
-            <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', isset($jadwal) ? $jadwal->tanggal : '') }}" required min="{{ date('Y-m-d') }}">
-            @error('tanggal')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('admin.jadwal_latihan.index') }}" class="btn btn-secondary">Batal</a>
@@ -106,6 +109,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         const tanggalInput = document.getElementById('tanggal');
         const hariInput = document.getElementById('hari');
+        const kelompokUsiaInput = document.getElementById('kelompok_usia');
+        const kelompokButtons = document.querySelectorAll('.kelompok-btn');
+        
+        // Handle tanggal change
         tanggalInput.addEventListener('change', function() {
             const date = new Date(this.value);
             if (!isNaN(date.getTime())) {
@@ -115,6 +122,25 @@
                 hariInput.value = '';
             }
         });
+        
+        // Handle kelompok usia quick selection
+        kelompokButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                kelompokUsiaInput.value = value;
+                
+                // Remove active class from all buttons
+                kelompokButtons.forEach(btn => {
+                    btn.classList.remove('btn-primary');
+                    btn.classList.add('btn-outline-primary');
+                });
+                
+                // Add active class to clicked button
+                this.classList.remove('btn-outline-primary');
+                this.classList.add('btn-primary');
+            });
+        });
+        
         // Trigger on page load if value exists
         if (tanggalInput.value) {
             const date = new Date(tanggalInput.value);
@@ -122,6 +148,16 @@
                 const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
                 hariInput.value = days[date.getDay()];
             }
+        }
+        
+        // Check if kelompok usia value matches any button on page load
+        if (kelompokUsiaInput.value) {
+            kelompokButtons.forEach(button => {
+                if (button.getAttribute('data-value') === kelompokUsiaInput.value) {
+                    button.classList.remove('btn-outline-primary');
+                    button.classList.add('btn-primary');
+                }
+            });
         }
     });
     </script>

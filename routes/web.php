@@ -3,9 +3,11 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JadwalLatihanController;
+use App\Http\Controllers\HasilLatihanController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\MerchandiseController;
 use App\Http\Controllers\Admin\MerchandiseController as AdminMerchandiseController;
+use App\Http\Controllers\TimController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Admin\ContactMessageController;
@@ -35,6 +37,9 @@ Route::post('/contact', function (\Illuminate\Http\Request $request) {
     return back()->with('success', 'Pesan Anda berhasil dikirim!');
 });
 
+// Rute untuk halaman tim publik
+Route::get('/tim/{kelompok_usia}', [TimController::class, 'show'])->name('tim.show');
+
 Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
@@ -55,6 +60,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/users', [UserController::class, 'index'])->name('admin.user.index');
     Route::get('/admin/users/create', [UserController::class, 'create'])->name('admin.user.create');
     Route::post('/admin/users', [UserController::class, 'store'])->name('admin.user.store');
+    Route::get('/admin/users/{id}', [UserController::class, 'show'])->name('admin.user.show');
     Route::get('/admin/users/{id}/edit', [UserController::class, 'edit'])->name('admin.user.edit');
     Route::put('/admin/users/{id}', [UserController::class, 'update'])->name('admin.user.update');
     Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.user.destroy');
@@ -86,6 +92,14 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Merchandise Management Routes
     Route::resource('admin/merchandise', AdminMerchandiseController::class, ['as' => 'admin']);
+
+    // Hasil Latihan Routes
+    Route::get('/admin/jadwal-latihan/{jadwalLatihan}/hasil-latihan/create', [HasilLatihanController::class, 'create'])
+         ->name('admin.hasil_latihan.create');
+    Route::post('/admin/jadwal-latihan/{jadwalLatihan}/hasil-latihan', [HasilLatihanController::class, 'store'])
+         ->name('admin.hasil_latihan.store');
+    Route::get('/admin/hasil-latihan/{hasilLatihan}', [HasilLatihanController::class, 'show'])
+         ->name('admin.hasil_latihan.show');
 });
 
 // Fallback for unauthorized access to admin dashboard
@@ -94,16 +108,16 @@ Route::get('/admin', function () {
 });
 
 // User authentication routes (Peserta and Coach)
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Peserta Dashboard Routes
-Route::middleware(['auth', 'role:peserta'])->group(function () {
-    Route::get('/dashboard/peserta', [PesertaDashboardController::class, 'index'])->name('peserta.dashboard');
-});
+// Route::middleware(['auth', 'role:peserta'])->group(function () {
+//     Route::get('/dashboard/peserta', [PesertaDashboardController::class, 'index'])->name('peserta.dashboard');
+// });
 
 // Coach Dashboard Routes
-Route::middleware(['auth', 'role:coach'])->group(function () {
-    Route::get('/dashboard/coach', [CoachDashboardController::class, 'index'])->name('coach.dashboard');
-});
+// Route::middleware(['auth', 'role:coach'])->group(function () {
+//     Route::get('/dashboard/coach', [CoachDashboardController::class, 'index'])->name('coach.dashboard');
+// });

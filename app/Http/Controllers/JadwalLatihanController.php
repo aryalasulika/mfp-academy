@@ -14,9 +14,52 @@ class JadwalLatihanController extends Controller
     }
 
     // Admin: list
-    public function adminIndex()
+    public function adminIndex(Request $request)
     {
-        $jadwal = JadwalLatihan::orderBy('tanggal', 'asc')->get();
+        $query = JadwalLatihan::with('hasilLatihan');
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function($q) use ($search) {
+                $q->where('jenis_latihan', 'like', "%{$search}%")
+                  ->orWhere('lokasi', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by kelompok_usia
+        if ($request->filled('kelompok_usia')) {
+            $query->where('kelompok_usia', $request->get('kelompok_usia'));
+        }
+
+        // Filter by hari
+        if ($request->filled('hari')) {
+            $query->where('hari', $request->get('hari'));
+        }
+
+        // Sorting functionality
+        $sortableColumns = ['tanggal', 'hari', 'jam_in', 'jam_out', 'kelompok_usia', 'jenis_latihan', 'lokasi'];
+        $sort = $request->get('sort', 'tanggal');
+        $direction = $request->get('direction', 'asc');
+
+        // Validate sort column and direction
+        if (!in_array($sort, $sortableColumns)) {
+            $sort = 'tanggal';
+        }
+        if (!in_array($direction, ['asc', 'desc'])) {
+            $direction = 'asc';
+        }
+
+        $query->orderBy($sort, $direction);
+
+        // Secondary sort for consistent ordering
+        if ($sort !== 'tanggal') {
+            $query->orderBy('tanggal', 'asc');
+        }
+
+        // Pagination with search parameters preserved
+        $jadwal = $query->paginate(10)->appends($request->query());
+
         return view('admin.jadwal_latihan.index', compact('jadwal'));
     }
 
@@ -31,7 +74,9 @@ class JadwalLatihanController extends Controller
     {
         $request->validate([
             'hari' => 'required',
-            'jam' => 'required',
+            'tanggal' => 'required|date',
+            'jam_in' => 'required|date_format:H:i',
+            'jam_out' => 'required|date_format:H:i|after:jam_in',
             'kelompok_usia' => 'required',
             'jenis_latihan' => 'required',
             'lokasi' => 'required',
@@ -52,7 +97,9 @@ class JadwalLatihanController extends Controller
     {
         $request->validate([
             'hari' => 'required',
-            'jam' => 'required',
+            'tanggal' => 'required|date',
+            'jam_in' => 'required|date_format:H:i',
+            'jam_out' => 'required|date_format:H:i|after:jam_in',
             'kelompok_usia' => 'required',
             'jenis_latihan' => 'required',
             'lokasi' => 'required',

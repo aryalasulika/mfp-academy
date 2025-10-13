@@ -24,6 +24,10 @@ class User extends Authenticatable
         'nomor_hp',
         'password',
         'role',
+        'kelompok_usia',
+        'posisi',
+        'foto_profil',
+        'kelompok_usia_asuhan',
     ];
 
     /**

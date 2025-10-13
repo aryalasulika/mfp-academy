@@ -1036,6 +1036,17 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav me-auto p-3 p-lg-0">
                 <a href="/" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Beranda</a>
+                
+                <!-- Dropdown Tim -->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle{{ request()->routeIs('tim.show') ? ' active' : '' }}" data-bs-toggle="dropdown">Akademi</a>
+                    <div class="dropdown-menu rounded-0 rounded-bottom m-0">
+                        <a href="{{ route('tim.show', 'U-10') }}" class="dropdown-item{{ request()->routeIs('tim.show') && request()->route('kelompok_usia') == 'U-10' ? ' active' : '' }}">Tim U-10</a>
+                        <a href="{{ route('tim.show', 'U-12') }}" class="dropdown-item{{ request()->routeIs('tim.show') && request()->route('kelompok_usia') == 'U-12' ? ' active' : '' }}">Tim U-12</a>
+                        <a href="{{ route('tim.show', 'U-13') }}" class="dropdown-item{{ request()->routeIs('tim.show') && request()->route('kelompok_usia') == 'U-13' ? ' active' : '' }}">Tim U-13</a>
+                    </div>
+                </div>
+                
                 <div class="nav-item dropdown">
                     <a href="#"
                         class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') ? ' active' : ''}}"
@@ -1052,10 +1063,10 @@
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded{{ request()->is('event') ? ' active' : '' }}">
                             <i class="fa fa-bullhorn text-danger"></i> <span>Acara</span>
                         </a> --}}
-                        <a href="{{ asset('template/img/mfp/sponsorsip.pdf') }}" download
+                        {{-- <a href="{{ asset('template/img/mfp/sponsorsip.pdf') }}" download
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded">
                             <i class="fa fa-file-pdf text-success"></i> <span>Proposal Sponsorship</span>
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
                 <a href="{{ route('event.index') }}"
