@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="utf-8">
-    <title>MFP ACADEMY</title>
+    <title>@yield('title', 'MFP ACADEMY - Future Football Educare')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Akademi Sepak Bola, MFP Academy, Sepak Bola Anak, Pelatihan Bola" name="keywords">
-    <meta content="MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda." name="description">
+    <meta content="@yield('meta_keywords', 'Akademi Sepak Bola, MFP Academy, Sepak Bola Anak, Pelatihan Bola, Future Football Educare')" name="keywords">
+    <meta content="@yield('meta_description', 'MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda di Yogyakarta.')" name="description">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="@yield('title', 'MFP ACADEMY - Future Football Educare')">
+    <meta property="og:description" content="@yield('meta_description', 'MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda.')">
+    <meta property="og:image" content="@yield('og_image', asset('template/img/mfp/nvbrand.png'))">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="@yield('title', 'MFP ACADEMY')">
+    <meta property="twitter:description" content="@yield('meta_description', 'MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda.')">
+    <meta property="twitter:image" content="@yield('og_image', asset('template/img/mfp/nvbrand.png'))">
 
     <!-- Favicon -->
     <link href="{{ asset('favicon.ico') }}" rel="icon">
@@ -1264,42 +1278,55 @@
             const fabBtn = document.querySelector('.fab-btn');
             const fabOptions = document.querySelector('.fab-options');
             
+            // Early return if FAB elements not found (null check)
+            if (!fabWrapper || !fabToggle || !fabBtn || !fabOptions) {
+                console.warn('FAB elements not found on this page');
+                return;
+            }
+            
             // Auto close FAB when clicking outside
             document.addEventListener('click', function(event) {
-                // If click is outside the fab wrapper and fab is open, close it
-                if (!fabWrapper.contains(event.target) && fabToggle.checked) {
+                // Null check before using contains method
+                if (fabWrapper && !fabWrapper.contains(event.target) && fabToggle && fabToggle.checked) {
                     fabToggle.checked = false;
                 }
             });
             
             // Disable scroll when FAB is open on mobile
-            fabToggle.addEventListener('change', function() {
-                if (window.innerWidth < 768) {
-                    if (this.checked) {
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.body.style.overflow = '';
+            if (fabToggle) {
+                fabToggle.addEventListener('change', function() {
+                    if (window.innerWidth < 768) {
+                        if (this.checked) {
+                            document.body.style.overflow = 'hidden';
+                        } else {
+                            document.body.style.overflow = '';
+                        }
                     }
-                }            });            // Add subtle entrance animation to FAB on page load
-            setTimeout(() => {
-                fabBtn.style.opacity = '0';
-                fabBtn.style.transform = 'scale(0.8) translateY(20px)';
-                fabBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                
+                });
+            }            // Add subtle entrance animation to FAB on page load
+            if (fabBtn) {
                 setTimeout(() => {
-                    fabBtn.style.opacity = '1';
-                    fabBtn.style.transform = 'scale(1) translateY(0)';
-                }, 300);
-            }, 800);            // Add pulse effect when toggling the FAB
-            fabToggle.addEventListener('change', function() {
-                // Add a quick pulse animation when toggling
-                if (this.checked) {
-                    fabBtn.classList.add('fab-btn-pulse');
+                    fabBtn.style.opacity = '0';
+                    fabBtn.style.transform = 'scale(0.8) translateY(20px)';
+                    fabBtn.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    
                     setTimeout(() => {
-                        fabBtn.classList.remove('fab-btn-pulse');
-                    }, 400);
-                }
-            });              // Adjust fab-options positioning to ensure perfect alignment            
+                        fabBtn.style.opacity = '1';
+                        fabBtn.style.transform = 'scale(1) translateY(0)';
+                    }, 300);
+                }, 800);
+            }            // Add pulse effect when toggling the FAB
+            if (fabToggle && fabBtn) {
+                fabToggle.addEventListener('change', function() {
+                    // Add a quick pulse animation when toggling
+                    if (this.checked && fabBtn) {
+                        fabBtn.classList.add('fab-btn-pulse');
+                        setTimeout(() => {
+                            fabBtn.classList.remove('fab-btn-pulse');
+                        }, 400);
+                    }
+                });
+            }              // Adjust fab-options positioning to ensure perfect alignment            
             const adjustFabOptionsPosition = () => {
                 if (fabBtn && fabOptions) {
                     // Reset any previously set positioning to ensure clean calculations

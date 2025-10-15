@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             JadwalLatihanSeeder::class,
             UserSeeder::class,
             MerchandiseSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }

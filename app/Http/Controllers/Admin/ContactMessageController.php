@@ -9,7 +9,7 @@ class ContactMessageController extends Controller
 {
     public function index()
     {
-        $messages = ContactMessage::orderByDesc('created_at')->paginate(20);
+        $messages = ContactMessage::orderByDesc('created_at')->paginate(10);
         return view('admin.contact_messages.index', compact('messages'));
     }
 

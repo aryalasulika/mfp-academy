@@ -13,10 +13,37 @@ class MerchandiseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $merchandise = Merchandise::latest()->paginate(10);
-        return view('admin.merchandise.index', compact('merchandise'));
+        $query = Merchandise::query();
+
+        // Search by name or description
+        if ($search = $request->get('search')) {
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by category
+        if ($category = $request->get('category')) {
+            $query->where('category', $category);
+        }
+
+        // Filter by status (is_active: 1/0)
+        if ($request->filled('status')) {
+            $status = $request->get('status');
+            if ($status === '1' || $status === 1) {
+                $query->where('is_active', true);
+            } elseif ($status === '0' || $status === 0) {
+                $query->where('is_active', false);
+            }
+        }
+
+        $merchandise = $query->latest()->paginate(10);
+        $categories = Merchandise::getCategories();
+
+        return view('admin.merchandise.index', compact('merchandise', 'categories'));
     }
 
     /**

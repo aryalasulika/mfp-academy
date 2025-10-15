@@ -7,9 +7,30 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::orderBy('tanggal', 'desc')->paginate(20);
+        $query = Event::query();
+
+        // Filter pencarian (judul atau lokasi)
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('judul', 'like', '%' . $search . '%')
+                  ->orWhere('lokasi', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Filter bulan
+        if ($request->filled('month')) {
+            $query->whereMonth('tanggal', $request->month);
+        }
+
+        // Filter tahun
+        if ($request->filled('year')) {
+            $query->whereYear('tanggal', $request->year);
+        }
+
+        $events = $query->orderBy('tanggal', 'desc')->paginate(10);
         return view('admin.events.index', compact('events'));
     }
 

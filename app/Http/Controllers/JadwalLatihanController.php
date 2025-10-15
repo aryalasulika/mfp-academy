@@ -7,9 +7,35 @@ use Illuminate\Http\Request;
 class JadwalLatihanController extends Controller
 {
     // Public page
-    public function index()
+    public function index(Request $request)
     {
-        $jadwal = JadwalLatihan::orderBy('tanggal', 'asc')->get();
+        $query = JadwalLatihan::query();
+
+        // Search by jenis_latihan or lokasi
+        if ($request->filled('search')) {
+            $search = $request->get('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('jenis_latihan', 'like', "%{$search}%")
+                  ->orWhere('lokasi', 'like', "%{$search}%");
+            });
+        }
+
+        // Filter by kelompok_usia
+        if ($request->filled('kelompok_usia')) {
+            $query->where('kelompok_usia', $request->get('kelompok_usia'));
+        }
+
+        // Filter by hari
+        if ($request->filled('hari')) {
+            $query->where('hari', $request->get('hari'));
+        }
+
+        // Order by date ascending for public view
+        $query->orderBy('tanggal', 'asc');
+
+        // Paginate 10 per page and keep query params
+        $jadwal = $query->paginate(10)->appends($request->query());
+
         return view('jadwal-latihan', compact('jadwal'));
     }
 

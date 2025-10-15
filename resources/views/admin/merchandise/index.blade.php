@@ -83,17 +83,71 @@
                                     </div>
                                 @endif
 
+                                <!-- Filter/Search Form -->
+                                <div class="filter-section mb-3">
+                                    <h5 class="mb-3">
+                                        <i class="bx bx-search me-2"></i>Filter & Pencarian
+                                    </h5>
+                                    <form method="GET" action="{{ route('admin.merchandise.index') }}" class="row g-3">
+                                        <div class="col-md-4">
+                                            <label for="search" class="form-label fw-semibold">
+                                                <i class="bx bx-search me-1"></i>Pencarian
+                                            </label>
+                                            <input type="text"
+                                                   name="search"
+                                                   id="search"
+                                                   class="form-control"
+                                                   placeholder="Cari berdasarkan nama atau deskripsi..."
+                                                   value="{{ request('search') }}">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="category" class="form-label fw-semibold">
+                                                <i class="bx bx-category me-1"></i>Kategori
+                                            </label>
+                                            <select name="category" id="category" class="form-select">
+                                                <option value="">Semua Kategori</option>
+                                                @foreach(($categories ?? []) as $key => $label)
+                                                    <option value="{{ is_string($key) ? $key : $label }}" {{ request('category') == (is_string($key) ? $key : $label) ? 'selected' : '' }}>
+                                                        {{ $label }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label for="status" class="form-label fw-semibold">
+                                                <i class="bx bx-toggle-left me-1"></i>Status
+                                            </label>
+                                            <select name="status" id="status" class="form-select">
+                                                <option value="">Semua Status</option>
+                                                <option value="1" {{ request('status') === '1' ? 'selected' : '' }}>Aktif</option>
+                                                <option value="0" {{ request('status') === '0' ? 'selected' : '' }}>Non-aktif</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label text-transparent">Action</label>
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="bx bx-search me-1"></i>Cari
+                                                </button>
+                                                <a href="{{ route('admin.merchandise.index') }}" class="btn btn-outline-secondary">
+                                                    <i class="bx bx-refresh me-1"></i>Reset
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
                                 <div class="table-responsive">
                                     <table class="table table-bordered dt-responsive nowrap w-100 text-center align-middle">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>Gambar</th>
-                                                <th>Nama Produk</th>
-                                                <th>Kategori</th>
-                                                <th>Harga</th>
-                                                <th>Status</th>
-                                                <th>Aksi</th>
+                                                <th class="text-center">Nama Produk</th>
+                                                <th class="text-center">Kategori</th>
+                                                <th class="text-center">Harga</th>
+                                                <th class="text-center">Status</th>
+                                                <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -112,16 +166,18 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <h6 class="mb-1">{{ $item->name }}</h6>
-                                                    <p class="text-muted mb-0 small">{{ Str::limit($item->description, 50) }}</p>
+                                                    <div class="d-flex flex-column align-items-center text-center">
+                                                        <h6 class="mb-1">{{ $item->name }}</h6>
+                                                        <p class="text-muted mb-0 small">{{ Str::limit($item->description, 50) }}</p>
+                                                    </div>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <span class="badge bg-info">{{ $item->category }}</span>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     <strong>Rp {{ number_format($item->price, 0, ',', '.') }}</strong>
                                                 </td>
-                                                <td>
+                                                <td class="text-center">
                                                     @if($item->is_active)
                                                         <span class="badge bg-success">Aktif</span>
                                                     @else
@@ -179,7 +235,7 @@
                                         </div>
                                         <div class="col-sm-12 col-md-7">
                                             <div class="dataTables_paginate">
-                                                {{ $merchandise->links() }}
+                                                {{ $merchandise->appends(request()->query())->links('pagination::bootstrap-4') }}
                                             </div>
                                         </div>
                                     </div>
@@ -265,4 +321,90 @@ function testDelete(id) {
     }
 }
 </script>
+    
+    <!-- Scoped CSS to align table styling with Jadwal Latihan without changing HTML structure -->
+    <style>
+        /* Table header/row spacing and typography */
+        .table thead th {
+            border-bottom: 2px solid #dee2e6;
+            padding: 12px 8px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            background-color: #E1E2FF;
+        }
+
+        .table tbody td {
+            padding: 12px 8px;
+            vertical-align: middle;
+        }
+
+        /* Hover effect similar to jadwal table */
+        .table tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Badges look & feel */
+        .badge {
+            font-size: 0.75rem;
+            padding: 0.35em 0.65em;
+            font-weight: 500;
+        }
+
+        /* Button group rounded ends */
+        .btn-group .btn { border-radius: 0; }
+        .btn-group .btn:first-child { border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+        .btn-group .btn:last-child  { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
+
+        /* Center align all table headers and cells */
+        .table.text-center thead th,
+        .table.text-center tbody td {
+            text-align: center;
+        }
+
+        /* Truncate long text in Nama/Deskripsi and Kategori cells for cleaner look */
+        .table tbody td:nth-child(3) h6 {
+            max-width: 240px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.25rem;
+            text-align: center; /* enforce center even if other CSS overrides */
+        }
+        .table tbody td:nth-child(3) p.small {
+            display: inline-block;
+            max-width: 300px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center; /* enforce center */
+        }
+        .table tbody td:nth-child(4) span.badge {
+            max-width: 160px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Card enhancements to match jadwal */
+        .card { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); border: 1px solid #dee2e6; }
+        .card > .card-header { background-color: #696CFF; color: #fff; border-bottom: none; }
+        .card > .card-header h4, .card > .card-header h5 { color: #fff; }
+
+        /* Pagination styling (Bootstrap-like) */
+        .pagination { margin-bottom: 0; }
+        .page-link { color: #696CFF; padding: 0.5rem 0.75rem; }
+        .page-item.active .page-link { background-color: #696CFF; border-color: #696CFF; }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .table-responsive { font-size: 0.875rem; }
+            .table thead th, .table tbody td { padding: 8px 4px; }
+            .badge { font-size: 0.7rem; padding: 0.25em 0.5em; }
+            .btn-group .btn { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+            .table tbody td:nth-child(3) h6 { max-width: 160px; }
+            .table tbody td:nth-child(3) p.small { max-width: 200px; }
+        }
+    </style>
 @endsection

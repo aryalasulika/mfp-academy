@@ -9,7 +9,10 @@ class EventController extends Controller
     // Public page
     public function index()
     {
-        $events = Event::orderBy('tanggal', 'asc')->get();
+        // Paginate events, showing 9 per page (3 rows x 3 cards)
+        $events = Event::orderBy('tanggal', 'desc')
+                       ->paginate(9);
+        
         return view('event', compact('events'));
     }
 
