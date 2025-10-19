@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>@yield('title', 'MFP ACADEMY - Future Football Educare')</title>
+    <title>@yield('title', 'Future Football Educare')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="@yield('meta_keywords', 'Akademi Sepak Bola, MFP Academy, Sepak Bola Anak, Pelatihan Bola, Future Football Educare')" name="keywords">
     <meta content="@yield('meta_description', 'MFP Academy adalah akademi sepak bola profesional untuk pengembangan bakat muda di Yogyakarta.')" name="description">
