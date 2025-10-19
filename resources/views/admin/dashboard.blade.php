@@ -69,7 +69,7 @@
                         <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\User::count() }}</h1>
                     </div>
                     <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
-                        <i class="bx bx-user-circle text-white"></i>
+                        {{-- <i class="bx bx-user-circle text-white"></i> --}}
                     </span>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                         <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ $totalJadwalLatihan ?? '-' }}</h1>
                     </div>
                     <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
-                        <i class="bx bx-calendar-event text-white"></i>
+                        {{-- <i class="bx bx-calendar-event text-white"></i> --}}
                     </span>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                         <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\Merchandise::count() }}</h1>
                     </div>
                     <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
-                        <i class="bx bx-store-alt text-white"></i>
+                        {{-- <i class="bx bx-store-alt text-white"></i> --}}
                     </span>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                         <h1 class="fw-bold mb-0 text-white display-4" style="text-shadow:0 2px 8px rgba(0,0,0,0.15);">{{ \App\Models\ContactMessage::count() }}</h1>
                     </div>
                     <span class="position-absolute end-0 bottom-0 opacity-25" style="font-size:7rem;pointer-events:none;">
-                        <i class="bx bx-envelope text-white"></i>
+                        {{-- <i class="bx bx-envelope text-white"></i> --}}
                     </span>
                 </div>
             </div>

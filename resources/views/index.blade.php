@@ -68,7 +68,8 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">                <div class="h-100 tentang-content">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">                
+                <div class="h-100 tentang-content">
                     <h6 class="section-title bg-white text-start text-primary pe-3">Tentang Kami</h6>
                     <h1 class="display-6 mb-4">Akademi Sepak Bola <span class="mfp-accent">Future Football Educare</span></h1>
                       <div class="tentang-text">
@@ -115,98 +116,19 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="mt-4">
+                            <a href="{{ route('tentang-kami') }}" class="btn rounded-pill px-4 py-2" style="background-color: #61677A; color: #fff; border: none;">
+                                <i class="fa fa-arrow-right me-2"></i>Lihat Selengkapnya
+                            </a>
+                        </div>
                     </div>
-                    
-                    {{-- <a class="btn btn-danger rounded-pill py-3 px-5 mt-2" href="https://docs.google.com/forms/d/e/1FAIpQLSd50jVgQCODUBiOMdPob1fID9mZhCiEnTtjW8n87D66p92uhQ/viewform" target="_blank">Daftar Sekarang</a> --}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- Tentang Kami End -->
-
-<!-- Visi dan Misi Start -->
-<div id="visi-misi" class="container-xxl py-5 bg-light">
-    <div class="container">
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-            <h6 class="section-title bg-white text-center text-primary px-3">Visi dan Misi</h6>
-            <h1 class="display-6 mb-4">Tujuan & Komitmen Kami</h1>
-        </div>
-        <div class="row g-5">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="h-100 bg-white p-4 p-lg-5 rounded shadow">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-eye text-white fs-4"></i>
-                    </div>
-                    <h4 class="mb-3">Visi</h4>
-                    <p class="mb-4">Menjadi pusat pengembangan sepak bola usia dini yang inovatif dan progresif, serta melahirkan generasi pemain yang cerdas, berkarakter, dan kompetitif di tingkat nasional maupun internasional.Menjadi pusat pengembangan sepak bola usia dini yang inovatif dan progresif, serta melahirkan generasi pemain yang cerdas, berkarakter, dan kompetitif di tingkat nasional maupun internasional.
-</p>
-                    <div class="border-top mt-4 pt-4">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Keunggulan dalam pelatihan sepak bola modern</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Pembangunan karakter dan prestasi</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Berkontribusi pada sepak bola nasional</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="h-100 bg-white p-4 p-lg-5 rounded shadow">
-                    <div class="d-inline-flex align-items-center justify-content-center bg-primary rounded-circle mb-4" style="width: 65px; height: 65px;">
-                        <i class="fa fa-bullseye text-white fs-4"></i>
-                    </div>                    <h4 class="mb-3">Misi</h4>
-                    <p class="mb-4">Mengembangkan talenta sepak bola Indonesia melalui pendekatan holistik berbasis metodologi modern yang mengintegrasikan aspek teknis, taktis, kognitif dan karakter.</p>
-                    <div class="border-top mt-4 pt-3">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Menyediakan program pelatihan sepak bola yang berbasis metodologi modern (seperti Ekkono Method) untuk meningkatkan kualitas pemahaman permainan.</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Membentuk pemain dengan kemampuan teknis, taktis, serta kecerdasan bermain yang seimbang.</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Mengembangkan aspek karakter, kepemimpinan, dan disiplin melalui program personality development.</span>
-                        </div>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Menyediakan sistem analisis performa individu & tim sebagai alat ukur perkembangan pemain secara objektif.</span>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <div class="btn-sm-square bg-primary rounded-circle me-3">
-                                <i class="fa fa-check text-white"></i>
-                            </div>
-                            <span>Membangun jembatan antara pemain muda dan jalur pembinaan elite, termasuk seleksi Piala Soeratin, akademi profesional, dan program nasional.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Visi dan Misi End -->
 
 <!-- Kutipan Pimpinan Start -->
 <div id="kutipan" class="container-xxl py-5">

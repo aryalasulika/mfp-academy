@@ -19,7 +19,11 @@ use App\Http\Controllers\CoachDashboardController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
+
+Route::get('/tentang-kami', function () {
+    return view('tentang-kami');
+})->name('tentang-kami');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -75,6 +79,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/pesan-masuk', [ContactMessageController::class, 'index'])->name('admin.contact_messages.index');
     Route::get('/admin/pesan-masuk/{id}', [ContactMessageController::class, 'show'])->name('admin.contact_messages.show');
     Route::delete('/admin/pesan-masuk/{id}', [ContactMessageController::class, 'destroy'])->name('admin.contact_messages.destroy');
+    Route::post('/admin/pesan-masuk/{id}/mark-as-read', [ContactMessageController::class, 'markAsRead'])->name('admin.contact_messages.markAsRead');
 
     Route::get('/admin/events', [\App\Http\Controllers\Admin\EventController::class, 'index'])->name('admin.events.index');
     Route::get('/admin/events/create', [\App\Http\Controllers\Admin\EventController::class, 'create'])->name('admin.events.create');

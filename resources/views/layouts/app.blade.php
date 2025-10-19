@@ -1061,7 +1061,7 @@
                     </div>
                 </div>
                 
-                <div class="nav-item dropdown">
+                {{-- <div class="nav-item dropdown">
                     <a href="#"
                         class="nav-link dropdown-toggle d-flex align-items-center gap-2{{ request()->is('jadwal-latihan') ? ' active' : ''}}"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -1080,17 +1080,23 @@
                         {{-- <a href="{{ asset('template/img/mfp/sponsorsip.pdf') }}" download
                             class="dropdown-item d-flex align-items-center gap-2 py-2 rounded">
                             <i class="fa fa-file-pdf text-success"></i> <span>Proposal Sponsorship</span>
-                        </a> --}}
+                        </a>
                     </div>
-                </div>
+                </div> --}}
+
                 <a href="{{ route('event.index') }}"
                     class="nav-item nav-link{{ request()->is('event') ? ' active' : '' }}">Berita/Acara</a>
+                <a href="{{ route('jadwal.latihan') }}"
+                    class="nav-item nav-link{{ request()->is('jadwal-latihan') ? ' active' : '' }}">Jadwal Latihan</a>
                 <a href="{{ route('galeri.index') }}"
                     class="nav-item nav-link{{ request()->is('galeri') ? ' active' : '' }}">Galeri</a>
                 <a href="{{ route('merchandise.index') }}"
                     class="nav-item nav-link{{ request()->is('merchandise') ? ' active' : '' }}">Merchandise</a>
                 <a href="/contact"
-                    class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>                <!-- Tombol Login Mobile - Dalam menu hamburger -->
+                    class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}">Kontak</a>
+                <!-- Menu Tentang Kami -->
+                <a href="{{ route('tentang-kami') }}" class="nav-item nav-link{{ request()->routeIs('tentang-kami') ? ' active' : '' }}">Tentang Kami</a>                   
+                    <!-- Tombol Login Mobile - Dalam menu hamburger -->
                 {{-- <div class="nav-item d-block d-lg-none mt-4 pt-3 border-top border-light border-opacity-25">
                     <div class="text-light text-center mb-3 small">
                         <span>Sudah punya akun? Login di sini</span>

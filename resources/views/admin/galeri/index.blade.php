@@ -108,7 +108,7 @@
                             @endforelse
                         </div>
                         <div class="mt-3">
-                            {{ $galeri->links() }}
+                            {!! $galeri->links('pagination::bootstrap-4') !!}
                         </div>
                     </div>
                     <!-- End Statistik Cards Modern Fancy -->
