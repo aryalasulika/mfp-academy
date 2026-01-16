@@ -11,6 +11,7 @@ use App\Http\Controllers\TimController;
 use Illuminate\Support\Facades\Route;
 use App\Models\ContactMessage;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\Admin\GaleriController as AdminGaleriController;
@@ -100,11 +101,20 @@ Route::middleware(['auth:admin'])->group(function () {
 
     // Hasil Latihan Routes
     Route::get('/admin/jadwal-latihan/{jadwalLatihan}/hasil-latihan/create', [HasilLatihanController::class, 'create'])
-         ->name('admin.hasil_latihan.create');
+        ->name('admin.hasil_latihan.create');
     Route::post('/admin/jadwal-latihan/{jadwalLatihan}/hasil-latihan', [HasilLatihanController::class, 'store'])
-         ->name('admin.hasil_latihan.store');
+        ->name('admin.hasil_latihan.store');
     Route::get('/admin/hasil-latihan/{hasilLatihan}', [HasilLatihanController::class, 'show'])
-         ->name('admin.hasil_latihan.show');
+        ->name('admin.hasil_latihan.show');
+
+    // Admin Management Routes
+    Route::get('/admin/admins', [AdminController::class, 'index'])->name('admin.admins.index');
+    Route::get('/admin/admins/create', [AdminController::class, 'create'])->name('admin.admins.create');
+    Route::post('/admin/admins', [AdminController::class, 'store'])->name('admin.admins.store');
+    Route::get('/admin/admins/{id}', [AdminController::class, 'show'])->name('admin.admins.show');
+    Route::get('/admin/admins/{id}/edit', [AdminController::class, 'edit'])->name('admin.admins.edit');
+    Route::put('/admin/admins/{id}', [AdminController::class, 'update'])->name('admin.admins.update');
+    Route::delete('/admin/admins/{id}', [AdminController::class, 'destroy'])->name('admin.admins.destroy');
 });
 
 // Fallback for unauthorized access to admin dashboard
