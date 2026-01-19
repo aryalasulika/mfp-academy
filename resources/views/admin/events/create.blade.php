@@ -91,7 +91,7 @@
                                 <label for="tanggal" class="form-label">Tanggal</label>
                                 <input type="date" name="tanggal" id="tanggal"
                                     class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal') }}"
-                                    required min="{{ date('Y-m-d') }}">
+                                    required>
                                 @error('tanggal')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
