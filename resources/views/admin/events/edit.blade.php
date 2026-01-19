@@ -78,6 +78,17 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
+                                <label for="kategori" class="form-label">Kategori</label>
+                                <select name="kategori" id="kategori" class="form-control @error('kategori') is-invalid @enderror" required>
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="berita" {{ old('kategori', $event->kategori) == 'berita' ? 'selected' : '' }}>Berita</option>
+                                    <option value="acara" {{ old('kategori', $event->kategori) == 'acara' ? 'selected' : '' }}>Acara</option>
+                                </select>
+                                @error('kategori')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="tanggal" class="form-label">Tanggal</label>
                                 <input type="date" name="tanggal" id="tanggal"
                                     class="form-control @error('tanggal') is-invalid @enderror"

@@ -38,6 +38,11 @@
                                 @endif
                             </div>
                             <div class="card-header bg-primary text-white text-center rounded-top-3 border-0 py-3" style="{{ $event->image ? 'border-top-left-radius: 0 !important; border-top-right-radius: 0 !important;' : '' }}">
+                                <div class="mb-2">
+                                    <span class="badge {{ $event->kategori == 'berita' ? 'bg-info' : 'bg-danger' }} px-3 py-1">
+                                        {{ ucfirst($event->kategori) }}
+                                    </span>
+                                </div>
                                 <div class="fw-bold fs-5 mb-1">
                                     {{ \Carbon\Carbon::parse($event->tanggal)->format('d M Y') }}
                                     <span class="d-block fs-6 fw-normal mt-1">({{ \Carbon\Carbon::parse($event->tanggal)->locale('id')->translatedFormat('l') }})</span>

@@ -14,9 +14,9 @@ class EventController extends Controller
         // Filter pencarian (judul atau lokasi)
         if ($request->filled('search')) {
             $search = $request->search;
-            $query->where(function($q) use ($search) {
+            $query->where(function ($q) use ($search) {
                 $q->where('judul', 'like', '%' . $search . '%')
-                  ->orWhere('lokasi', 'like', '%' . $search . '%');
+                    ->orWhere('lokasi', 'like', '%' . $search . '%');
             });
         }
 
@@ -43,24 +43,25 @@ class EventController extends Controller
     {
         $request->validate([
             'judul' => 'required',
+            'kategori' => 'required|in:berita,acara',
             'deskripsi' => 'required',
             'tanggal' => 'required|date',
             'lokasi' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         $data = $request->all();
-        
+
         // Generate slug from judul
         $data['slug'] = \App\Models\Event::generateUniqueSlug($request->judul);
-        
+
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('storage/events'), $imageName);
             $data['image'] = 'storage/events/' . $imageName;
         }
-        
+
         Event::create($data);
         return redirect()->route('admin.events.index')->with('success', 'Acara berhasil ditambahkan.');
     }
@@ -75,32 +76,33 @@ class EventController extends Controller
     {
         $request->validate([
             'judul' => 'required',
+            'kategori' => 'required|in:berita,acara',
             'deskripsi' => 'required',
             'tanggal' => 'required|date',
             'lokasi' => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
         $event = Event::findOrFail($id);
         $data = $request->all();
-        
+
         // Update slug if judul changed
         if ($request->judul !== $event->judul) {
             $data['slug'] = \App\Models\Event::generateUniqueSlug($request->judul);
         }
-        
+
         if ($request->hasFile('image')) {
             // Delete old image if exists
             if ($event->image && file_exists(public_path($event->image))) {
                 unlink(public_path($event->image));
             }
-            
+
             $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('storage/events'), $imageName);
             $data['image'] = 'storage/events/' . $imageName;
         }
-        
+
         $event->update($data);
         return redirect()->route('admin.events.index')->with('success', 'Acara berhasil diupdate.');
     }
@@ -108,12 +110,12 @@ class EventController extends Controller
     public function destroy($id)
     {
         $event = Event::findOrFail($id);
-        
+
         // Delete image if exists
         if ($event->image && file_exists(public_path($event->image))) {
             unlink(public_path($event->image));
         }
-        
+
         $event->delete();
         return redirect()->route('admin.events.index')->with('success', 'Acara berhasil dihapus.');
     }

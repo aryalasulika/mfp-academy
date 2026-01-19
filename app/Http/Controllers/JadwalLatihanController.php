@@ -16,7 +16,7 @@ class JadwalLatihanController extends Controller
             $search = $request->get('search');
             $query->where(function ($q) use ($search) {
                 $q->where('jenis_latihan', 'like', "%{$search}%")
-                  ->orWhere('lokasi', 'like', "%{$search}%");
+                    ->orWhere('lokasi', 'like', "%{$search}%");
             });
         }
 
@@ -44,13 +44,9 @@ class JadwalLatihanController extends Controller
     {
         $query = JadwalLatihan::with('hasilLatihan');
 
-        // Search functionality
-        if ($request->filled('search')) {
-            $search = $request->get('search');
-            $query->where(function($q) use ($search) {
-                $q->where('jenis_latihan', 'like', "%{$search}%")
-                  ->orWhere('lokasi', 'like', "%{$search}%");
-            });
+        // Filter by Date Range
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('tanggal', [$request->get('start_date'), $request->get('end_date')]);
         }
 
         // Filter by kelompok_usia

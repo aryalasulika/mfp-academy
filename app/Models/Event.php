@@ -12,6 +12,7 @@ class Event extends Model
     protected $fillable = [
         'judul',
         'slug',
+        'kategori',
         'deskripsi',
         'tanggal',
         'lokasi',

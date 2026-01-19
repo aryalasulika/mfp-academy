@@ -128,6 +128,50 @@
                 </div>
             </div>
         </div>
+
+        <!-- Admin Table -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card h-100">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h5 class="card-title m-0 me-2">Daftar Admin</h5>
+                        <a href="{{ route('admin.admins.index') }}" class="btn btn-sm btn-primary">Lihat Semua</a>
+                    </div>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Bergabung</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+                                @forelse($admins as $admin)
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar avatar-xs me-2">
+                                                <span class="avatar-initial rounded-circle bg-label-primary">{{ strtoupper(substr($admin->name, 0, 2)) }}</span>
+                                            </div>
+                                            <span class="fw-semibold">{{ $admin->name }}</span>
+                                        </div>
+                                    </td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td><span class="badge bg-label-info me-1">{{ $admin->created_at->format('d M Y') }}</span></td>
+                                </tr>
+                                @empty
+                                <tr>
+                                    <td colspan="3" class="text-center">Belum ada admin lain.</td>
+                                </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Admin Table -->
     </div>
     <!-- End Statistik Cards Modern Fancy -->
     <div class="content-backdrop fade"></div>

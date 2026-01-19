@@ -75,38 +75,44 @@
         <h5 class="mb-3">
             <i class="bx bx-search me-2"></i>Filter & Pencarian
         </h5>
-        <form method="GET" action="{{ route('admin.jadwal_latihan.index') }}" class="row g-3">
-            <div class="col-md-4">
-                <label for="search" class="form-label fw-semibold">
-                    <i class="bx bx-search me-1"></i>Pencarian
+        <form method="GET" action="{{ route('admin.jadwal_latihan.index') }}" class="row g-3 align-items-end justify-content-end">
+            <div class="col-md-3">
+                <label for="start_date" class="form-label fw-semibold">
+                    <i class="bx bx-calendar me-1"></i>Dari
                 </label>
-                <input type="text" 
-                       name="search" 
-                       id="search" 
+                <input type="date" 
+                       name="start_date" 
+                       id="start_date" 
                        class="form-control" 
-                       placeholder="Cari berdasarkan jenis latihan atau lokasi..."
-                       value="{{ request('search') }}">
+                       value="{{ request('start_date') }}">
             </div>
             <div class="col-md-3">
+                <label for="end_date" class="form-label fw-semibold">
+                    <i class="bx bx-calendar me-1"></i>Sampai
+                </label>
+                <input type="date" 
+                       name="end_date" 
+                       id="end_date" 
+                       class="form-control" 
+                       value="{{ request('end_date') }}">
+            </div>
+            <div class="col-md-2">
                 <label for="kelompok_usia" class="form-label fw-semibold">
-                    <i class="bx bx-group me-1"></i>Kelompok Usia
+                    <i class="bx bx-group me-1"></i>Kelompok
                 </label>
                 <select name="kelompok_usia" id="kelompok_usia" class="form-select">
-                    <option value="">Semua Kelompok</option>
+                    <option value="">Semua</option>
                     <option value="U-10" {{ request('kelompok_usia') == 'U-10' ? 'selected' : '' }}>U-10</option>
                     <option value="U-12" {{ request('kelompok_usia') == 'U-12' ? 'selected' : '' }}>U-12</option>
                     <option value="U-13" {{ request('kelompok_usia') == 'U-13' ? 'selected' : '' }}>U-13</option>
-                    {{-- <option value="U-15" {{ request('kelompok_usia') == 'U-15' ? 'selected' : '' }}>U-15</option> --}}
-                    {{-- <option value="U-17" {{ request('kelompok_usia') == 'U-17' ? 'selected' : '' }}>U-17</option> --}}
-                    {{-- <option value="Senior" {{ request('kelompok_usia') == 'Senior' ? 'selected' : '' }}>Senior</option> --}}
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="hari" class="form-label fw-semibold">
                     <i class="bx bx-calendar me-1"></i>Hari
                 </label>
                 <select name="hari" id="hari" class="form-select">
-                    <option value="">Semua Hari</option>
+                    <option value="">Semua</option>
                     <option value="Senin" {{ request('hari') == 'Senin' ? 'selected' : '' }}>Senin</option>
                     <option value="Selasa" {{ request('hari') == 'Selasa' ? 'selected' : '' }}>Selasa</option>
                     <option value="Rabu" {{ request('hari') == 'Rabu' ? 'selected' : '' }}>Rabu</option>
@@ -118,12 +124,12 @@
             </div>
             <div class="col-md-2">
                 <label class="form-label text-transparent ">Action</label>
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bx bx-search me-1"></i>Cari
+                <div class="d-flex gap-1">
+                    <button type="submit" class="btn btn-primary flex-grow-1">
+                        <i class="bx bx-search"></i>
                     </button>
-                    <a href="{{ route('admin.jadwal_latihan.index') }}" class="btn btn-outline-secondary">
-                        <i class="bx bx-refresh me-1"></i>Reset
+                    <a href="{{ route('admin.jadwal_latihan.index') }}" class="btn btn-outline-secondary flex-grow-1">
+                        <i class="bx bx-refresh"></i>
                     </a>
                 </div>
             </div>

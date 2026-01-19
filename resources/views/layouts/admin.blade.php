@@ -133,7 +133,7 @@
             <li class="menu-item {{ request()->routeIs('admin.admins.*') ? 'active' : '' }}">
                 <a href="{{ route('admin.admins.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-id-card"></i>
-                    <div data-i18n="List Admin">List Admin</div>
+                    <div data-i18n="List Admin">Management Admin</div>
                 </a>
             </li>
         </ul>

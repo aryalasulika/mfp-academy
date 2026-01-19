@@ -58,7 +58,8 @@ Route::get('/merchandise', [MerchandiseController::class, 'index'])->name('merch
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', function () {
         $totalJadwalLatihan = \App\Models\JadwalLatihan::count();
-        return view('admin.dashboard', compact('totalJadwalLatihan'));
+        $admins = \App\Models\Admin::latest()->take(5)->get();
+        return view('admin.dashboard', compact('totalJadwalLatihan', 'admins'));
     })->name('admin.dashboard');
 
     // User Management Routes

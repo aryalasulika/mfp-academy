@@ -22,8 +22,8 @@
                 <div class="mb-4">
                     <!-- Category Badge -->
                     <div class="mb-3">
-                        <span class="badge bg-danger bg-gradient px-3 py-2 fs-6 rounded-pill">
-                            <i class="bx bx-calendar-event me-1"></i> Berita & Acara
+                        <span class="badge {{ $event->kategori == 'berita' ? 'bg-info' : 'bg-danger' }} bg-gradient px-3 py-2 fs-6 rounded-pill">
+                            <i class="bx {{ $event->kategori == 'berita' ? 'bx-news' : 'bx-calendar-event' }} me-1"></i> {{ ucfirst($event->kategori) }}
                         </span>
                     </div>
                     
@@ -109,7 +109,11 @@
                             <div class="col-md-6">
                                 <div class="detail-item">
                                     <div class="detail-label text-muted small">Kategori</div>
-                                    <div class="detail-value fw-semibold">Berita & Acara</div>
+                                    <div class="detail-value fw-semibold">
+                                        <span class="badge {{ $event->kategori == 'berita' ? 'bg-info' : 'bg-danger' }} px-3 py-1">
+                                            {{ ucfirst($event->kategori) }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -253,11 +257,17 @@
     background: #f8f9fa;
     padding: 1rem;
     border-radius: 0.375rem;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .content-text {
     line-height: 1.8;
     color: #333;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .content-text p {

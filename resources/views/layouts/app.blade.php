@@ -1147,13 +1147,13 @@
                         Yogyakarta</p>
                     <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="https://wa.me/6289518788383"
                             target="_blank" style="color:inherit;text-decoration:none;">+62 895 1878 8383</a></p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>mfpsoccerschool@gmail.com</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>dhontknow83@gmail.com</p>
                     <div class="d-flex pt-2">
                         <a class="btn btn-square btn-outline-secondary rounded-circle me-1" target="_blank"
-                            href="https://www.youtube.com/channel/UCTFOYGV-nEZHfbIYAAGU-fw"><i
+                            href="https://youtube.com/@mfpakademi?si=yzPe_HhA0B2eQtu4"><i
                                 class="fab fa-youtube"></i></a>
                         <a class="btn btn-square btn-outline-secondary rounded-circle me-0" target="_blank"
-                            href="https://www.instagram.com/maguwoharjofootball_park/"><i
+                            href="https://www.instagram.com/akademi.mfp?igsh=aHA4dnJtcW02d2Zy"><i
                                 class="fab fa-instagram"></i></a>
                     </div>
                 </div>
@@ -1234,7 +1234,7 @@
                 <i class="fab fa-whatsapp"></i>
                 <span class="fab-label">WhatsApp</span>
             </a>
-            <a href="mailto:mfpsoccerschool@gmail.com" class="fab-option fab-option-email" title="Email Kami">
+            <a href="mailto:dhontknow83@gmail.com" class="fab-option fab-option-email" title="Email Kami">
                 <i class="far fa-envelope"></i>
                 <span class="fab-label">Email</span>
             </a>

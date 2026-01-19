@@ -234,20 +234,20 @@
         <div class="row g-4">
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item d-block rounded text-center h-100 p-4 bg-white border">
-                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/service-1.jpg') }}" alt="">
-                    <h4 class="mb-0">Kelas Usia Dini (U-8, U-10)</h4>
+                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/U-10.webp') }}" alt="">
+                    <h4 class="mb-0">Kelas U-10</h4>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="service-item d-block rounded text-center h-100 p-4 bg-white border">
-                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/service-2.jpg') }}" alt="">
-                    <h4 class="mb-0">Kelas Remaja (U-12, U-14)</h4>
+                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/U-12.webp') }}" alt="">
+                    <h4 class="mb-0">Kelas U-12</h4>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                 <div class="service-item d-block rounded text-center h-100 p-4 bg-white border">
-                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/service-3.jpg') }}" alt="">
-                    <h4 class="mb-0">Kelas Prestasi (U-16, U-18)</h4>
+                    <img class="img-fluid rounded mb-4" src="{{ asset('template/img/U-13.webp') }}" alt="">
+                    <h4 class="mb-0">Kelas U-13</h4>
                 </div>
             </div>
         </div>
@@ -260,26 +260,32 @@
     <div class="container">
         <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
             <h6 class="section-title bg-white text-center text-primary px-3">Galeri</h6>
-            <h1 class="display-6 mb-4">Kegiatan & Prestasi</h1>
+            <h1 class="display-6 mb-4">Kegiatan Peserta Didik</h1>
         </div>
-        <div class="owl-carousel project-carousel wow fadeInUp" data-wow-delay="0.1s">
-            <div class="project-item border rounded h-100 p-4">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="{{ asset('template/img/project-1.jpg') }}" alt="Galeri 1">
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="project-item border rounded h-100 p-4 shadow-sm">
+                    <div class="position-relative mb-4" style="height: 250px; overflow: hidden; border-radius: 8px;">
+                        <img class="img-fluid w-100 h-100" src="{{ asset('template/img/training.webp') }}" alt="Galeri 1" style="object-fit: cover;">
+                    </div>
+                    <h6 class="text-center">Latihan Rutin</h6>
                 </div>
-                <h6>Latihan Rutin</h6>
             </div>
-            <div class="project-item border rounded h-100 p-4">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="{{ asset('template/img/project-2.jpg') }}" alt="Galeri 2">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="project-item border rounded h-100 p-4 shadow-sm">
+                    <div class="position-relative mb-4" style="height: 250px; overflow: hidden; border-radius: 8px;">
+                        <img class="img-fluid w-100 h-100" src="{{ asset('template/img/turnamen.webp') }}" alt="Galeri 2" style="object-fit: cover;">
+                    </div>
+                    <h6 class="text-center">Turnamen</h6>
                 </div>
-                <h6>Turnamen</h6>
             </div>
-            <div class="project-item border rounded h-100 p-4">
-                <div class="position-relative mb-4">
-                    <img class="img-fluid rounded" src="{{ asset('template/img/project-3.jpg') }}" alt="Galeri 3">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="project-item border rounded h-100 p-4 shadow-sm">
+                    <div class="position-relative mb-4" style="height: 250px; overflow: hidden; border-radius: 8px;">
+                        <img class="img-fluid w-100 h-100" src="{{ asset('template/img/prestasi.webp') }}" alt="Galeri 3" style="object-fit: cover;">
+                    </div>
+                    <h6 class="text-center">Prestasi Siswa</h6>
                 </div>
-                <h6>Prestasi Siswa</h6>
             </div>
         </div>
     </div>
@@ -299,8 +305,8 @@
                     <img class="img-fluid border rounded-circle w-75 p-2 mb-4" src="{{ asset('template/img/team-1.jpg') }}" alt="Pelatih 1">
                     <div class="team-text">
                         <div class="team-title">
-                            <h5>Coach Andi</h5>
-                            <span>Pelatih Kepala</span>
+                            <h5>Muhammad Farhan</h5>
+                            <span>Pelatih</span>
                         </div>
                         <div class="team-social">
                             <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
@@ -314,8 +320,8 @@
                     <img class="img-fluid border rounded-circle w-75 p-2 mb-4" src="{{ asset('template/img/team-2.jpg') }}" alt="Pelatih 2">
                     <div class="team-text">
                         <div class="team-title">
-                            <h5>Coach Budi</h5>
-                            <span>Pelatih Fisik</span>
+                            <h5>Fedrico</h5>
+                            <span>Pelatih</span>
                         </div>
                         <div class="team-social">
                             <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
@@ -330,7 +336,7 @@
                     <div class="team-text">
                         <div class="team-title">
                             <h5>Coach Cici</h5>
-                            <span>Pelatih Teknik</span>
+                            <span>Pelatih</span>
                         </div>
                         <div class="team-social">
                             <a class="btn btn-square btn-primary rounded-circle" href=""><i class="fab fa-facebook-f"></i></a>
@@ -528,11 +534,20 @@
 }
 
 /* Force override any other carousel styles */
-.owl-carousel .owl-nav button:hover,
-.owl-carousel button.owl-dot:hover,
 .owl-carousel button.owl-dot.active {
     background: #61677A !important;
     border-color: #61677A !important;
+}
+
+/* Gallery Card Hover Effect */
+.project-item {
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    border-color: #0d6efd !important;
 }
 </style>
 @endsection
